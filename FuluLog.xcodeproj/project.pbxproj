@@ -11,6 +11,18 @@
 		12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239328CCBD4D00CCED4F /* ContentView.swift */; };
 		12ED239628CCBD4D00CCED4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12ED239528CCBD4D00CCED4F /* Assets.xcassets */; };
 		12ED239928CCBD4D00CCED4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12ED239828CCBD4D00CCED4F /* Preview Assets.xcassets */; };
+		12ED23A228CCBDDA00CCED4F /* FuluLogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23A128CCBDDA00CCED4F /* FuluLogModels.swift */; };
+		12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23A328CCBE3500CCED4F /* FileController.swift */; };
+		12ED23A628CCC02C00CCED4F /* EntryFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */; };
+		12ED23A828CCC03C00CCED4F /* ListFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23A728CCC03C00CCED4F /* ListFuluLogView.swift */; };
+		12ED23AA28CCC04800CCED4F /* RowFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */; };
+		12ED23AD28CCC20C00CCED4F /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23AC28CCC20C00CCED4F /* SettingView.swift */; };
+		12ED23AF28CCC6E100CCED4F /* InputFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */; };
+		12ED23B128CDAF4B00CCED4F /* DetailFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */; };
+		12ED23B328CDB1D900CCED4F /* UpdateFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */; };
+		12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23BA28CFD69200CCED4F /* HeaderView.swift */; };
+		12ED23BD28D0C24D00CCED4F /* AdMobViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23BC28D0C24D00CCED4F /* AdMobViewModels.swift */; };
+		7BF061C16D6638AA848DA18B /* Pods_FuluLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5CAB995EBF320EF514E2B45 /* Pods_FuluLog.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +31,21 @@
 		12ED239328CCBD4D00CCED4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		12ED239528CCBD4D00CCED4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12ED239828CCBD4D00CCED4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		12ED239F28CCBDA600CCED4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		12ED23A128CCBDDA00CCED4F /* FuluLogModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogModels.swift; sourceTree = "<group>"; };
+		12ED23A328CCBE3500CCED4F /* FileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileController.swift; sourceTree = "<group>"; };
+		12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFuluLogView.swift; sourceTree = "<group>"; };
+		12ED23A728CCC03C00CCED4F /* ListFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFuluLogView.swift; sourceTree = "<group>"; };
+		12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowFuluLogView.swift; sourceTree = "<group>"; };
+		12ED23AC28CCC20C00CCED4F /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFuluLogView.swift; sourceTree = "<group>"; };
+		12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFuluLogView.swift; sourceTree = "<group>"; };
+		12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFuluLogView.swift; sourceTree = "<group>"; };
+		12ED23BA28CFD69200CCED4F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		12ED23BC28D0C24D00CCED4F /* AdMobViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobViewModels.swift; sourceTree = "<group>"; };
+		2EB92DE73482AAB3EE80BB61 /* Pods-FuluLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuluLog.debug.xcconfig"; path = "Target Support Files/Pods-FuluLog/Pods-FuluLog.debug.xcconfig"; sourceTree = "<group>"; };
+		A1BCA1C77E13AF204450637E /* Pods-FuluLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuluLog.release.xcconfig"; path = "Target Support Files/Pods-FuluLog/Pods-FuluLog.release.xcconfig"; sourceTree = "<group>"; };
+		C5CAB995EBF320EF514E2B45 /* Pods_FuluLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuluLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF061C16D6638AA848DA18B /* Pods_FuluLog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +65,8 @@
 			children = (
 				12ED239028CCBD4D00CCED4F /* FuluLog */,
 				12ED238F28CCBD4D00CCED4F /* Products */,
+				32BC43F6E990B08787FE7FBC /* Pods */,
+				3898080679FD8AFEBB9CFFA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +81,17 @@
 		12ED239028CCBD4D00CCED4F /* FuluLog */ = {
 			isa = PBXGroup;
 			children = (
+				12ED239F28CCBDA600CCED4F /* Info.plist */,
 				12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */,
 				12ED239328CCBD4D00CCED4F /* ContentView.swift */,
+				12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */,
+				12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */,
+				12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */,
+				12ED23A728CCC03C00CCED4F /* ListFuluLogView.swift */,
+				12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */,
+				12ED23AC28CCC20C00CCED4F /* SettingView.swift */,
+				12ED23AB28CCC04C00CCED4F /* ViewComponents */,
+				12ED23A028CCBDC300CCED4F /* Models */,
 				12ED239528CCBD4D00CCED4F /* Assets.xcassets */,
 				12ED239728CCBD4D00CCED4F /* Preview Content */,
 			);
@@ -67,6 +106,42 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		12ED23A028CCBDC300CCED4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				12ED23A128CCBDDA00CCED4F /* FuluLogModels.swift */,
+				12ED23A328CCBE3500CCED4F /* FileController.swift */,
+				12ED23BC28D0C24D00CCED4F /* AdMobViewModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		12ED23AB28CCC04C00CCED4F /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */,
+				12ED23BA28CFD69200CCED4F /* HeaderView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		32BC43F6E990B08787FE7FBC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2EB92DE73482AAB3EE80BB61 /* Pods-FuluLog.debug.xcconfig */,
+				A1BCA1C77E13AF204450637E /* Pods-FuluLog.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3898080679FD8AFEBB9CFFA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5CAB995EBF320EF514E2B45 /* Pods_FuluLog.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +149,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12ED239C28CCBD4D00CCED4F /* Build configuration list for PBXNativeTarget "FuluLog" */;
 			buildPhases = (
+				CA866ECD3F93C7D2D381456F /* [CP] Check Pods Manifest.lock */,
 				12ED238A28CCBD4D00CCED4F /* Sources */,
 				12ED238B28CCBD4D00CCED4F /* Frameworks */,
 				12ED238C28CCBD4D00CCED4F /* Resources */,
+				4A2A001799C873DB712890BC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,13 +209,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A2A001799C873DB712890BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuluLog/Pods-FuluLog-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuluLog/Pods-FuluLog-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FuluLog/Pods-FuluLog-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA866ECD3F93C7D2D381456F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FuluLog-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		12ED238A28CCBD4D00CCED4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */,
+				12ED23AA28CCC04800CCED4F /* RowFuluLogView.swift in Sources */,
+				12ED23AF28CCC6E100CCED4F /* InputFuluLogView.swift in Sources */,
 				12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */,
+				12ED23B328CDB1D900CCED4F /* UpdateFuluLogView.swift in Sources */,
+				12ED23A628CCC02C00CCED4F /* EntryFuluLogView.swift in Sources */,
+				12ED23BD28D0C24D00CCED4F /* AdMobViewModels.swift in Sources */,
+				12ED23A228CCBDDA00CCED4F /* FuluLogModels.swift in Sources */,
+				12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */,
+				12ED23AD28CCC20C00CCED4F /* SettingView.swift in Sources */,
+				12ED23B128CDAF4B00CCED4F /* DetailFuluLogView.swift in Sources */,
+				12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */,
+				12ED23A828CCC03C00CCED4F /* ListFuluLogView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +391,7 @@
 		};
 		12ED239D28CCBD4D00CCED4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2EB92DE73482AAB3EE80BB61 /* Pods-FuluLog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -270,6 +401,7 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuluLog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -290,6 +422,7 @@
 		};
 		12ED239E28CCBD4D00CCED4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1BCA1C77E13AF204450637E /* Pods-FuluLog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -299,6 +432,7 @@
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuluLog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

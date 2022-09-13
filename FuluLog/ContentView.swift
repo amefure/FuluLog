@@ -8,9 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    // MARK: - View
+    @State var selectedTag:Int = 1      //  タブビュー
+    
+    @ObservedObject var allFulu = AllFuluLog()
+    
+    init() {
+           // リストの背景色を変更
+           UITableView.appearance().backgroundColor = UIColor(named: "BaseColor")
+       }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView{
+            
+            // MARK: - Entry
+            EntryFuluLogView().environmentObject(allFulu).tabItem{
+                Image(systemName:"plus.circle")
+            }.tag(1)
+            
+            // MARK: - List
+            ListFuluLogView().environmentObject(allFulu).tabItem{
+                Image(systemName:"list.bullet")
+            }.tag(2)
+            
+            // MARK: - Setting
+            SettingView().tabItem{
+                Image(systemName:"gear")
+            }.tag(3)
+            
+            
+        }.accentColor(.orange)
+        .ignoresSafeArea()
     }
 }
 
