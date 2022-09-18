@@ -32,6 +32,7 @@ struct InputFuluLogView: View {
     
     
     var body: some View {
+     
         VStack{
             // MARK: - productName
             Text("商品名")
@@ -47,14 +48,16 @@ struct InputFuluLogView: View {
                 .background(Color("SubColor"))
                 .foregroundColor(Color("ThemaColor"))
             TextField("20000", text: $amountString)
-                .keyboardType(.numberPad).focused($isActive).toolbar{
-                ToolbarItemGroup(placement: .keyboard, content: {
-                    Spacer()
-                    Button("閉じる"){
-                        isActive = false
+                .keyboardType(.numberPad)
+                .focused($isActive)
+                    .toolbar{
+                    ToolbarItemGroup(placement: .keyboard, content: {
+                        Spacer()
+                        Button("閉じる"){
+                            isActive = false
+                        }
+                    })
                     }
-                })
-            }
             // MARK: - amount
             
             // MARK: - municipality
@@ -69,7 +72,7 @@ struct InputFuluLogView: View {
             
             // MARK: - memo
             Text("Memo").frame(width: UIScreen.main.bounds.width, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
-            TextEditor(text: $memo)
+            TextEditor(text: $memo).frame(minHeight:UIScreen.main.bounds.height > 667 ? 100 : 60)
             // MARK: - memo
             
         }

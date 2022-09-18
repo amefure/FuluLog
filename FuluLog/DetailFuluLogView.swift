@@ -24,7 +24,7 @@ struct DetailFuluLogView: View {
     @State var isModal:Bool = false
     @State var isAlertDelete:Bool = false
     @State var isAlertUpdate:Bool = false
-    @State var isOn:Bool
+    @State var isOn:Bool // ワンストップ申請トグルボタン
     
     var deviceWidth = UIScreen.main.bounds.width
     
@@ -63,7 +63,11 @@ struct DetailFuluLogView: View {
                     Spacer()
                     // MARK: ShareBtn
                     Button(action: {
-                        shareApp(shareText: "ふるさと納税「\(item.productName)」がおすすめだよ！\n\(item.url)", shareLink: item.url)
+                        if item.url.isEmpty{
+                            shareApp(shareText: "ふるさと納税「\(item.productName)」がおすすめだよ！\n「ふるログ」でふるさと納税を管理してみてね♪", shareLink: "https://apps.apple.com/jp/app/mapping/id1639823172")
+                        }else{
+                            shareApp(shareText: "ふるさと納税「\(item.productName)」がおすすめだよ！", shareLink: item.url)
+                        }
                     }, label: {
                         Image(systemName: "square.and.arrow.up")
                     })
@@ -85,7 +89,7 @@ struct DetailFuluLogView: View {
                 Text("円").font(.system(size: 20)).offset(x: 0, y: 5)
             }.padding(.bottom)
             // MARK: - amount
-     
+            
             // MARK: - memo
             HStack(){
                 Text(item.memo).foregroundColor(.gray).padding()
@@ -97,14 +101,18 @@ struct DetailFuluLogView: View {
             // MARK: - url
             HStack{
                 Text("購入URL：")
-                Link(destination: {
-                    URL(string: item.url)!
-                }(), label: {
-                    HStack{
-                        Text("\(item.url)")
-                        Image(systemName: "link")
-                    }
-                })
+                if item.url.isEmpty{
+                    Text("URL未登録")
+                }else{
+                    Link(destination: {
+                        URL(string: item.url)!
+                    }(), label: {
+                        HStack{
+                            Text("\(item.url)")
+                            Image(systemName: "link")
+                        }
+                    })
+                }
             }.padding(.vertical)
             // MARK: - url
             
@@ -133,12 +141,13 @@ struct DetailFuluLogView: View {
                 .background(Color("SubColor"))
                 .foregroundColor(Color("ThemaColor")).cornerRadius(5)
             // MARK: - DeleteBtn
-           
+            
             
             // MARK: - AdMob
             AdMobBannerView().frame(width:UIScreen.main.bounds.width,height: 40).padding(.vertical)
             
         } // Vstack
+        .textSelection(.enabled)
         .padding(.horizontal)
         .navigationBarHidden(true)
         // MARK: - DeleteAlert
@@ -161,7 +170,7 @@ struct DetailFuluLogView: View {
         })
         // MARK: - ワンストップ申請の変更を反映する
         .onDisappear(perform: {
-            let data = FuluLog(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,request: isOn)
+            let data = FuluLog(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,request: isOn, time:item.time)
             allFulu.updateData(data,item.id)
             fileController.updateJson(allFulu.allData) // JSONファイルを更新
             allFulu.setAllData()

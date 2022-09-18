@@ -29,15 +29,20 @@ struct UpdateFuluLogView: View {
     // 親メソッドを受けとる
     var parentUpdateItemFunction: (_ data:FuluLog) -> Void
     
-    // MARK: - Method
+    // disable:Bool true→非アクティブ false→OK
     func validatuonInput() -> Bool{
-        if productName !=  "" && amount != -1 && municipality != "" && url != ""  {
-            if validationUrl(url) {
-                return false // ←disable
+        // 必須入力は商品名と寄付金額のみ
+        if productName !=  "" && amount != -1  {
+            if url.isEmpty == false{ // 入力値があるならバリデーション
+                if validationUrl(url) {
+                    return false // URL 有効 OK
+                }
+                return true // URL 無効 NG
+            }else{
+                return false // 必須事項記入あり　URL 入力なし OK
             }
-            return true
         }
-        return true
+        return true // 必須事項記入なし NG
     }
     
     func deleteInput(){
@@ -49,7 +54,10 @@ struct UpdateFuluLogView: View {
     }
     
     func validationUrl (_ urlStr: String) -> Bool {
-        if let url = NSURL(string: urlStr) {
+        guard let encurl = urlStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
+            return false
+        }
+        if let url = NSURL(string: encurl) {
             return UIApplication.shared.canOpenURL(url as URL)
         }
         return false
@@ -64,7 +72,7 @@ struct UpdateFuluLogView: View {
             // MARK: - UpdateBtn
             Button(action: {
                 withAnimation(.linear(duration: 0.3)){
-                    let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo)
+                    let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: item.time)
                     allFulu.updateData(data,item.id)
                     fileController.updateJson(allFulu.allData) // JSONファイルを更新
                     allFulu.setAllData()

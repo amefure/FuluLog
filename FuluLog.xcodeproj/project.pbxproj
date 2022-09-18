@@ -22,6 +22,11 @@
 		12ED23B328CDB1D900CCED4F /* UpdateFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */; };
 		12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23BA28CFD69200CCED4F /* HeaderView.swift */; };
 		12ED23BD28D0C24D00CCED4F /* AdMobViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23BC28D0C24D00CCED4F /* AdMobViewModels.swift */; };
+		12ED23C028D529D400CCED4F /* DonationLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23BF28D529D400CCED4F /* DonationLimitView.swift */; };
+		12ED23C228D5560E00CCED4F /* ListDonationLimitHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23C128D5560E00CCED4F /* ListDonationLimitHistory.swift */; };
+		12ED23C428D5D01600CCED4F /* SumDonationAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23C328D5D01600CCED4F /* SumDonationAmountView.swift */; };
+		12ED23C828D5F35700CCED4F /* PickerTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23C728D5F35700CCED4F /* PickerTimeView.swift */; };
+		12ED23CA28D5F61100CCED4F /* SearchBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23C928D5F61100CCED4F /* SearchBoxView.swift */; };
 		7BF061C16D6638AA848DA18B /* Pods_FuluLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5CAB995EBF320EF514E2B45 /* Pods_FuluLog.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +48,11 @@
 		12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateFuluLogView.swift; sourceTree = "<group>"; };
 		12ED23BA28CFD69200CCED4F /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		12ED23BC28D0C24D00CCED4F /* AdMobViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMobViewModels.swift; sourceTree = "<group>"; };
+		12ED23BF28D529D400CCED4F /* DonationLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationLimitView.swift; sourceTree = "<group>"; };
+		12ED23C128D5560E00CCED4F /* ListDonationLimitHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDonationLimitHistory.swift; sourceTree = "<group>"; };
+		12ED23C328D5D01600CCED4F /* SumDonationAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumDonationAmountView.swift; sourceTree = "<group>"; };
+		12ED23C728D5F35700CCED4F /* PickerTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTimeView.swift; sourceTree = "<group>"; };
+		12ED23C928D5F61100CCED4F /* SearchBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBoxView.swift; sourceTree = "<group>"; };
 		2EB92DE73482AAB3EE80BB61 /* Pods-FuluLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuluLog.debug.xcconfig"; path = "Target Support Files/Pods-FuluLog/Pods-FuluLog.debug.xcconfig"; sourceTree = "<group>"; };
 		A1BCA1C77E13AF204450637E /* Pods-FuluLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuluLog.release.xcconfig"; path = "Target Support Files/Pods-FuluLog/Pods-FuluLog.release.xcconfig"; sourceTree = "<group>"; };
 		C5CAB995EBF320EF514E2B45 /* Pods_FuluLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuluLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,10 +96,10 @@
 				12ED239328CCBD4D00CCED4F /* ContentView.swift */,
 				12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */,
 				12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */,
-				12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */,
 				12ED23A728CCC03C00CCED4F /* ListFuluLogView.swift */,
 				12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */,
 				12ED23AC28CCC20C00CCED4F /* SettingView.swift */,
+				12ED23BE28D529A000CCED4F /* ChildView */,
 				12ED23AB28CCC04C00CCED4F /* ViewComponents */,
 				12ED23A028CCBDC300CCED4F /* Models */,
 				12ED239528CCBD4D00CCED4F /* Assets.xcassets */,
@@ -119,10 +129,39 @@
 		12ED23AB28CCC04C00CCED4F /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */,
+				12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */,
 				12ED23BA28CFD69200CCED4F /* HeaderView.swift */,
 			);
 			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		12ED23BE28D529A000CCED4F /* ChildView */ = {
+			isa = PBXGroup;
+			children = (
+				12ED23C528D5D35200CCED4F /* Setting */,
+				12ED23C628D5D37500CCED4F /* ListFuluLog */,
+			);
+			path = ChildView;
+			sourceTree = "<group>";
+		};
+		12ED23C528D5D35200CCED4F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				12ED23BF28D529D400CCED4F /* DonationLimitView.swift */,
+				12ED23C128D5560E00CCED4F /* ListDonationLimitHistory.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		12ED23C628D5D37500CCED4F /* ListFuluLog */ = {
+			isa = PBXGroup;
+			children = (
+				12ED23C928D5F61100CCED4F /* SearchBoxView.swift */,
+				12ED23C728D5F35700CCED4F /* PickerTimeView.swift */,
+				12ED23C328D5D01600CCED4F /* SumDonationAmountView.swift */,
+				12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */,
+			);
+			path = ListFuluLog;
 			sourceTree = "<group>";
 		};
 		32BC43F6E990B08787FE7FBC /* Pods */ = {
@@ -256,10 +295,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12ED23C828D5F35700CCED4F /* PickerTimeView.swift in Sources */,
 				12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */,
 				12ED23AA28CCC04800CCED4F /* RowFuluLogView.swift in Sources */,
+				12ED23C028D529D400CCED4F /* DonationLimitView.swift in Sources */,
+				12ED23CA28D5F61100CCED4F /* SearchBoxView.swift in Sources */,
+				12ED23C228D5560E00CCED4F /* ListDonationLimitHistory.swift in Sources */,
 				12ED23AF28CCC6E100CCED4F /* InputFuluLogView.swift in Sources */,
 				12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */,
+				12ED23C428D5D01600CCED4F /* SumDonationAmountView.swift in Sources */,
 				12ED23B328CDB1D900CCED4F /* UpdateFuluLogView.swift in Sources */,
 				12ED23A628CCC02C00CCED4F /* EntryFuluLogView.swift in Sources */,
 				12ED23BD28D0C24D00CCED4F /* AdMobViewModels.swift in Sources */,
@@ -396,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -411,7 +455,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -427,7 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -442,7 +486,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

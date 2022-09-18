@@ -16,8 +16,11 @@ class FileController {
     // Documents内で追加できるロケーション数を格納
     private let txtName:String = "LimitNum.txt"
     // デフォルト制限数
-    private let defaultLimit:String = "5"
-    private let addLimitNum:Int = 5
+    private let defaultLimit:String = "3"
+    private let addLimitNum:Int = 3
+    
+    // 寄付上限金額用ファイル
+    private let donationLimitName:String = "DonationLimit.json"
     
     // 保存ファイルへのURLを作成 file::Documents/fileName
     func docURL(_ fileName:String) -> URL? {
@@ -67,8 +70,8 @@ class FileController {
         }
     }
     
-    // 登録する一件のキャッシュデータを受け取る
-    // 現在のキャッシュALL情報を取得し構造体に変換してから追加
+    // 登録する一件のデータを受け取る
+    // 現在のALL情報を取得し構造体に変換してから追加
     // 再度JSONに直し書き込み
     func saveJson(_ data:FuluLog) {
         guard let url = docURL(FileName) else {
@@ -129,9 +132,8 @@ class FileController {
         }
     }
     // MARK: - FuluLog
-   
     
-    // LimitNum.txt---------------------------------------
+    // MARK: - LimitNum.txt
     func loadLimitTxt() -> Int {
         
         guard let url = docURL(txtName) else {
@@ -165,17 +167,80 @@ class FileController {
             return
         }
         do {
-                var currentLimit = try String(contentsOf: url, encoding: .utf8)
-                
-                if numCheck(currentLimit) {
-                    currentLimit = String(Int(currentLimit)! + addLimitNum)
-                    try currentLimit.write(to: url,atomically: true,encoding: .utf8)
-                }
+            var currentLimit = try String(contentsOf: url, encoding: .utf8)
+            
+            if numCheck(currentLimit) {
+                currentLimit = String(Int(currentLimit)! + addLimitNum)
+                try currentLimit.write(to: url,atomically: true,encoding: .utf8)
+            }
             
         } catch{
             return
         }
         
     }
+    
+    // MARK: - DonationLimit
+    func saveDonationLimitJson(_ data:UserDonationInfo) {
+        guard let url = docURL(donationLimitName) else {
+            return
+        }
+        
+            var dataArray:[UserDonationInfo]
+            dataArray = loadDonationLimitJson() // [] or [UserDonationInfo]
+            dataArray.append(contentsOf: [data]) // いずれにせよ追加処理
+
+            let encoder = JSONEncoder()
+            let data = try! encoder.encode(dataArray)
+            let jsonData = String(data:data, encoding: .utf8)!
+        
+            do {
+                // ファイルパスへの保存
+                let path = url.path
+                try jsonData.write(toFile: path, atomically: true, encoding: .utf8)
+                
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+    
+    
+    func updateDonationLimitJson(_ alldata:[UserDonationInfo]) {
+        guard let url = docURL(donationLimitName) else {
+            return
+        }
+        
+        // 以下上書き処理
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(alldata)
+        let jsonData = String(data:data, encoding: .utf8)!
+        
+        do {
+            // ファイルパスへの保存
+            let path = url.path
+            try jsonData.write(toFile: path, atomically: true, encoding: .utf8)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    // JSONデータを読み込んで[構造体]にする
+    func loadDonationLimitJson() -> [UserDonationInfo] {
+        guard let url = docURL(donationLimitName) else {
+            return []
+        }
+        if hasFile(donationLimitName) {
+            // JSONファイルが存在する場合
+           
+            let jsonData = try! String(contentsOf: url).data(using: .utf8)!
+           
+            let dataArray = try! JSONDecoder().decode([UserDonationInfo].self, from: jsonData)
+            return dataArray
+        }else{
+            // JSONファイルが存在しない場合
+            return []
+        }
+    }
+    // MARK: - DonationLimit
 }
 

@@ -32,12 +32,12 @@ struct ContentView: View {
             }.tag(2)
             
             // MARK: - Setting
-            SettingView().tabItem{
+            SettingView().environmentObject(allFulu).tabItem{
                 Image(systemName:"gear")
             }.tag(3)
             
-            
-        }.accentColor(.orange)
+        }.preferredColorScheme(.light)
+        .accentColor(.orange)
         .ignoresSafeArea()
     }
 }

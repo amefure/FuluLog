@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// ListFuluLogView > RowFuluLogView
 struct RowFuluLogView: View {
     var item:FuluLog
     
@@ -15,6 +16,7 @@ struct RowFuluLogView: View {
             Text("\(item.time)")
                 .font(.system(size: 10))
                 .foregroundColor(.gray)
+                .frame(width:60)
                 
             
             Image(systemName: item.request == true ? "checkmark.seal.fill" : "checkmark.seal")

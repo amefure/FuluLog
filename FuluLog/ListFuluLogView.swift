@@ -11,15 +11,56 @@ struct ListFuluLogView: View {
     
     @EnvironmentObject var allFulu:AllFuluLog
     
+    @State var searchText:String = "" // Binding-SearchBoxView
+    
+    @State var selectTime:String = "all" // Binding-PickerTimeView
+    
+    // MARK: - List
+    var filteringAllFuludata:[FuluLog]{
+        if searchText.isEmpty && selectTime == "all"{
+            // フィルタリングなし
+            return allFulu.allData.reversed()
+        }else if searchText.isEmpty && selectTime != "all" {
+            // 年数のみ
+            return allFulu.allData.reversed().filter({$0.time.contains(selectTime)})
+        }else if searchText.isEmpty == false &&  selectTime != "all" {
+            // 検索値＆年数
+            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).filter({$0.time.contains(selectTime)})
+        }else{
+            // 検索値のみ
+            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)})
+        }
+    }
+    
+
     var body: some View {
         
         NavigationView{
             VStack(spacing:0){
                 // MARK: - Header
-                HeaderView(headerTitle: "リスト")
+                HeaderView(headerTitle: "寄付履歴")
+                
+                // MARK: - SearchBox
+                SearchBoxView(searchText: $searchText)
+                
+                // MARK: - 寄付金額＆日付Picker
+                HStack{
+                    
+                    // MARK: - Display
+                    SumDonationAmountView().environmentObject(allFulu)
+                    
+                    
+                    Spacer()
+                    
+                    PickerTimeView(selectTime: $selectTime).environmentObject(allFulu)
+                    
+                    
+                    
+                }.frame(width:UIScreen.main.bounds.width).padding([.top,.horizontal]).background(Color("BaseColor"))
+                
                 
                 // MARK: - List
-                List(allFulu.allData.reversed()){ item in
+                List(filteringAllFuludata){ item in
                     NavigationLink(destination: {DetailFuluLogView(item: item,isOn: item.request).environmentObject(allFulu)}, label: {
                         RowFuluLogView(item: item)
                     }
@@ -27,11 +68,12 @@ struct ListFuluLogView: View {
                 }.listStyle(GroupedListStyle())
                 
                 // MARK: - AdMob
-                AdMobBannerView().frame(width:UIScreen.main.bounds.width,height: 40).padding(.bottom)
+                AdMobBannerView().frame(width:UIScreen.main.bounds.width,height: 60).padding(.bottom)
                 
             }
             .navigationBarHidden(true)
         }.navigationViewStyle(.stack) // NavigationView
+        
     }
 }
 
