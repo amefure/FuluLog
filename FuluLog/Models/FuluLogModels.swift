@@ -13,21 +13,11 @@ struct FuluLog: Identifiable,Codable,Equatable {
     var id = UUID()             // 一意の値
     var productName:String      // 商品名
     var amount:Int              // 金額情報
-    var municipality:String = ""   // 自治体
-    var url:String = ""             // URL
+    var municipality:String = ""// 自治体
+    var url:String = ""         // URL
     var memo:String = ""        // メモ
     var request:Bool = false    // ワンストップ申請
-    var time:String = { // 初期値に現在の日付
-        
-        let df = DateFormatter()
-        df.calendar = Calendar(identifier: .gregorian)
-        df.locale = Locale(identifier: "ja_JP")
-        df.timeZone = TimeZone(identifier: "Asia/Tokyo")
-        df.dateStyle = .short
-        df.timeStyle = .none
-        return df.string(from: Date())
-
-    }()
+    var time:String = ""        // 日付
 }
 
 
@@ -46,26 +36,32 @@ class AllFuluLog:ObservableObject{
     // フィルタリング用
     @Published var timeArray:[String] = [] // 保存されている全年情報 ["2022","2023"]
     @Published var donationLimit:[UserDonationInfo] = [] // 年ごとの寄付金額の上限配列
-
+    @Published var allFavoriteData:[FuluLog] = []  // お気に入り全情報
+    
     init(){
         self.setAllData()
         self.createTimeArray()
         self.setAllDonationLimit()
+        self.setAllFavoriteData()
     }
     
-    // MARK: - メソッド
-    // JSONファイルに格納されている全キャッシュ情報をプロパティにセット
+    // MARK: - プロパティセットメソッド
     func setAllData(){
         let f = FileController()
         self.allData = f.loadJson()
     }
-    
-    // MARK: - DonationLimitView
     func setAllDonationLimit(){
         let f = FileController()
         self.donationLimit = f.loadDonationLimitJson()
     }
+    func setAllFavoriteData(){
+        let f = FileController()
+        self.allFavoriteData = f.loadFavoriteJson()
+    }
+    // MARK: - プロパティセットメソッド
     
+    // MARK: - メソッド
+    // 寄付金上限リスト用
     func sumYearAmount(_ year:String) -> Int{
         var sum = 0
 
@@ -75,22 +71,6 @@ class AllFuluLog:ObservableObject{
         }
         return sum
     }
-        
-    // 編集されたデータを共有しているクラスのプロパティにupdate
-    func updateDonationLimit(_ item:UserDonationInfo,_ year:String){
-        let f = FileController()
-        guard let index = donationLimit.firstIndex(where: { $0.year == year }) else {
-            // 今年未保存の場合 = 今年の年が無い場合
-            // 新規データを保存処理
-            f.saveDonationLimitJson(item)
-            return
-        }
-        // 今年分保存済み = 今年の年がある場合
-        // Update処理
-        self.donationLimit[index] = item
-        f.updateDonationLimitJson(self.donationLimit)
-    }
-    // MARK: - DonationLimitView
     
     // 登録制限
     func countAllData() -> Int{
@@ -106,17 +86,46 @@ class AllFuluLog:ObservableObject{
         let timeSet = Set(array) // 重複値を除去
         self.timeArray = Array(timeSet).sorted().reversed()
     }
+    // MARK: - メソッド
     
-    // MARK: -　Data操作
+    // MARK: -　CRUD
     func removeData(_ item:FuluLog) {
         guard let index = allData.firstIndex(of:item) else { return }
         allData.remove(at: index)
     }
-    // 編集されたデータを共有しているクラスのプロパティにupdate
     func updateData(_ item:FuluLog,_ id:UUID){
         guard let index = allData.firstIndex(where: { $0.id == id }) else { return }
         self.allData[index] = item
     }
-    // MARK: -　Data操作
+    // MARK: -　CRUD
+  
+    // MARK: - Donation CRUD
+    func updateDonationLimit(_ item:UserDonationInfo,_ year:String){
+        let f = FileController()
+        guard let index = donationLimit.firstIndex(where: { $0.year == year }) else {
+            // 今年未保存の場合 = 今年の年が無い場合
+            // 新規データを保存処理
+            f.saveDonationLimitJson(item)
+            return
+        }
+        // 今年分保存済み = 今年の年がある場合
+        // Update処理
+        self.donationLimit[index] = item
+        f.updateDonationLimitJson(self.donationLimit)
+    }
+    // MARK: - Donation CRUD
+    
+    // MARK: - Favorite CRUD
+    func removeFavoriteData(_ item:FuluLog) {
+        guard let index = allFavoriteData.firstIndex(of:item) else { return }
+        allFavoriteData.remove(at: index)
+    }
+    func updateFavoriteData(_ item:FuluLog,_ id:UUID){
+        guard let index = allFavoriteData.firstIndex(where: { $0.id == id }) else { return }
+        self.allFavoriteData[index] = item
+    }
+    // MARK: - Favorite CRUD
+    
+
 }
 

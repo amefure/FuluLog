@@ -22,6 +22,9 @@ class FileController {
     // 寄付上限金額用ファイル
     private let donationLimitName:String = "DonationLimit.json"
     
+    // お気に入り用ファイル
+    private let favoriteName:String = "FavoriteFuluLog.json"
+    
     // 保存ファイルへのURLを作成 file::Documents/fileName
     func docURL(_ fileName:String) -> URL? {
         let fileManager = FileManager.default
@@ -242,5 +245,67 @@ class FileController {
         }
     }
     // MARK: - DonationLimit
+    
+    // MARK: - FavoriteFuluLog
+    func saveFavoriteJson(_ data:FuluLog) {
+        guard let url = docURL(favoriteName) else {
+            return
+        }
+        
+        var dataArray:[FuluLog]
+        
+        dataArray = loadFavoriteJson() // [] or [FuluLog]
+        dataArray.append(contentsOf: [data]) // いずれにせよ追加処理
+        
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(dataArray)
+        let jsonData = String(data:data, encoding: .utf8)!
+        
+        do {
+            // ファイルパスへの保存
+            let path = url.path
+            try jsonData.write(toFile: path, atomically: true, encoding: .utf8)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    
+    // removeされたデータを保存する
+    func updateFavoriteJson(_ alldata:[FuluLog]) {
+        guard let url = docURL(favoriteName) else {
+            return
+        }
+        
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(alldata)
+        let jsonData = String(data:data, encoding: .utf8)!
+        
+        do {
+            // ファイルパスへの保存
+            let path = url.path
+            try jsonData.write(toFile: path, atomically: true, encoding: .utf8)
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    // JSONデータを読み込んで[構造体]にする
+    func loadFavoriteJson() -> [FuluLog] {
+        guard let url = docURL(favoriteName) else {
+            return []
+        }
+        if hasFile(favoriteName) {
+            // JSONファイルが存在する場合
+            let jsonData = try! String(contentsOf: url).data(using: .utf8)!
+            let dataArray = try! JSONDecoder().decode([FuluLog].self, from: jsonData)
+            return dataArray
+        }else{
+            // JSONファイルが存在しない場合
+            return []
+        }
+    }
+    
+    // MARK: - FavoriteFuluLog
 }
 

@@ -15,11 +15,15 @@ struct InputFuluLogView: View {
     
     // MARK: - TextField & Receive
     @Binding var productName:String       // 商品名
-    @State var amountString:String = ""   // 金額情報
+    @State var amountString:String = ""   // 金額情報 String
     @Binding var amount:Int               // 金額情報
     @Binding var municipality:String      // 自治体
     @Binding var url:String               // URL
     @Binding var memo:String              // メモ
+    @Binding var time:String              // 時間 String
+    @State var selectedTime:Date = Date() // 時間
+    
+    @State var isShowDate:Bool = false
     
     // MARK: - Method
     func numChange (_ str:String) -> Int{
@@ -29,55 +33,122 @@ struct InputFuluLogView: View {
         return num    // 数値の場合
     }
     
+    var df:DateFormatter{
+        let df = DateFormatter()
+        df.calendar = Calendar(identifier: .gregorian)
+        df.locale = Locale(identifier: "ja_JP")
+        df.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        df.dateStyle = .short
+        df.timeStyle = .none
+        return df
+    }
+    
+    var deviceWidth:Double {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return UIScreen.main.bounds.width/1.5
+        }else{
+            return UIScreen.main.bounds.width
+        }
+    }
     
     
     var body: some View {
-     
-        VStack{
-            // MARK: - productName
-            Text("商品名")
-                .frame(width: UIScreen.main.bounds.width, height: 30)
-                .background(Color("SubColor"))
-                .foregroundColor(Color("ThemaColor"))
-            TextField("北海道産ほたて 2kg", text: $productName)
-            // MARK: - productName
+        ScrollView{
             
-            // MARK: - amount
-            Text("寄付金額")
-                .frame(width: UIScreen.main.bounds.width, height: 30)
-                .background(Color("SubColor"))
-                .foregroundColor(Color("ThemaColor"))
-            TextField("20000", text: $amountString)
-                .keyboardType(.numberPad)
-                .focused($isActive)
-                    .toolbar{
-                    ToolbarItemGroup(placement: .keyboard, content: {
-                        Spacer()
-                        Button("閉じる"){
-                            isActive = false
+            
+            VStack{
+                // MARK: - productName
+                Group{
+                    Text("商品名")
+                        .frame(width: deviceWidth, height: 30)
+                        .background(Color("SubColor"))
+                        .foregroundColor(Color("ThemaColor"))
+                    TextField("北海道産ほたて 2kg", text: $productName)
+                        .frame(width: deviceWidth)
+                }
+                // MARK: - productName
+                
+                // MARK: - amount
+                Group{
+                    Text("寄付金額")
+                        .frame(width: deviceWidth, height: 30)
+                        .background(Color("SubColor"))
+                        .foregroundColor(Color("ThemaColor"))
+                    TextField("20000", text: $amountString)
+                        .keyboardType(.numberPad)
+                        .focused($isActive)
+                        .toolbar{
+                            ToolbarItemGroup(placement: .keyboard, content: {
+                                Spacer()
+                                Button("閉じる"){
+                                    isActive = false
+                                }
+                            })
                         }
-                    })
+                        .frame(width: deviceWidth)
+                }
+                // MARK: - amount
+                
+                // MARK: - municipality
+                Group{
+                    Text("自治体名").frame(width: deviceWidth, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
+                    TextField("北海道札幌市", text: $municipality)
+                        .frame(width: deviceWidth)
+                }
+                // MARK: - municipality
+                
+                // MARK: - url
+                Group{
+                    Text("購入URL(※有効なURLを入力してください)").frame(width: deviceWidth, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
+                    TextField("https://XXX.com/post12", text: $url)
+                        .frame(width: deviceWidth)
+                }
+                // MARK: - url
+                
+                // MARK: - memo
+                Group{
+                    Text("Memo").frame(width: deviceWidth, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
+                    TextEditor(text: $memo).frame(minHeight:UIScreen.main.bounds.height > 667 ? 100 : 60)
+                        .frame(width: deviceWidth)
+                }
+                // MARK: - memo
+                
+                // MARK: - time
+                Group{
+                    if isShowDate{
+                        DatePicker("Date", selection: $selectedTime, displayedComponents: .date)
+                            .environment(\.locale, Locale(identifier: "ja_JP"))
+                            .labelsHidden()
+                            .padding(5)
+                            .frame(width:110)
                     }
-            // MARK: - amount
-            
-            // MARK: - municipality
-            Text("自治体名").frame(width: UIScreen.main.bounds.width, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
-            TextField("北海道札幌市", text: $municipality)
-            // MARK: - municipality
-            
-            // MARK: - url
-            Text("購入URL(※有効なURLを入力してください)").frame(width: UIScreen.main.bounds.width, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
-            TextField("https://XXX.com/post12", text: $url)
-            // MARK: - url
-            
-            // MARK: - memo
-            Text("Memo").frame(width: UIScreen.main.bounds.width, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
-            TextEditor(text: $memo).frame(minHeight:UIScreen.main.bounds.height > 667 ? 100 : 60)
-            // MARK: - memo
-            
+                    Button(action: {
+                        isShowDate.toggle()
+                    }, label: {
+                        
+                        VStack{
+                            if isShowDate{
+                                Text("決定")
+                            }else{
+                                HStack{
+                                    Image(systemName: "calendar")
+                                    Text("\(time)")
+                                }
+                            }
+                        }.padding(5)
+                    })
+                    
+                }.accentColor(.orange)
+                // MARK: - time
+                
+            }
         }
         .padding()
         .textFieldStyle(RoundedBorderTextFieldStyle())
+        .onChange(of: selectedTime){ newValue in
+            // yyyy/mm/dd 形式に変更して格納
+            time = df.string(from: selectedTime)
+        }
         .onChange(of: amountString){ newValue in
             // 入力時数値変換用
             amount = numChange(newValue)
@@ -90,11 +161,27 @@ struct InputFuluLogView: View {
                 amountString = ""
             }
         }
+        .onChange(of: time){ newValue in
+            // newValueには更新View初期値 or データリセット
+            
+            let df = DateFormatter()
+            df.dateFormat = "yyyy/MM/dd"
+            
+            if newValue == ""{
+                // リセット時は当日の日付を格納
+                selectedTime = Date()
+            }else{
+                // 更新View時はアイテムに登録されている日付をキャスト
+                let itemTime = newValue
+                let date = df.date(from: itemTime)!
+                selectedTime = date
+            }
+        }
     }
 }
 
 struct InputFuluView_Previews: PreviewProvider {
     static var previews: some View {
-        InputFuluLogView(productName: Binding.constant(""), amount: Binding.constant(0), municipality: Binding.constant(""), url: Binding.constant(""), memo: Binding.constant(""))
+        InputFuluLogView(productName: Binding.constant(""), amount: Binding.constant(0), municipality: Binding.constant(""), url: Binding.constant(""), memo: Binding.constant(""),time: Binding.constant(""))
     }
 }

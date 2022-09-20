@@ -19,6 +19,17 @@ struct UpdateFuluLogView: View {
     @State var municipality:String = ""    // 自治体
     @State var url:String = ""             // URL
     @State var memo:String = ""            // メモ
+    @State var time:String = {             // 初期値に現在の日付
+        
+        let df = DateFormatter()
+        df.calendar = Calendar(identifier: .gregorian)
+        df.locale = Locale(identifier: "ja_JP")
+        df.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        df.dateStyle = .short
+        df.timeStyle = .none
+        return df.string(from: Date())
+
+    }()
     
     // MARK: - View
     @State var isAlert:Bool = false     // 新規登録/更新処理を実行したアラート
@@ -28,6 +39,8 @@ struct UpdateFuluLogView: View {
     @Binding var isModal:Bool
     // 親メソッドを受けとる
     var parentUpdateItemFunction: (_ data:FuluLog) -> Void
+    
+    var isFavorite:Bool // Favoriteからの呼出
     
     // disable:Bool true→非アクティブ false→OK
     func validatuonInput() -> Bool{
@@ -51,6 +64,7 @@ struct UpdateFuluLogView: View {
         municipality = ""    // 自治体
         url = ""             // URL
         memo = ""            // メモ
+        time = ""            // 日付
     }
     
     func validationUrl (_ urlStr: String) -> Bool {
@@ -67,17 +81,25 @@ struct UpdateFuluLogView: View {
     var body: some View {
         VStack{
             // MARK: - Input
-            InputFuluLogView(productName: $productName, amount: $amount, municipality: $municipality, url: $url, memo: $memo)
+            InputFuluLogView(productName: $productName, amount: $amount, municipality: $municipality, url: $url, memo: $memo,time: $time)
             
             // MARK: - UpdateBtn
             Button(action: {
                 withAnimation(.linear(duration: 0.3)){
-                    let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: item.time)
-                    allFulu.updateData(data,item.id)
-                    fileController.updateJson(allFulu.allData) // JSONファイルを更新
-                    allFulu.setAllData()
-                    parentUpdateItemFunction(data)
-                    isAlert = true
+                let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: time)
+                    if isFavorite == false {
+                        // MARK: - FuluLog
+                        allFulu.updateData(data,item.id)
+                        fileController.updateJson(allFulu.allData) // JSONファイルを更新
+                        allFulu.setAllData()
+                    }else{
+                        // MARK: - Favorite
+                        allFulu.updateFavoriteData(data,item.id)
+                        fileController.updateFavoriteJson(allFulu.allFavoriteData) // JSONファイルを更新
+                        allFulu.setAllFavoriteData() // JSONファイルをプロパティにセット
+                    }
+                parentUpdateItemFunction(data)
+                isAlert = true
                 }
             }, label: {
                 Text("更新")
@@ -99,6 +121,7 @@ struct UpdateFuluLogView: View {
             municipality = item.municipality   // 自治体
             url = item.url                     // URL
             memo = item.memo                   // メモ
+            time = item.time                   // 日付
         }
         .alert(isPresented: $isAlert){
             Alert(title:Text("更新しました。"),
@@ -115,6 +138,6 @@ struct UpdateFuluLogView: View {
 
 struct UpdateFuluView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateFuluLogView(item: FuluLog(productName: "", amount: 0, municipality: "", url: ""),isModal:Binding.constant(true), parentUpdateItemFunction:{ data in })
+        UpdateFuluLogView(item: FuluLog(productName: "", amount: 0, municipality: "", url: ""),isModal:Binding.constant(true), parentUpdateItemFunction:{ data in },isFavorite: false)
     }
 }

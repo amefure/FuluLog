@@ -26,6 +26,8 @@ struct DetailFuluLogView: View {
     @State var isAlertUpdate:Bool = false
     @State var isOn:Bool // ワンストップ申請トグルボタン
     
+    var isFavorite:Bool // Favoriteからの呼出
+    
     var deviceWidth = UIScreen.main.bounds.width
     
     // MARK: - Method
@@ -61,7 +63,7 @@ struct DetailFuluLogView: View {
                 HStack{
                     Text(item.productName).font(.system(size: 20)).fontWeight(.bold)
                     Spacer()
-                    // MARK: ShareBtn
+                    // MARK: - ShareBtn
                     Button(action: {
                         if item.url.isEmpty{
                             shareApp(shareText: "ふるさと納税「\(item.productName)」がおすすめだよ！\n「ふるログ」でふるさと納税を管理してみてね♪", shareLink: "https://apps.apple.com/jp/app/mapping/id1639823172")
@@ -119,12 +121,14 @@ struct DetailFuluLogView: View {
             Spacer()
             
             // MARK: - ワンストップ申請発送
-            Toggle(isOn: $isOn) {
-                Text("ワンストップ申請発送")
-                Image(systemName: isOn == true ? "checkmark.seal.fill" : "checkmark.seal")
-                    .foregroundColor(isOn == true ? .orange : .gray)
-            }.padding(.vertical)
-                .tint(.orange)
+            if isFavorite == false {
+                Toggle(isOn: $isOn) {
+                    Text("ワンストップ申請発送")
+                    Image(systemName: isOn == true ? "checkmark.seal.fill" : "checkmark.seal")
+                        .foregroundColor(isOn == true ? .orange : .gray)
+                }.padding(.vertical)
+                    .tint(.orange)
+            }
             // MARK: - ワンストップ申請発送
             
             Spacer()
@@ -134,8 +138,8 @@ struct DetailFuluLogView: View {
                 isAlertDelete = true
             }, label: {
                 HStack{
-                    Image(systemName: "trash.fill")
-                    Text("寄付情報を削除する")
+                    Image(systemName: isFavorite ? "star.slash" :"trash.fill")
+                    Text(isFavorite ? "お気に入りを解除する" : "寄付情報を削除する")
                 }
             }).padding()
                 .background(Color("SubColor"))
@@ -143,8 +147,15 @@ struct DetailFuluLogView: View {
             // MARK: - DeleteBtn
             
             
-            // MARK: - AdMob
-            AdMobBannerView().frame(width:UIScreen.main.bounds.width,height: 40).padding(.vertical)
+            VStack{
+                // MARK: - Favorite
+                if isFavorite{
+                    Spacer()
+                }
+                // MARK: - AdMob
+                AdMobBannerView().frame(width:UIScreen.main.bounds.width,height: 40).padding(.vertical)
+            }
+    
             
         } // Vstack
         .textSelection(.enabled)
@@ -152,28 +163,40 @@ struct DetailFuluLogView: View {
         .navigationBarHidden(true)
         // MARK: - DeleteAlert
         .alert(isPresented: $isAlertDelete){
-            Alert(title:Text("寄付情報を削除しますか？"),
+            Alert(title:Text(isFavorite ? "お気に入りを解除しますか？" : "寄付情報を削除しますか？"),
                   message: Text(""),
-                  primaryButton: .destructive(Text("削除する"),
+                  primaryButton: .destructive(Text(isFavorite ? "解除する" : "削除する"),
                                               action: {
                 withAnimation(.linear(duration: 0.3)){
-                    allFulu.removeData(item)   // 選択されたitemを削除
-                    fileController.updateJson(allFulu.allData) // JSONファイルを更新
-                    allFulu.setAllData() // JSONファイルをプロパティにセット
+                    
+                    if isFavorite == false {
+                        // MARK: - FuluData
+                        allFulu.removeData(item)   // 選択されたitemを削除
+                        fileController.updateJson(allFulu.allData) // JSONファイルを更新
+                        allFulu.setAllData() // JSONファイルをプロパティにセット
+                    }else{
+                        // MARK: - Favorite
+                        allFulu.removeFavoriteData(item)   // 選択されたitemを削除
+                        fileController.updateFavoriteJson(allFulu.allFavoriteData) // JSONファイルを更新
+                        allFulu.setAllFavoriteData() // JSONファイルをプロパティにセット
+                    }
                     dismiss()
                 }
             }), secondaryButton: .cancel(Text("キャンセル")))
         }
         // MARK: - UpdateModal
         .sheet(isPresented: $isModal, content: {
-            UpdateFuluLogView(item: item,isModal:$isModal,parentUpdateItemFunction: updateItem)
+            UpdateFuluLogView(item: item,isModal:$isModal,parentUpdateItemFunction: updateItem,isFavorite: isFavorite)
         })
         // MARK: - ワンストップ申請の変更を反映する
         .onDisappear(perform: {
-            let data = FuluLog(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,request: isOn, time:item.time)
-            allFulu.updateData(data,item.id)
-            fileController.updateJson(allFulu.allData) // JSONファイルを更新
-            allFulu.setAllData()
+            
+            if isFavorite == false {
+                let data = FuluLog(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,request: isOn, time:item.time)
+                allFulu.updateData(data,item.id)
+                fileController.updateJson(allFulu.allData) // JSONファイルを更新
+                allFulu.setAllData()
+            }
         })
         
     }
@@ -181,6 +204,6 @@ struct DetailFuluLogView: View {
 
 struct DetailFuluView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailFuluLogView(item: FuluLog(productName: "", amount: 0, municipality: "", url: ""),isOn: true)
+        DetailFuluLogView(item: FuluLog(productName: "", amount: 0, municipality: "", url: ""),isOn: true,isFavorite: false)
     }
 }

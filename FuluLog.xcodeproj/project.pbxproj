@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */; };
+		1292434428D70C5800A20A84 /* EntryFavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */; };
+		1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434528DA66D500A20A84 /* RewardBtnView.swift */; };
 		12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */; };
 		12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239328CCBD4D00CCED4F /* ContentView.swift */; };
 		12ED239628CCBD4D00CCED4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12ED239528CCBD4D00CCED4F /* Assets.xcassets */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFuluLogView.swift; sourceTree = "<group>"; };
+		1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFavoriteFuluLogView.swift; sourceTree = "<group>"; };
+		1292434528DA66D500A20A84 /* RewardBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardBtnView.swift; sourceTree = "<group>"; };
 		12ED238E28CCBD4D00CCED4F /* FuluLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuluLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogApp.swift; sourceTree = "<group>"; };
 		12ED239328CCBD4D00CCED4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1292434228D70B9400A20A84 /* FavoriteFuluLog */ = {
+			isa = PBXGroup;
+			children = (
+				1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */,
+			);
+			path = FavoriteFuluLog;
+			sourceTree = "<group>";
+		};
 		12ED238528CCBD4D00CCED4F = {
 			isa = PBXGroup;
 			children = (
@@ -95,9 +109,8 @@
 				12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */,
 				12ED239328CCBD4D00CCED4F /* ContentView.swift */,
 				12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */,
-				12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */,
 				12ED23A728CCC03C00CCED4F /* ListFuluLogView.swift */,
-				12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */,
+				1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */,
 				12ED23AC28CCC20C00CCED4F /* SettingView.swift */,
 				12ED23BE28D529A000CCED4F /* ChildView */,
 				12ED23AB28CCC04C00CCED4F /* ViewComponents */,
@@ -129,6 +142,9 @@
 		12ED23AB28CCC04C00CCED4F /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */,
+				12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */,
+				12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */,
 				12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */,
 				12ED23BA28CFD69200CCED4F /* HeaderView.swift */,
 			);
@@ -138,8 +154,9 @@
 		12ED23BE28D529A000CCED4F /* ChildView */ = {
 			isa = PBXGroup;
 			children = (
-				12ED23C528D5D35200CCED4F /* Setting */,
 				12ED23C628D5D37500CCED4F /* ListFuluLog */,
+				1292434228D70B9400A20A84 /* FavoriteFuluLog */,
+				12ED23C528D5D35200CCED4F /* Setting */,
 			);
 			path = ChildView;
 			sourceTree = "<group>";
@@ -149,6 +166,7 @@
 			children = (
 				12ED23BF28D529D400CCED4F /* DonationLimitView.swift */,
 				12ED23C128D5560E00CCED4F /* ListDonationLimitHistory.swift */,
+				1292434528DA66D500A20A84 /* RewardBtnView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -159,7 +177,6 @@
 				12ED23C928D5F61100CCED4F /* SearchBoxView.swift */,
 				12ED23C728D5F35700CCED4F /* PickerTimeView.swift */,
 				12ED23C328D5D01600CCED4F /* SumDonationAmountView.swift */,
-				12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */,
 			);
 			path = ListFuluLog;
 			sourceTree = "<group>";
@@ -299,6 +316,7 @@
 				12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */,
 				12ED23AA28CCC04800CCED4F /* RowFuluLogView.swift in Sources */,
 				12ED23C028D529D400CCED4F /* DonationLimitView.swift in Sources */,
+				1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */,
 				12ED23CA28D5F61100CCED4F /* SearchBoxView.swift in Sources */,
 				12ED23C228D5560E00CCED4F /* ListDonationLimitHistory.swift in Sources */,
 				12ED23AF28CCC6E100CCED4F /* InputFuluLogView.swift in Sources */,
@@ -311,6 +329,8 @@
 				12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */,
 				12ED23AD28CCC20C00CCED4F /* SettingView.swift in Sources */,
 				12ED23B128CDAF4B00CCED4F /* DetailFuluLogView.swift in Sources */,
+				1292434428D70C5800A20A84 /* EntryFavoriteFuluLogView.swift in Sources */,
+				1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */,
 				12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */,
 				12ED23A828CCC03C00CCED4F /* ListFuluLogView.swift in Sources */,
 			);
@@ -440,12 +460,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuluLog/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ふるログ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -455,7 +476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -471,12 +492,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuluLog/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ふるログ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -486,7 +508,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

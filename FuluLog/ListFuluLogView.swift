@@ -52,17 +52,16 @@ struct ListFuluLogView: View {
                     
                     Spacer()
                     
+                    // MARK: - Picker
                     PickerTimeView(selectTime: $selectTime).environmentObject(allFulu)
-                    
-                    
                     
                 }.frame(width:UIScreen.main.bounds.width).padding([.top,.horizontal]).background(Color("BaseColor"))
                 
                 
                 // MARK: - List
                 List(filteringAllFuludata){ item in
-                    NavigationLink(destination: {DetailFuluLogView(item: item,isOn: item.request).environmentObject(allFulu)}, label: {
-                        RowFuluLogView(item: item)
+                    NavigationLink(destination: {DetailFuluLogView(item: item,isOn: item.request,isFavorite: false).environmentObject(allFulu)}, label: {
+                        RowFuluLogView(item: item,isFavorite: false)
                     }
                     )
                 }.listStyle(GroupedListStyle())

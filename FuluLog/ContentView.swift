@@ -31,10 +31,15 @@ struct ContentView: View {
                 Image(systemName:"list.bullet")
             }.tag(2)
             
+            // MARK: - Favorite
+            FavoriteFuluLogView().environmentObject(allFulu).tabItem{
+                Image(systemName:"star.fill")
+            }.tag(3)
+            
             // MARK: - Setting
             SettingView().environmentObject(allFulu).tabItem{
                 Image(systemName:"gear")
-            }.tag(3)
+            }.tag(4)
             
         }.preferredColorScheme(.light)
         .accentColor(.orange)

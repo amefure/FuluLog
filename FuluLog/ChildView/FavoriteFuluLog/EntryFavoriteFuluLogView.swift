@@ -1,13 +1,13 @@
 //
-//  EntryFuluLogView.swift
+//  EntryFavoriteFuluLogView.swift
 //  FuluLog
 //
-//  Created by t&a on 2022/09/10.
+//  Created by t&a on 2022/09/18.
 //
 
 import SwiftUI
 
-struct EntryFuluLogView: View {
+struct EntryFavoriteFuluLogView: View {
     
     // MARK: - Models
     @EnvironmentObject var allFulu:AllFuluLog
@@ -34,22 +34,9 @@ struct EntryFuluLogView: View {
     
     // MARK: - View
     @State var isAlert:Bool = false
-    @State var isLimitAlert:Bool = false // 上限に達した場合のアラート
+    @Binding var isModal:Bool
     
     // MARK: - Method
-    func limitCountData() -> Bool{
-        if allFulu.countAllData() < fileController.loadLimitTxt() {
-            
-            // 現在の要素数 < 上限数
-            isLimitAlert = false
-            return true
-        }else{
-
-            // 現在の要素数 = 上限数
-            isLimitAlert = true
-            return false
-        }
-    }
     
     // disable:Bool true→非アクティブ false→OK
     func validatuonInput() -> Bool{
@@ -85,58 +72,50 @@ struct EntryFuluLogView: View {
         }
         return false
     }
-    
     var body: some View {
-        VStack{
-            
-            // MARK: - Header
-            HeaderView(headerTitle: "ふるログ")
-            
-            Spacer()
-            
-            // MARK: - Input
-            InputFuluLogView(productName: $productName, amount: $amount, municipality: $municipality, url: $url, memo: $memo,time: $time)
-            
-            // MARK: - EntryBtn
-            Button(action: {
-                if limitCountData(){
-                    let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: time)
-                    fileController.saveJson(data)
-                    allFulu.setAllData()
-                    allFulu.createTimeArray()
-                    deleteInput()
-                }
-                isAlert = true
-            }, label: {
-                Text("登録")
-            })
-            .padding() // ボタンパディング用
-            .disabled(validatuonInput())
-            .background(validatuonInput() ? Color(red: 0.8, green: 0.8, blue: 0.8) : Color("SubColor") )
-            .foregroundColor(validatuonInput() ? Color.black : Color("ThemaColor"))
-            .cornerRadius(5)
-            .padding(.bottom) // 下部余白用
-            // MARK: - EntryBtn
-         
-            
-            Spacer()
-            
-        }.background(Color("FoundationColor"))
-
+        
+            VStack{
+                // MARK: - Input
+                InputFuluLogView(productName: $productName, amount: $amount, municipality: $municipality, url: $url, memo: $memo,time: $time)
+                
+                // MARK: - UpdateBtn
+                Button(action: {
+                    withAnimation(.linear(duration: 0.3)){
+                        let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: time)
+                        fileController.saveFavoriteJson(data)
+                        allFulu.setAllFavoriteData()
+                        deleteInput()
+                        isAlert = true
+                    }
+                }, label: {
+                    Text("登録")
+                }).padding() // ボタンパディング用
+                    .disabled(validatuonInput())
+                    .background(validatuonInput() ? Color(red: 0.8, green: 0.8, blue: 0.8) : Color("SubColor") )
+                    .foregroundColor(validatuonInput() ? Color.black : Color("ThemaColor"))
+                    .cornerRadius(5)
+                    .padding(.bottom) // 下部余白用
+                // MARK: - UpdateBtn
+                
+                Spacer()
+                
+            }
+            .background(Color("FoundationColor"))
             .alert(isPresented: $isAlert){
-                Alert(title:Text(isLimitAlert ? "上限に達しました" : "保存しました。"),
-                      message: Text(isLimitAlert ? "広告を視聴すると\n保存容量を増やすことができます。" : ""),
+                Alert(title:Text("お気に入りに登録しました。"),
+                      message: Text(""),
                       dismissButton: .default(Text("OK"),
                                               action: {
+                    deleteInput()
+                    isModal = false
                 }))
             }
-           
-        
+            
+        }
     }
-}
-
-struct EntryFuluLogView_Previews: PreviewProvider {
+    
+struct EntryFavoriteFuluLogView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryFuluLogView()
+        EntryFavoriteFuluLogView(isModal: Binding.constant(false))
     }
 }
