@@ -13,16 +13,24 @@ struct SumDonationAmountView: View {
     
     @EnvironmentObject var allFulu:AllFuluLog
     
+    @Binding var selectTime:String
+    
     // MARK: - Method
     func nowTimePrefix() -> String{
-        let df = DateFormatter()
-        df.calendar = Calendar(identifier: .gregorian)
-        df.locale = Locale(identifier: "ja_JP")
-        df.timeZone = TimeZone(identifier: "Asia/Tokyo")
-        df.dateStyle = .short
-        df.timeStyle = .none
-        let timeStr = df.string(from: Date()).prefix(4)
-        return String(timeStr) // 2022 形式で年を返す
+        // 2022 形式で年を返す
+        
+        if selectTime == "all"{
+            let df = DateFormatter()
+            df.calendar = Calendar(identifier: .gregorian)
+            df.locale = Locale(identifier: "ja_JP")
+            df.timeZone = TimeZone(identifier: "Asia/Tokyo")
+            df.dateStyle = .short
+            df.timeStyle = .none
+            let timeStr = df.string(from: Date()).prefix(4)
+            return String(timeStr) // all なら当年
+        }else{
+            return selectTime
+        }
     }
     
     func CheckOverAmount() -> Bool{
@@ -63,6 +71,6 @@ struct SumDonationAmountView: View {
 
 struct SumDonationAmountView_Previews: PreviewProvider {
     static var previews: some View {
-        SumDonationAmountView()
+        SumDonationAmountView(selectTime: Binding.constant(""))
     }
 }

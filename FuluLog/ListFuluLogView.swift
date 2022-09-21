@@ -19,16 +19,16 @@ struct ListFuluLogView: View {
     var filteringAllFuludata:[FuluLog]{
         if searchText.isEmpty && selectTime == "all"{
             // フィルタリングなし
-            return allFulu.allData.reversed()
+            return allFulu.allData.reversed().sorted(by: {$0.time > $1.time})
         }else if searchText.isEmpty && selectTime != "all" {
             // 年数のみ
-            return allFulu.allData.reversed().filter({$0.time.contains(selectTime)})
+            return allFulu.allData.reversed().filter({$0.time.contains(selectTime)}).sorted(by: {$0.time > $1.time})
         }else if searchText.isEmpty == false &&  selectTime != "all" {
             // 検索値＆年数
-            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).filter({$0.time.contains(selectTime)})
+            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).filter({$0.time.contains(selectTime)}).sorted(by: {$0.time > $1.time})
         }else{
             // 検索値のみ
-            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)})
+            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).sorted(by: {$0.time > $1.time})
         }
     }
     
@@ -47,7 +47,7 @@ struct ListFuluLogView: View {
                 HStack{
                     
                     // MARK: - Display
-                    SumDonationAmountView().environmentObject(allFulu)
+                    SumDonationAmountView(selectTime: $selectTime).environmentObject(allFulu)
                     
                     
                     Spacer()

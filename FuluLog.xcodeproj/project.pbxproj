@@ -10,6 +10,8 @@
 		1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */; };
 		1292434428D70C5800A20A84 /* EntryFavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */; };
 		1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434528DA66D500A20A84 /* RewardBtnView.swift */; };
+		1292434828DB554700A20A84 /* EntryFavoriteBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */; };
+		1292434A28DB55CF00A20A84 /* ShareBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434928DB55CF00A20A84 /* ShareBtnView.swift */; };
 		12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */; };
 		12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239328CCBD4D00CCED4F /* ContentView.swift */; };
 		12ED239628CCBD4D00CCED4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12ED239528CCBD4D00CCED4F /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFuluLogView.swift; sourceTree = "<group>"; };
 		1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFavoriteFuluLogView.swift; sourceTree = "<group>"; };
 		1292434528DA66D500A20A84 /* RewardBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardBtnView.swift; sourceTree = "<group>"; };
+		1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFavoriteBtnView.swift; sourceTree = "<group>"; };
+		1292434928DB55CF00A20A84 /* ShareBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBtnView.swift; sourceTree = "<group>"; };
 		12ED238E28CCBD4D00CCED4F /* FuluLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuluLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogApp.swift; sourceTree = "<group>"; };
 		12ED239328CCBD4D00CCED4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -82,6 +86,15 @@
 				1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */,
 			);
 			path = FavoriteFuluLog;
+			sourceTree = "<group>";
+		};
+		1292434B28DB568800A20A84 /* DetailFuluLog */ = {
+			isa = PBXGroup;
+			children = (
+				1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */,
+				1292434928DB55CF00A20A84 /* ShareBtnView.swift */,
+			);
+			path = DetailFuluLog;
 			sourceTree = "<group>";
 		};
 		12ED238528CCBD4D00CCED4F = {
@@ -154,6 +167,7 @@
 		12ED23BE28D529A000CCED4F /* ChildView */ = {
 			isa = PBXGroup;
 			children = (
+				1292434B28DB568800A20A84 /* DetailFuluLog */,
 				12ED23C628D5D37500CCED4F /* ListFuluLog */,
 				1292434228D70B9400A20A84 /* FavoriteFuluLog */,
 				12ED23C528D5D35200CCED4F /* Setting */,
@@ -326,12 +340,14 @@
 				12ED23A628CCC02C00CCED4F /* EntryFuluLogView.swift in Sources */,
 				12ED23BD28D0C24D00CCED4F /* AdMobViewModels.swift in Sources */,
 				12ED23A228CCBDDA00CCED4F /* FuluLogModels.swift in Sources */,
+				1292434828DB554700A20A84 /* EntryFavoriteBtnView.swift in Sources */,
 				12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */,
 				12ED23AD28CCC20C00CCED4F /* SettingView.swift in Sources */,
 				12ED23B128CDAF4B00CCED4F /* DetailFuluLogView.swift in Sources */,
 				1292434428D70C5800A20A84 /* EntryFavoriteFuluLogView.swift in Sources */,
 				1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */,
 				12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */,
+				1292434A28DB55CF00A20A84 /* ShareBtnView.swift in Sources */,
 				12ED23A828CCC03C00CCED4F /* ListFuluLogView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,7 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.4;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -476,7 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -492,7 +508,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.4;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -508,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

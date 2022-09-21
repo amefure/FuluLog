@@ -55,12 +55,16 @@ struct RewardBtnView: View {
             reward.loadReward()
         }
         .disabled(!reward.rewardLoaded)
-        .alert(isPresented: $isAlertReward){
-            Alert(title:Text("お知らせ"),
-                  message: Text("広告を視聴できるのは1日に1回までです"),
-                  dismissButton: .default(Text("OK"),
-                                          action: {}))
-        }
+        .alert(Text("お知らせ"),
+               isPresented: $isAlertReward,
+               actions: {
+            Button(action: {
+            }, label: {
+                Text("OK")
+            })
+        }, message: {
+            Text("広告を視聴できるのは1日に1回までです")
+        })
     }
 }
 

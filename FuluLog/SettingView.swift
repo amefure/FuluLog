@@ -37,7 +37,12 @@ struct SettingView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
+            VStack(spacing:0){
+                
+                // MARK: - Header
+                HeaderView(headerTitle: "設定")
+                
+                Spacer()
                 
                 // MARK: - 寄付金上限金額
                 Section(content: {
@@ -95,9 +100,9 @@ struct SettingView: View {
                 }
                 
             }.foregroundColor(colorScheme == .dark ? .white : .black) // VStack
-            
+        .navigationBarHidden(true)
         }.navigationViewStyle(.stack) // NavigationView
-         .navigationBarHidden(true)
+        
         
     }
 }

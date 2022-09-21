@@ -98,6 +98,7 @@ struct UpdateFuluLogView: View {
                         fileController.updateFavoriteJson(allFulu.allFavoriteData) // JSONファイルを更新
                         allFulu.setAllFavoriteData() // JSONファイルをプロパティにセット
                     }
+                allFulu.createTimeArray()
                 parentUpdateItemFunction(data)
                 isAlert = true
                 }
@@ -123,16 +124,18 @@ struct UpdateFuluLogView: View {
             memo = item.memo                   // メモ
             time = item.time                   // 日付
         }
-        .alert(isPresented: $isAlert){
-            Alert(title:Text("更新しました。"),
-                  message: Text(""),
-                  dismissButton: .default(Text("OK"),
-                                          action: {
+        .alert(Text("更新しました。"),
+               isPresented: $isAlert,
+               actions: {
+            Button(action: {
                 deleteInput()
                 isModal = false
-            }))
-        }
-        
+            }, label: {
+                Text("OK")
+            })
+        }, message: {
+            Text("")
+        })
     }
 }
 

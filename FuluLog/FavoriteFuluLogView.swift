@@ -30,6 +30,9 @@ struct FavoriteFuluLogView: View {
                     )
                 }.listStyle(GroupedListStyle())
                 
+                // MARK: - AdMob
+                AdMobBannerView().frame(width:UIScreen.main.bounds.width,height: 60).padding(.bottom)
+                
             }.sheet(isPresented: $isModal, content: {
                 EntryFavoriteFuluLogView(isModal: $isModal)
             })

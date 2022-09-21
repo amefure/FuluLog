@@ -122,14 +122,16 @@ struct EntryFuluLogView: View {
             Spacer()
             
         }.background(Color("FoundationColor"))
+        .alert(Text(isLimitAlert ? "上限に達しました" : "保存しました。"),
+               isPresented: $isAlert,
+               actions: {
+            Button(action: {}, label: {
+                Text("OK")
+            })
+        }, message: {
+            Text(isLimitAlert ? "広告を視聴すると\n保存容量を増やすことができます。" : "")
+        })
 
-            .alert(isPresented: $isAlert){
-                Alert(title:Text(isLimitAlert ? "上限に達しました" : "保存しました。"),
-                      message: Text(isLimitAlert ? "広告を視聴すると\n保存容量を増やすことができます。" : ""),
-                      dismissButton: .default(Text("OK"),
-                                              action: {
-                }))
-            }
            
         
     }
