@@ -64,20 +64,19 @@ struct SettingView: View {
                         // 1:容量追加
                         
                         
-                        // 2:利用規約とプライバシーポリシー
-                        Link(destination:URL.init(string: "https://ame.hp.peraichi.com/")!, label: {
+                        // 2:レビューページ
+                        Link(destination:URL.init(string: "https://apps.apple.com/jp/app/%E3%81%B5%E3%82%8B%E3%83%AD%E3%82%B0/id1644963031?action=write-review")!, label: {
                             HStack{
-                                Image(systemName:"note.text").frame(width: 30).frame(width: 30).foregroundColor(.orange)
-                                Text("利用規約とプライバシーポリシー")
-                                Image(systemName:"link").font(.caption)
+                                Image(systemName:"hand.thumbsup").frame(width: 30).frame(width: 30).foregroundColor(.orange)
+                                Text("アプリをレビューする")
                             }
                         })
-                        // 2:プライバシーポリシー
+                        // 2:レビューページ
                         
                         
                         // 3:シェアボタン
                         Button(action: {
-                            shareApp(shareText: "寄付したふるさと納税を管理できるアプリ「ふるログ」を使ってみてね♪", shareLink: "https://apps.apple.com/jp/app/mapping/id1639823172")
+                            shareApp(shareText: "寄付したふるさと納税を管理できるアプリ「ふるログ」を使ってみてね♪", shareLink: "https://apps.apple.com/jp/app/%E3%81%B5%E3%82%8B%E3%83%AD%E3%82%B0/id1644963031")
                         }) {
                             HStack{
                                 Image(systemName:"star.bubble").frame(width: 30).frame(width: 30).foregroundColor(.orange)
@@ -85,6 +84,17 @@ struct SettingView: View {
                             }
                         }
                         // 3:シェアボタン
+                        
+                        
+                        // 4:利用規約とプライバシーポリシー
+                        Link(destination:URL.init(string: "https://tech.amefure.com/app-terms-of-service")!, label: {
+                            HStack{
+                                Image(systemName:"note.text").frame(width: 30).frame(width: 30).foregroundColor(.orange)
+                                Text("利用規約とプライバシーポリシー")
+                                Image(systemName:"link").font(.caption)
+                            }
+                        })
+                        // 4:プライバシーポリシー
                         
                     }.listStyle(GroupedListStyle()) // Listのスタイルを横に広げる
                 }, header: {

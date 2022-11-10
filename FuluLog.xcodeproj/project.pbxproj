@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		125AACCA291D372100F7B542 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125AACC9291D372100F7B542 /* WidgetKit.framework */; };
+		125AACCC291D372100F7B542 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125AACCB291D372100F7B542 /* SwiftUI.framework */; };
+		125AACCF291D372100F7B542 /* FuluLogWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125AACCE291D372100F7B542 /* FuluLogWidget.swift */; };
+		125AACD1291D372300F7B542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 125AACD0291D372300F7B542 /* Assets.xcassets */; };
+		125AACD5291D372300F7B542 /* FuluLogWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */; };
 		1292434428D70C5800A20A84 /* EntryFavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */; };
 		1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434528DA66D500A20A84 /* RewardBtnView.swift */; };
@@ -35,7 +40,39 @@
 		7BF061C16D6638AA848DA18B /* Pods_FuluLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5CAB995EBF320EF514E2B45 /* Pods_FuluLog.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		125AACD3291D372300F7B542 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12ED238628CCBD4D00CCED4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 125AACC7291D372100F7B542;
+			remoteInfo = FuluLogWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		125AACD6291D372300F7B542 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				125AACD5291D372300F7B542 /* FuluLogWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FuluLogWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		125AACC9291D372100F7B542 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		125AACCB291D372100F7B542 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		125AACCE291D372100F7B542 /* FuluLogWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogWidget.swift; sourceTree = "<group>"; };
+		125AACD0291D372300F7B542 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		125AACD2291D372300F7B542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		125AACDA291D376900F7B542 /* FuluLogWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuluLogWidgetExtension.entitlements; sourceTree = "<group>"; };
+		125AACDB291D377700F7B542 /* FuluLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuluLog.entitlements; sourceTree = "<group>"; };
 		1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFuluLogView.swift; sourceTree = "<group>"; };
 		1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFavoriteFuluLogView.swift; sourceTree = "<group>"; };
 		1292434528DA66D500A20A84 /* RewardBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardBtnView.swift; sourceTree = "<group>"; };
@@ -69,6 +106,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		125AACC5291D372100F7B542 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				125AACCC291D372100F7B542 /* SwiftUI.framework in Frameworks */,
+				125AACCA291D372100F7B542 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12ED238B28CCBD4D00CCED4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,6 +126,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		125AACCD291D372100F7B542 /* FuluLogWidget */ = {
+			isa = PBXGroup;
+			children = (
+				125AACCE291D372100F7B542 /* FuluLogWidget.swift */,
+				125AACD0291D372300F7B542 /* Assets.xcassets */,
+				125AACD2291D372300F7B542 /* Info.plist */,
+			);
+			path = FuluLogWidget;
+			sourceTree = "<group>";
+		};
 		1292434228D70B9400A20A84 /* FavoriteFuluLog */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,7 +156,9 @@
 		12ED238528CCBD4D00CCED4F = {
 			isa = PBXGroup;
 			children = (
+				125AACDA291D376900F7B542 /* FuluLogWidgetExtension.entitlements */,
 				12ED239028CCBD4D00CCED4F /* FuluLog */,
+				125AACCD291D372100F7B542 /* FuluLogWidget */,
 				12ED238F28CCBD4D00CCED4F /* Products */,
 				32BC43F6E990B08787FE7FBC /* Pods */,
 				3898080679FD8AFEBB9CFFA3 /* Frameworks */,
@@ -111,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				12ED238E28CCBD4D00CCED4F /* FuluLog.app */,
+				125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +177,7 @@
 		12ED239028CCBD4D00CCED4F /* FuluLog */ = {
 			isa = PBXGroup;
 			children = (
+				125AACDB291D377700F7B542 /* FuluLog.entitlements */,
 				12ED239F28CCBDA600CCED4F /* Info.plist */,
 				12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */,
 				12ED239328CCBD4D00CCED4F /* ContentView.swift */,
@@ -208,6 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				C5CAB995EBF320EF514E2B45 /* Pods_FuluLog.framework */,
+				125AACC9291D372100F7B542 /* WidgetKit.framework */,
+				125AACCB291D372100F7B542 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,6 +277,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		125AACC7291D372100F7B542 /* FuluLogWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 125AACD9291D372300F7B542 /* Build configuration list for PBXNativeTarget "FuluLogWidgetExtension" */;
+			buildPhases = (
+				125AACC4291D372100F7B542 /* Sources */,
+				125AACC5291D372100F7B542 /* Frameworks */,
+				125AACC6291D372100F7B542 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FuluLogWidgetExtension;
+			productName = FuluLogWidgetExtension;
+			productReference = 125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		12ED238D28CCBD4D00CCED4F /* FuluLog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12ED239C28CCBD4D00CCED4F /* Build configuration list for PBXNativeTarget "FuluLog" */;
@@ -224,10 +303,12 @@
 				12ED238B28CCBD4D00CCED4F /* Frameworks */,
 				12ED238C28CCBD4D00CCED4F /* Resources */,
 				4A2A001799C873DB712890BC /* [CP] Embed Pods Frameworks */,
+				125AACD6291D372300F7B542 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				125AACD4291D372300F7B542 /* PBXTargetDependency */,
 			);
 			name = FuluLog;
 			productName = FuluLog;
@@ -244,6 +325,9 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					125AACC7291D372100F7B542 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					12ED238D28CCBD4D00CCED4F = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -263,11 +347,20 @@
 			projectRoot = "";
 			targets = (
 				12ED238D28CCBD4D00CCED4F /* FuluLog */,
+				125AACC7291D372100F7B542 /* FuluLogWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		125AACC6291D372100F7B542 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				125AACD1291D372300F7B542 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12ED238C28CCBD4D00CCED4F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,6 +415,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		125AACC4291D372100F7B542 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				125AACCF291D372100F7B542 /* FuluLogWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12ED238A28CCBD4D00CCED4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,7 +455,71 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		125AACD4291D372300F7B542 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 125AACC7291D372100F7B542 /* FuluLogWidgetExtension */;
+			targetProxy = 125AACD3291D372300F7B542 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		125AACD7291D372300F7B542 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FuluLogWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CGD79LB65H;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuluLogWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FuluLogWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog.FuluLogWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		125AACD8291D372300F7B542 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FuluLogWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CGD79LB65H;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuluLogWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FuluLogWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog.FuluLogWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		12ED239A28CCBD4D00CCED4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -473,10 +638,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2EB92DE73482AAB3EE80BB61 /* Pods-FuluLog.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FuluLog/FuluLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -492,7 +659,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -505,10 +672,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A1BCA1C77E13AF204450637E /* Pods-FuluLog.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FuluLog/FuluLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -524,7 +693,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -536,6 +705,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		125AACD9291D372300F7B542 /* Build configuration list for PBXNativeTarget "FuluLogWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				125AACD7291D372300F7B542 /* Debug */,
+				125AACD8291D372300F7B542 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		12ED238928CCBD4D00CCED4F /* Build configuration list for PBXProject "FuluLog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

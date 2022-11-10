@@ -108,7 +108,7 @@ struct InputFuluLogView: View {
                 // MARK: - memo
                 Group{
                     Text("Memo").frame(width: deviceWidth, height: 30).background(Color("SubColor")).foregroundColor(Color("ThemaColor"))
-                    TextEditor(text: $memo).frame(minHeight:UIScreen.main.bounds.height > 667 ? 100 : 60)
+                    TextEditor(text: $memo).frame(minHeight:UIScreen.main.bounds.height > 667 ? 150 : 60)
                         .frame(width: deviceWidth)
                 }
                 // MARK: - memo

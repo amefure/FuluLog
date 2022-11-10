@@ -23,7 +23,7 @@ struct FavoriteFuluLogView: View {
                 HeaderView(headerTitle: "お気に入りリスト",rightImageName: "star.bubble", parentRightButtonFunction: { isModal = true})
                 
                 // MARK: - List
-                List(allFulu.allFavoriteData.reversed()){ item in
+                List(allFulu.allFavoriteData.reversed().sorted(by: {$0.time > $1.time})){ item in
                     NavigationLink(destination: {DetailFuluLogView(item: item,isOn: item.request,isFavorite: true).environmentObject(allFulu)}, label: {
                         RowFuluLogView(item: item,isFavorite: true)
                         }

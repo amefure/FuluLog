@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct DetailFuluLogView: View {
     
@@ -32,6 +33,16 @@ struct DetailFuluLogView: View {
     // MARK: - Method
     func updateItem(_ data:FuluLog){
         self.item = data
+    }
+    
+    func test(){
+        let df = DateFormatter()
+        df.dateFormat = "yyyy"
+        df.locale = Locale(identifier: "ja_JP")
+        let year = df.string(from: Date())
+        let array = allFulu.allData.filter({$0.request == false && $0.time.contains(year) })
+        UserDefaults(suiteName: "group.com.ame.FuluLog")?.set(array.count, forKey: "count")
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     
@@ -176,6 +187,7 @@ struct DetailFuluLogView: View {
                 allFulu.updateData(data,item.id)
                 fileController.updateJson(allFulu.allData) // JSONファイルを更新
                 allFulu.setAllData()
+                test()
             }
         })
         

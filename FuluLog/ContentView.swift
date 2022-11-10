@@ -12,6 +12,7 @@ struct ContentView: View {
     @State var selectedTag:Int = 1      //  タブビュー
     
     @ObservedObject var allFulu = AllFuluLog()
+    @FocusState  var isInputActive:Bool  // ナンバーパッドのフォーカス
     
     init() {
            // リストの背景色を変更
@@ -19,12 +20,13 @@ struct ContentView: View {
        }
     
     var body: some View {
-        TabView{
+        TabView(selection:$selectedTag){
             
             // MARK: - Entry
             EntryFuluLogView().environmentObject(allFulu).tabItem{
                 Image(systemName:"plus.circle")
-            }.tag(1)
+            }.tag(1).focused($isInputActive)
+            
             
             // MARK: - List
             ListFuluLogView().environmentObject(allFulu).tabItem{
@@ -44,6 +46,17 @@ struct ContentView: View {
         }.preferredColorScheme(.light)
         .accentColor(.orange)
         .ignoresSafeArea()
+        .toolbar {
+                // ツールバーを親の一番上の要素に実装
+                ToolbarItemGroup(placement: .keyboard) {
+                if selectedTag == 1 {
+                    Spacer()  // 右寄せにする
+                    Button("閉じる") {
+                        isInputActive = false
+                    }
+                }
+                }
+    }
     }
 }
 

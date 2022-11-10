@@ -87,15 +87,16 @@ struct EntryFuluLogView: View {
     }
     
     var body: some View {
-        VStack{
+        VStack(spacing:0){
             
             // MARK: - Header
             HeaderView(headerTitle: "ふるログ")
             
-            Spacer()
+//            Spacer()
             
             // MARK: - Input
             InputFuluLogView(productName: $productName, amount: $amount, municipality: $municipality, url: $url, memo: $memo,time: $time)
+                .background(Color("FoundationColor"))
             
             // MARK: - EntryBtn
             Button(action: {
@@ -110,18 +111,21 @@ struct EntryFuluLogView: View {
             }, label: {
                 Text("登録")
             })
-            .padding() // ボタンパディング用
+            .padding(12) // ボタンパディング用
             .disabled(validatuonInput())
             .background(validatuonInput() ? Color(red: 0.8, green: 0.8, blue: 0.8) : Color("SubColor") )
             .foregroundColor(validatuonInput() ? Color.black : Color("ThemaColor"))
             .cornerRadius(5)
-            .padding(.bottom) // 下部余白用
+//            .padding(.bottom) // 下部余白用
+            .padding()
             // MARK: - EntryBtn
          
             
             Spacer()
             
-        }.background(Color("FoundationColor"))
+        }
+//        .background(Color("FoundationColor"))
+            .background(Color.white)
         .alert(Text(isLimitAlert ? "上限に達しました" : "保存しました。"),
                isPresented: $isAlert,
                actions: {
