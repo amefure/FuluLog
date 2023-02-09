@@ -20,8 +20,8 @@ struct PickerTimeView: View {
             }
             
         }, label: {
-            Text("Date")
         }).padding(.trailing)
+            .frame(minWidth: 100)
     }
 }
 

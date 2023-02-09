@@ -67,7 +67,7 @@ struct DetailFuluLogView: View {
                         if isFavorite == false{
                             EntryFavoriteBtnView(item: item).environmentObject(allFulu)
                         }
-                       
+                        
                     }
                     // MARK: -
                     HStack{
@@ -91,7 +91,7 @@ struct DetailFuluLogView: View {
                 HStack(){
                     Text(item.memo).foregroundColor(.gray).padding()
                     Spacer()
-                }.frame(width:UIScreen.main.bounds.width - 30).background(Color("BaseColor"))
+                }.frame(width:UIScreen.main.bounds.width - 30).background(Color("BaseColor")).cornerRadius(5)
                 // MARK: - memo
                 
                 
@@ -118,10 +118,13 @@ struct DetailFuluLogView: View {
                 // MARK: - ワンストップ申請発送
                 if isFavorite == false {
                     Toggle(isOn: $isOn) {
-                        Text("ワンストップ申請発送")
-                        Image(systemName: isOn == true ? "checkmark.seal.fill" : "checkmark.seal")
-                            .foregroundColor(isOn == true ? .orange : .gray)
+                        HStack{
+                            Text("ワンストップ申請発送")
+                            Image(systemName: isOn == true ? "checkmark.seal.fill" : "checkmark.seal")
+                                .foregroundColor(isOn == true ? .orange : .gray)
+                        }
                     }.padding(.vertical)
+                        .padding(.trailing,10)
                         .tint(.orange)
                 }
                 // MARK: - ワンストップ申請発送

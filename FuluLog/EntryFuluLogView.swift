@@ -126,7 +126,7 @@ struct EntryFuluLogView: View {
         }
 //        .background(Color("FoundationColor"))
             .background(Color.white)
-        .alert(Text(isLimitAlert ? "上限に達しました" : "保存しました。"),
+        .alert(Text(isLimitAlert ? "上限に達しました" : "寄付情報を保存しました。"),
                isPresented: $isAlert,
                actions: {
             Button(action: {}, label: {

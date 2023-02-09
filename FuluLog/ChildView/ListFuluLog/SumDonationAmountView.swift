@@ -48,19 +48,19 @@ struct SumDonationAmountView: View {
         Spacer()
         
         VStack{
-            Text("\(nowTimePrefix())年：合計寄付金額").foregroundColor(.gray).font(.system(size: 15))
+            Text("\(nowTimePrefix())年：合計寄付金額").foregroundColor(.gray).font(.system(size: 12))
             HStack{
                 Text("\(allFulu.sumYearAmount(String(nowTimePrefix())))").foregroundColor(CheckOverAmount() ? .red : .orange).lineLimit(1)
-                Text("円").font(.system(size: 15))
+                Text("円").font(.system(size: 12))
             }
         }
         if let index = allFulu.donationLimit.firstIndex(where: {$0.year == nowTimePrefix()}){
             Text("/").offset(x: 0, y: 5)
             VStack{
-                Text("上限寄付金額").foregroundColor(.gray).font(.system(size: 15))
+                Text("上限寄付金額").foregroundColor(.gray).font(.system(size: 12))
                 HStack{
                     Text("\(allFulu.donationLimit[index].limitAmount)").foregroundColor(.orange).lineLimit(1)
-                    Text("円").font(.system(size: 15))
+                    Text("円").font(.system(size: 10))
                 }
             }
             
