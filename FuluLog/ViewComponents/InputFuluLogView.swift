@@ -166,6 +166,11 @@ struct InputFuluLogView: View {
             
             let df = DateFormatter()
             df.dateFormat = "yyyy/MM/dd"
+            df.calendar = Calendar(identifier: .gregorian)
+            df.locale = Locale(identifier: "ja_JP")
+            df.timeZone = TimeZone(identifier: "Asia/Tokyo")
+            df.dateStyle = .short
+            df.timeStyle = .none
             
             if newValue == ""{
                 // リセット時は当日の日付を格納
