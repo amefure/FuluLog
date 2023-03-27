@@ -6,16 +6,29 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 // ListFuluLogView > PickerTimeView
 struct PickerTimeView: View {
     @EnvironmentObject var allFulu:AllFuluLog
     @Binding var selectTime:String
+    
+    @ObservedResults(FuluLogRecord.self) var allFuleRelam
+    
+    var timeArray:[String] {
+        var array:[String] = ["all"]
+        for item in allFuleRelam {
+            array.append(String(item.timeString.prefix(4)))
+        }
+        let timeSet = Set(array) // 重複値を除去
+        return Array(timeSet).sorted().reversed()
+    }
+    
     var body: some View {
         Image(systemName: "calendar").foregroundColor(.orange)
         
         Picker(selection: $selectTime, content: {
-            ForEach(allFulu.timeArray,id:\.self) { item in
+            ForEach(timeArray,id:\.self) { item in
                 Text(item)
             }
             

@@ -11,12 +11,18 @@ import SwiftUI
 
 struct EntryFavoriteBtnView: View {
     
+    // MARK: - ViewModels
+    private let realmDataBase = RealmDataBaseViewModel()
+    
     // MARK: - Models
     let fileController = FileController()
     @EnvironmentObject var allFulu:AllFuluLog
     
+
+    
     // MARK: - Receive
-    @State var item:FuluLog
+//    @State var item:FuluLog
+    var item:FuluLogRecord
     
     @State var isAlertFavorite:Bool = false
     @State var isAlertEntry:Bool = false
@@ -40,9 +46,15 @@ struct EntryFavoriteBtnView: View {
             })
             Button(
                 action: {
-                    let data = FuluLog(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,time: item.time)
-                    fileController.saveFavoriteJson(data)
-                    allFulu.setAllFavoriteData()
+                    // -- JSON
+//                    let data = FuluLog(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,time: item.time)
+//                    fileController.saveFavoriteJson(data)
+//                    allFulu.setAllFavoriteData()
+                    // -- JSON
+                    
+                    // -- Realm
+                    realmDataBase.favorite_createRecord(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,time: DisplayDateViewModel().getConvertStringDate(item.timeString))
+                    // -- Realm
                     isAlertEntry = true
                 }, label: {
                     Text("Yes")
@@ -65,8 +77,3 @@ struct EntryFavoriteBtnView: View {
     }
 }
 
-struct EntryFavoriteBtnView_Previews: PreviewProvider {
-    static var previews: some View {
-        EntryFavoriteBtnView(item: FuluLog(productName: "", amount: 0, municipality: "", url: ""))
-    }
-}

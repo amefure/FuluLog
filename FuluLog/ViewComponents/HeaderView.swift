@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HeaderView: View {
-    var deviceWidth = UIScreen.main.bounds.width
+    var deviceWidth = DeviceSizeModel.deviceWidth
     
-    
+    // Header parameters
     var headerTitle:String
     var leftImageName:String = ""
     var rightImageName:String = ""
@@ -21,7 +21,7 @@ struct HeaderView: View {
     var body: some View {
         HStack(){
             
-            
+            // MARK: - LeftButton 戻るボタンなど
             Button(action: {
                 parentLeftButtonFunction()
             }, label: {
@@ -31,9 +31,15 @@ struct HeaderView: View {
                         .font(.system(size:22))
                 }
             })
+            
             Spacer()
-                Text(headerTitle)
+            
+            // MARK: - Title
+            Text(headerTitle)
+            
             Spacer()
+            
+            // MARK: - RightButton　登録/更新/など
             Button(action: {
                 parentRightButtonFunction()
             }, label: {
@@ -49,9 +55,3 @@ struct HeaderView: View {
     
 }
 
-struct HeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        HeaderView(headerTitle:"",parentLeftButtonFunction: {}, parentRightButtonFunction: {})
-//        HeaderView()
-    }
-}

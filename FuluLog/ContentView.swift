@@ -12,7 +12,8 @@ struct ContentView: View {
     @State var selectedTag:Int = 1      //  タブビュー
     
     @ObservedObject var allFulu = AllFuluLog()
-    @FocusState  var isInputActive:Bool  // ナンバーパッドのフォーカス
+    
+    private var userDefaultsViewModel = UserDefaultsViewModel()
     
     init() {
            // リストの背景色を変更
@@ -25,7 +26,7 @@ struct ContentView: View {
             // MARK: - Entry
             EntryFuluLogView().environmentObject(allFulu).tabItem{
                 Image(systemName:"plus.circle")
-            }.tag(1).focused($isInputActive)
+            }.tag(1)
             
             
             // MARK: - List
@@ -43,20 +44,16 @@ struct ContentView: View {
                 Image(systemName:"gear")
             }.tag(4)
             
-        }.preferredColorScheme(.light)
+        }
+        .onAppear{
+            if userDefaultsViewModel.getMigrationKey() == 0{
+//                print("migration")
+                RealmDataBaseViewModel().jsonTransforRealmDB()
+                userDefaultsViewModel.setMigrationKey(verNum: 1.0)
+            }
+        }
         .accentColor(.orange)
         .ignoresSafeArea()
-        .toolbar {
-                // ツールバーを親の一番上の要素に実装
-                ToolbarItemGroup(placement: .keyboard) {
-                if selectedTag == 1 {
-                    Spacer()  // 右寄せにする
-                    Button("閉じる") {
-                        isInputActive = false
-                    }
-                }
-                }
-    }
     }
 }
 

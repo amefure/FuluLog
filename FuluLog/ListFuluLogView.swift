@@ -6,29 +6,56 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct ListFuluLogView: View {
     
-    @EnvironmentObject var allFulu:AllFuluLog
+//    @EnvironmentObject var allFulu:AllFuluLog
+    
+    // MARK: - ViewModels
+    private let validation = ValidationViewModel()
+    private let realmDataBase = RealmDataBaseViewModel()
+    private let userDefaults = UserDefaultsViewModel()
+    
+    @ObservedResults(FuluLogRecord.self) var allFuleRelam
     
     @State var searchText:String = "" // Binding-SearchBoxView
     
     @State var selectTime:String = "all" // Binding-PickerTimeView
     
+    @State var test = false
+    
+//    // MARK: - List
+//    var filteringAllFuludata:[FuluLog]{
+//        if searchText.isEmpty && selectTime == "all"{
+//            // フィルタリングなし
+//            return allFulu.allData.reversed().sorted(by: {$0.time > $1.time})
+//        }else if searchText.isEmpty && selectTime != "all" {
+//            // 年数のみ
+//            return allFulu.allData.reversed().filter({$0.time.contains(selectTime)}).sorted(by: {$0.time > $1.time})
+//        }else if searchText.isEmpty == false &&  selectTime != "all" {
+//            // 検索値＆年数
+//            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).filter({$0.time.contains(selectTime)}).sorted(by: {$0.time > $1.time})
+//        }else{
+//            // 検索値のみ
+//            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).sorted(by: {$0.time > $1.time})
+//        }
+//    }
+    
     // MARK: - List
-    var filteringAllFuludata:[FuluLog]{
+    var realm_filteringAllFuludata:[FuluLogRecord]{
         if searchText.isEmpty && selectTime == "all"{
             // フィルタリングなし
-            return allFulu.allData.reversed().sorted(by: {$0.time > $1.time})
+            return allFuleRelam.reversed().sorted(by: {$0.time > $1.time})
         }else if searchText.isEmpty && selectTime != "all" {
             // 年数のみ
-            return allFulu.allData.reversed().filter({$0.time.contains(selectTime)}).sorted(by: {$0.time > $1.time})
+            return allFuleRelam.filter({$0.timeString.contains(selectTime)}).sorted(by: {$0.time > $1.time})
         }else if searchText.isEmpty == false &&  selectTime != "all" {
             // 検索値＆年数
-            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).filter({$0.time.contains(selectTime)}).sorted(by: {$0.time > $1.time})
+            return allFuleRelam.reversed().filter({$0.productName.contains(searchText)}).filter({$0.timeString.contains(selectTime)}).sorted(by: {$0.time > $1.time})
         }else{
             // 検索値のみ
-            return allFulu.allData.reversed().filter({$0.productName.contains(searchText)}).sorted(by: {$0.time > $1.time})
+            return allFuleRelam.reversed().filter({$0.productName.contains(searchText)}).sorted(by: {$0.time > $1.time})
         }
     }
     
@@ -47,24 +74,37 @@ struct ListFuluLogView: View {
                 HStack{
                     
                     // MARK: - Display
-                    SumDonationAmountView(selectTime: $selectTime).environmentObject(allFulu)
+                    SumDonationAmountView(selectTime: $selectTime)//.environmentObject(allFulu)
                     
                     
                     Spacer()
                     
                     // MARK: - Picker
-                    PickerTimeView(selectTime: $selectTime).environmentObject(allFulu)
+                    PickerTimeView(selectTime: $selectTime)//.environmentObject(allFulu)
                     
                 }.frame(width:UIScreen.main.bounds.width).padding([.top,.horizontal]).background(Color("BaseColor"))
                 
                 
                 // MARK: - List
-                List(filteringAllFuludata){ item in
-                    NavigationLink(destination: {DetailFuluLogView(item: item,isOn: item.request,isFavorite: false).environmentObject(allFulu)}, label: {
-                        RowFuluLogView(item: item,isFavorite: false)
-                    }
-                    )
-                }.listStyle(GroupedListStyle())
+//                if test{
+                    List(realm_filteringAllFuludata){ item in
+                        NavigationLink(destination: {DetailFuluLogView(item2: item,isOn: item.request,isFavorite: false)
+                        }, label: {
+                            RowFuluLogView(item: nil,item2: item, isFavorite: false)
+                        }
+                        )
+                       
+                    }.listStyle(GroupedListStyle())
+//                }else{
+                    
+//                    List(filteringAllFuludata){ item in
+//                        NavigationLink(destination: {DetailFuluLogView(item: item,item2: nil,isOn: item.request,isFavorite: false).environmentObject(allFulu)}, label: {
+//                            RowFuluLogView(item: item,item2: nil,isFavorite: false)
+//                        }
+//                        )
+//                    }.listStyle(GroupedListStyle())
+//                }
+                    
                 
                 // MARK: - AdMob
                 AdMobBannerView().frame(width:UIScreen.main.bounds.width,height: 60).padding(.bottom)

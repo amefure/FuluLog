@@ -11,6 +11,7 @@ import UIKit
 import GoogleMobileAds
 
 
+
 struct AdMobBannerView: UIViewRepresentable {
     func makeUIView(context: Context) -> GADBannerView {
         let banner = GADBannerView(adSize: GADAdSizeBanner) // インスタンスを生成

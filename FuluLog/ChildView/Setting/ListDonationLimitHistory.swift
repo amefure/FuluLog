@@ -10,6 +10,10 @@ import SwiftUI
 // SettingView.swift > DonationLimitView > ListDonationLimitHistory
 
 struct ListDonationLimitHistory: View {
+    
+    // MARK: - ViewModels
+    private let realmDataBase = RealmDataBaseViewModel()
+    
     @EnvironmentObject var allFulu:AllFuluLog
     
     
@@ -22,10 +26,14 @@ struct ListDonationLimitHistory: View {
         return false
     }
     
+    var realm_filteringAllFuludata:[UserDonationInfoRecord]{
+       return realmDataBase.allUserDonationInfoRecord.sorted(by: { $0.year < $1.year }).reversed()
+    }
+    
     var body: some View {
         VStack{
             
-            List(allFulu.donationLimit.sorted(by: { $0.year < $1.year }).reversed()){ item in
+            List(realm_filteringAllFuludata){ item in
                 HStack{
                     Text("\(item.year)年").fontWeight(.bold)
                     Spacer()

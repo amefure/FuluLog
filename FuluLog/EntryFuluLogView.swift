@@ -9,9 +9,14 @@ import SwiftUI
 
 struct EntryFuluLogView: View {
     
+    // MARK: - ViewModels
+    private let validation = ValidationViewModel()
+    private let realmDataBase = RealmDataBaseViewModel()
+    private let userDefaults = UserDefaultsViewModel()
+    
     // MARK: - Models
-    @EnvironmentObject var allFulu:AllFuluLog
-    var fileController = FileController()
+//    @EnvironmentObject var allFulu:AllFuluLog
+//    var fileController = FileController()
     
     
     // MARK: - TextField
@@ -20,16 +25,9 @@ struct EntryFuluLogView: View {
     @State var municipality:String = ""    // 自治体
     @State var url:String = ""             // URL
     @State var memo:String = ""            // メモ
-    @State var time:String = {             // 初期値に現在の日付
-        
-        let df = DateFormatter()
-        df.calendar = Calendar(identifier: .gregorian)
-        df.locale = Locale(identifier: "ja_JP")
-        df.timeZone = TimeZone(identifier: "Asia/Tokyo")
-        df.dateStyle = .short
-        df.timeStyle = .none
-        return df.string(from: Date())
-
+    @State var time:String = {             // 初期値に現在の日付の文字列 yyyy/MM/dd
+        let str = DisplayDateViewModel().getDateDisplayFormatString(Date())
+        return str
     }()
     
     // MARK: - View
@@ -38,7 +36,7 @@ struct EntryFuluLogView: View {
     
     // MARK: - Method
     func limitCountData() -> Bool{
-        if allFulu.countAllData() < fileController.loadLimitTxt() {
+        if realmDataBase.count < userDefaults.getDonationLimitKey() {
             
             // 現在の要素数 < 上限数
             isLimitAlert = false
@@ -52,11 +50,11 @@ struct EntryFuluLogView: View {
     }
     
     // disable:Bool true→非アクティブ false→OK
-    func validatuonInput() -> Bool{
+   private func validatuonInput() -> Bool{
         // 必須入力は商品名と寄付金額のみ
-        if productName !=  "" && amount != -1  {
-            if url.isEmpty == false{ // 入力値があるならバリデーション
-                if validationUrl(url) {
+        if self.validation.validatuonInput(productName) && self.validation.validatuonAmount(amount)  {
+            if self.validation.validatuonInput(url){ // 入力値があるならバリデーション
+                if self.validation.validationUrl(url) {
                     return false // URL 有効 OK
                 }
                 return true // URL 無効 NG
@@ -67,7 +65,7 @@ struct EntryFuluLogView: View {
         return true // 必須事項記入なし NG
     }
     
-    func deleteInput(){
+    private func deleteInput(){
         productName = ""     // 商品名
         amount = -1           // 金額情報
         municipality = ""    // 自治体
@@ -76,23 +74,12 @@ struct EntryFuluLogView: View {
         time = ""
     }
     
-    func validationUrl (_ urlStr: String) -> Bool {
-        guard let encurl = urlStr.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) else {
-            return false
-        }
-        if let url = NSURL(string: encurl) {
-            return UIApplication.shared.canOpenURL(url as URL)
-        }
-        return false
-    }
     
     var body: some View {
         VStack(spacing:0){
             
             // MARK: - Header
             HeaderView(headerTitle: "ふるログ")
-            
-//            Spacer()
             
             // MARK: - Input
             InputFuluLogView(productName: $productName, amount: $amount, municipality: $municipality, url: $url, memo: $memo,time: $time)
@@ -101,10 +88,20 @@ struct EntryFuluLogView: View {
             // MARK: - EntryBtn
             Button(action: {
                 if limitCountData(){
-                    let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: time)
-                    fileController.saveJson(data)
-                    allFulu.setAllData()
-                    allFulu.createTimeArray()
+                    
+                    // -- JSON
+//                    let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: time)
+//                    fileController.saveJson(data)
+//
+//                    allFulu.setAllData()
+//                    allFulu.createTimeArray() // ソート用に登録されている全年数を保持した配列を生成
+                    // -- JSON
+                    
+                    // -- Realm
+                    realmDataBase.createRecord(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: DisplayDateViewModel().getConvertStringDate(time))
+                    // -- Realm
+                    
+                    
                     deleteInput()
                 }
                 isAlert = true
@@ -116,7 +113,6 @@ struct EntryFuluLogView: View {
             .background(validatuonInput() ? Color(red: 0.8, green: 0.8, blue: 0.8) : Color("SubColor") )
             .foregroundColor(validatuonInput() ? Color.black : Color("ThemaColor"))
             .cornerRadius(5)
-//            .padding(.bottom) // 下部余白用
             .padding()
             // MARK: - EntryBtn
          
@@ -124,7 +120,6 @@ struct EntryFuluLogView: View {
             Spacer()
             
         }
-//        .background(Color("FoundationColor"))
             .background(Color.white)
         .alert(Text(isLimitAlert ? "上限に達しました" : "寄付情報を保存しました。"),
                isPresented: $isAlert,

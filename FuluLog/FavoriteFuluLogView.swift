@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct FavoriteFuluLogView: View {
     
     // MARK: - Models
     let fileController = FileController()
     @EnvironmentObject var allFulu:AllFuluLog
+    
+    @ObservedResults(FavoriteFuluLogRecord.self) var allFavoriteFuluRelam
     
     // MARK: - View
     @State var isModal:Bool = false
@@ -23,9 +26,9 @@ struct FavoriteFuluLogView: View {
                 HeaderView(headerTitle: "お気に入りリスト",rightImageName: "star.bubble", parentRightButtonFunction: { isModal = true})
                 
                 // MARK: - List
-                List(allFulu.allFavoriteData.reversed().sorted(by: {$0.time > $1.time})){ item in
-                    NavigationLink(destination: {DetailFuluLogView(item: item,isOn: item.request,isFavorite: true).environmentObject(allFulu)}, label: {
-                        RowFuluLogView(item: item,isFavorite: true)
+                List(allFavoriteFuluRelam.reversed().sorted(by: {$0.time > $1.time})){ item in
+                    NavigationLink(destination: {DetailFuluLogView(item2: item,isOn: item.request,isFavorite: true).environmentObject(allFulu)}, label: {
+                        RowFuluLogView(item: nil,item2: item,isFavorite: true)
                         }
                     )
                 }.listStyle(GroupedListStyle())

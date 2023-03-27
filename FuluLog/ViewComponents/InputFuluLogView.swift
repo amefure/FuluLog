@@ -10,8 +10,8 @@ import UIKit
 
 struct InputFuluLogView: View {
     
-    // MARK: - FocusState
-    @FocusState var isActive:Bool   // キーボードフォーカス
+    //MARK: - ViewModels
+    let displayDateViewModel = DisplayDateViewModel()
     
     // MARK: - TextField & Receive
     @Binding var productName:String       // 商品名
@@ -34,6 +34,7 @@ struct InputFuluLogView: View {
     }
     
     var df:DateFormatter{
+//        DisplayDateViewModel()
         let df = DateFormatter()
         df.calendar = Calendar(identifier: .gregorian)
         df.locale = Locale(identifier: "ja_JP")
@@ -44,11 +45,7 @@ struct InputFuluLogView: View {
     }
     
     var deviceWidth:Double {
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            return UIScreen.main.bounds.width/1.5
-        }else{
-            return UIScreen.main.bounds.width
-        }
+        DeviceSizeModel.flexWidth
     }
     
     
@@ -76,15 +73,6 @@ struct InputFuluLogView: View {
                         .foregroundColor(Color("ThemaColor"))
                     TextField("20000", text: $amountString)
                         .keyboardType(.numberPad)
-                        .focused($isActive)
-                        .toolbar{
-                            ToolbarItemGroup(placement: .keyboard, content: {
-                                Spacer()
-                                Button("閉じる"){
-                                    isActive = false
-                                }
-                            })
-                        }
                         .frame(width: deviceWidth)
                 }
                 // MARK: - amount
@@ -147,7 +135,7 @@ struct InputFuluLogView: View {
         .textFieldStyle(RoundedBorderTextFieldStyle())
         .onChange(of: selectedTime){ newValue in
             // yyyy/mm/dd 形式に変更して格納
-            time = df.string(from: selectedTime)
+            time = displayDateViewModel.getDateDisplayFormatString(newValue)
         }
         .onChange(of: amountString){ newValue in
             // 入力時数値変換用
@@ -164,29 +152,14 @@ struct InputFuluLogView: View {
         .onChange(of: time){ newValue in
             // newValueには更新View初期値 or データリセット
             
-            let df = DateFormatter()
-            df.dateFormat = "yyyy/MM/dd"
-            df.calendar = Calendar(identifier: .gregorian)
-            df.locale = Locale(identifier: "ja_JP")
-            df.timeZone = TimeZone(identifier: "Asia/Tokyo")
-            df.dateStyle = .short
-            df.timeStyle = .none
-            
             if newValue == ""{
                 // リセット時は当日の日付を格納
                 selectedTime = Date()
             }else{
                 // 更新View時はアイテムに登録されている日付をキャスト
-                let itemTime = newValue
-                let date = df.date(from: itemTime)!
+                let date = displayDateViewModel.getConvertStringDate(newValue)
                 selectedTime = date
             }
         }
-    }
-}
-
-struct InputFuluView_Previews: PreviewProvider {
-    static var previews: some View {
-        InputFuluLogView(productName: Binding.constant(""), amount: Binding.constant(0), municipality: Binding.constant(""), url: Binding.constant(""), memo: Binding.constant(""),time: Binding.constant(""))
     }
 }

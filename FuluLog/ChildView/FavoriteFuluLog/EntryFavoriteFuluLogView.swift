@@ -14,6 +14,10 @@ struct EntryFavoriteFuluLogView: View {
     var fileController = FileController()
     
     
+    // MARK: - ViewModels
+    private let realmDataBase = RealmDataBaseViewModel()
+    
+    
     // MARK: - TextField
     @State var productName:String = ""     // 商品名
     @State var amount:Int = -1             // 金額情報
@@ -81,9 +85,12 @@ struct EntryFavoriteFuluLogView: View {
                 // MARK: - UpdateBtn
                 Button(action: {
                     withAnimation(.linear(duration: 0.3)){
-                        let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: time)
-                        fileController.saveFavoriteJson(data)
-                        allFulu.setAllFavoriteData()
+                        
+                        realmDataBase.favorite_createRecord(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: DisplayDateViewModel().getConvertStringDate(time))
+                        
+//                        let data = FuluLog(productName: productName, amount: amount, municipality: municipality, url: url,memo: memo,time: time)
+//                        fileController.saveFavoriteJson(data)
+//                        allFulu.setAllFavoriteData()
                         deleteInput()
                         isAlert = true
                     }

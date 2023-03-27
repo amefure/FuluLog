@@ -12,8 +12,8 @@ import SwiftUI
 struct ShareBtnView: View {
     
     // MARK: - Receive
-    @State var item:FuluLog
-    
+//    @State var item:FuluLog
+    var item:FuluLogRecord
     // シェアボタン
     func shareApp(shareText: String, shareLink: String) {
         let items = [shareText, URL(string: shareLink)!] as [Any]
@@ -43,8 +43,3 @@ struct ShareBtnView: View {
     }
 }
 
-struct ShareBtnView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShareBtnView(item: FuluLog(productName: "", amount: 0, municipality: "", url: ""))
-    }
-}

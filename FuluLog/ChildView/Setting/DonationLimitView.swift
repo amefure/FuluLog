@@ -15,10 +15,16 @@ struct DonationLimitView: View {
     @EnvironmentObject var allFulu:AllFuluLog
     var fileController = FileController()
     
+    // MARK: - ViewModels
+    private let realmDataBase = RealmDataBaseViewModel()
+    
     // MARK: - View
     @State var isShowTextField:Bool = false    // リワード広告視聴回数制限アラート
     @State var limitAmount:String = ""         // 上限金額
     
+    var realm_filteringAllFuludata:[UserDonationInfoRecord]{
+       return realmDataBase.allUserDonationInfoRecord.sorted(by: { $0.year < $1.year }).reversed()
+    }
     
     // MARK: - Method
     func nowTimePrefix() -> String{
@@ -43,10 +49,10 @@ struct DonationLimitView: View {
                     TextField("40000", text: $limitAmount).keyboardType(.numberPad).frame(height:70).textFieldStyle(.roundedBorder)
                 }else{
                     // MARK: - Display
-                    if let index = allFulu.donationLimit.firstIndex(where: {$0.year == nowTimePrefix()}){
+                    if let index = realm_filteringAllFuludata.firstIndex(where: {$0.year == nowTimePrefix()}){
                         HStack{
                             Spacer()
-                            Text("\(allFulu.donationLimit[index].limitAmount)").font(.system(size: 35)).foregroundColor(.orange).lineLimit(1)
+                            Text("\(realm_filteringAllFuludata[index].limitAmount)").font(.system(size: 35)).foregroundColor(.orange).lineLimit(1)
                             Text("円").font(.system(size: 20)).offset(x: 0, y: 5)
                         }.frame(height:70)
                     }else{
@@ -61,19 +67,30 @@ struct DonationLimitView: View {
                 Spacer()
                 // MARK: - Btn
                 Button(action: {
+                    if realm_filteringAllFuludata.firstIndex(where: {$0.year == nowTimePrefix()}) != nil{
+                        
+                    }else{
+                        realmDataBase.donation_createRecord(year:  String(nowTimePrefix()), limitAmount: Int(limitAmount) ?? 0)
+                    }
                     // 編集ON時かつ初回入力時のみ初期値登録
                     if isShowTextField == false && limitAmount == "" {
-                        if let index = allFulu.donationLimit.firstIndex(where: {$0.year == nowTimePrefix()}){
-                            limitAmount = String(allFulu.donationLimit[index].limitAmount)
+                        if let index = realm_filteringAllFuludata.firstIndex(where: {$0.year == nowTimePrefix()}){
+                            limitAmount = String(realm_filteringAllFuludata[index].limitAmount)
                         }
                     }else{
-                        let data = UserDonationInfo(year: String(nowTimePrefix()), limitAmount: Int(limitAmount) ?? 0)
-                        allFulu.updateDonationLimit(data,String(nowTimePrefix())) // Models側で処理
-                        allFulu.setAllDonationLimit()
+                        if let index = realm_filteringAllFuludata.firstIndex(where: {$0.year == nowTimePrefix()}){
+                           let id = realm_filteringAllFuludata[index].id
+                            realmDataBase.donation_updateRecord(id: id, year: nowTimePrefix(), limitAmount: Int(limitAmount)!)
+                        }
+                        
+//                        realmDataBase.donation_createRecord(year:  String(nowTimePrefix()), limitAmount: Int(limitAmount) ?? 0)
+//                        let data = UserDonationInfo(year: String(nowTimePrefix()), limitAmount: Int(limitAmount) ?? 0)
+//                        allFulu.updateDonationLimit(data,String(nowTimePrefix())) // Models側で処理
+//                        allFulu.setAllDonationLimit()
                     }
                     isShowTextField.toggle()
                 }, label: {
-                    if allFulu.donationLimit.firstIndex(where: {$0.year == nowTimePrefix()}) != nil{
+                    if realm_filteringAllFuludata.firstIndex(where: {$0.year == nowTimePrefix()}) != nil{
                         Text(isShowTextField ? "更新" : "編集")
                     }else{
                         Text("登録")
