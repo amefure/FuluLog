@@ -35,16 +35,14 @@ class Reward: NSObject, ObservableObject ,GADFullScreenContentDelegate {
     // リワード広告を読み込んだかどうか
     @Published  var rewardLoaded: Bool = false
     // リワード広告が格納される
-    var rewardedAd: GADRewardedAd? = nil
-    
-    
+    private var rewardedAd: GADRewardedAd? = nil
     
     override init() {
         super.init()
     }
 
     // リワード広告の読み込み
-    func loadReward() {
+    public func loadReward() {
         let request = GADRequest()
         request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         GADRewardedAd.load(withAdUnitID: "ca-app-pub-3940256099942544/1712485313", request: request, completionHandler: { (ad, error) in
@@ -61,7 +59,7 @@ class Reward: NSObject, ObservableObject ,GADFullScreenContentDelegate {
     }
     
     // 読み込んだリワード広告を表示するメソッド
-    func showReward() {
+    public func showReward() {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let rootVC = windowScene?.windows.first?.rootViewController
         if let ad = rewardedAd {

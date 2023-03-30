@@ -12,7 +12,13 @@
 		121F7F4D29C3C7540017F5E2 /* RealmDataBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */; };
 		121F7F4F29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */; };
 		121F7F5129CCF9590017F5E2 /* UserDefaultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F5029CCF9590017F5E2 /* UserDefaultsViewModel.swift */; };
-		1244A58829C26C93003F2FE2 /* DeviceSizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58729C26C93003F2FE2 /* DeviceSizeModel.swift */; };
+		121F7F8929D1DE250017F5E2 /* TransferConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */; };
+		121F7F8D29D246EC0017F5E2 /* ShareLinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F8C29D246EC0017F5E2 /* ShareLinkModel.swift */; };
+		121F7F8F29D247140017F5E2 /* ShareLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F8E29D247140017F5E2 /* ShareLinkViewModel.swift */; };
+		121F7F9329D47BDC0017F5E2 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F9229D47BDC0017F5E2 /* Modifier.swift */; };
+		121F7F9629D5A6250017F5E2 /* InputDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F9529D5A6250017F5E2 /* InputDatePickerView.swift */; };
+		121F7F9829D5A82E0017F5E2 /* InputAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F9729D5A82E0017F5E2 /* InputAmountView.swift */; };
+		1244A58829C26C93003F2FE2 /* DeviceSizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58729C26C93003F2FE2 /* DeviceSizeViewModel.swift */; };
 		1244A58A29C26D5C003F2FE2 /* DisplayDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58929C26D5C003F2FE2 /* DisplayDateViewModel.swift */; };
 		1244A58C29C26EA7003F2FE2 /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58B29C26EA7003F2FE2 /* ValidationViewModel.swift */; };
 		125AACCA291D372100F7B542 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125AACC9291D372100F7B542 /* WidgetKit.framework */; };
@@ -21,7 +27,6 @@
 		125AACD1291D372300F7B542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 125AACD0291D372300F7B542 /* Assets.xcassets */; };
 		125AACD5291D372300F7B542 /* FuluLogWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */; };
-		1292434428D70C5800A20A84 /* EntryFavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */; };
 		1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434528DA66D500A20A84 /* RewardBtnView.swift */; };
 		1292434828DB554700A20A84 /* EntryFavoriteBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */; };
 		1292434A28DB55CF00A20A84 /* ShareBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434928DB55CF00A20A84 /* ShareBtnView.swift */; };
@@ -78,7 +83,13 @@
 		121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseModel.swift; sourceTree = "<group>"; };
 		121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseViewModel.swift; sourceTree = "<group>"; };
 		121F7F5029CCF9590017F5E2 /* UserDefaultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsViewModel.swift; sourceTree = "<group>"; };
-		1244A58729C26C93003F2FE2 /* DeviceSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeModel.swift; sourceTree = "<group>"; };
+		121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferConfigurationViewModel.swift; sourceTree = "<group>"; };
+		121F7F8C29D246EC0017F5E2 /* ShareLinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkModel.swift; sourceTree = "<group>"; };
+		121F7F8E29D247140017F5E2 /* ShareLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkViewModel.swift; sourceTree = "<group>"; };
+		121F7F9229D47BDC0017F5E2 /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
+		121F7F9529D5A6250017F5E2 /* InputDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDatePickerView.swift; sourceTree = "<group>"; };
+		121F7F9729D5A82E0017F5E2 /* InputAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAmountView.swift; sourceTree = "<group>"; };
+		1244A58729C26C93003F2FE2 /* DeviceSizeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeViewModel.swift; sourceTree = "<group>"; };
 		1244A58929C26D5C003F2FE2 /* DisplayDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDateViewModel.swift; sourceTree = "<group>"; };
 		1244A58B29C26EA7003F2FE2 /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
 		125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FuluLogWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,7 +101,6 @@
 		125AACDA291D376900F7B542 /* FuluLogWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuluLogWidgetExtension.entitlements; sourceTree = "<group>"; };
 		125AACDB291D377700F7B542 /* FuluLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuluLog.entitlements; sourceTree = "<group>"; };
 		1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFuluLogView.swift; sourceTree = "<group>"; };
-		1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFavoriteFuluLogView.swift; sourceTree = "<group>"; };
 		1292434528DA66D500A20A84 /* RewardBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardBtnView.swift; sourceTree = "<group>"; };
 		1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFavoriteBtnView.swift; sourceTree = "<group>"; };
 		1292434928DB55CF00A20A84 /* ShareBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBtnView.swift; sourceTree = "<group>"; };
@@ -142,14 +152,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		121F7F9029D390B50017F5E2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12ED239328CCBD4D00CCED4F /* ContentView.swift */,
+				12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */,
+				12ED23C628D5D37500CCED4F /* ListFuluLog */,
+				1292434228D70B9400A20A84 /* FavoriteFuluLog */,
+				1292434B28DB568800A20A84 /* DetailFuluLog */,
+				12ED23C528D5D35200CCED4F /* Setting */,
+				12ED23AB28CCC04C00CCED4F /* ViewComponents */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		121F7F9129D47B950017F5E2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				121F7F9229D47BDC0017F5E2 /* Modifier.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		121F7F9429D480270017F5E2 /* InputFuluLog */ = {
+			isa = PBXGroup;
+			children = (
+				12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */,
+				121F7F9529D5A6250017F5E2 /* InputDatePickerView.swift */,
+				121F7F9729D5A82E0017F5E2 /* InputAmountView.swift */,
+			);
+			path = InputFuluLog;
+			sourceTree = "<group>";
+		};
+		121F7F9929D5B1610017F5E2 /* OldModels */ = {
+			isa = PBXGroup;
+			children = (
+				12ED23A128CCBDDA00CCED4F /* FuluLogModels.swift */,
+				12ED23A328CCBE3500CCED4F /* FileController.swift */,
+			);
+			path = OldModels;
+			sourceTree = "<group>";
+		};
 		1244A58629C26C56003F2FE2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				12ED23BC28D0C24D00CCED4F /* AdMobViewModels.swift */,
+				121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */,
 				121F7F5029CCF9590017F5E2 /* UserDefaultsViewModel.swift */,
 				1244A58B29C26EA7003F2FE2 /* ValidationViewModel.swift */,
+				121F7F8E29D247140017F5E2 /* ShareLinkViewModel.swift */,
 				1244A58929C26D5C003F2FE2 /* DisplayDateViewModel.swift */,
 				121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */,
+				1244A58729C26C93003F2FE2 /* DeviceSizeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -167,7 +221,7 @@
 		1292434228D70B9400A20A84 /* FavoriteFuluLog */ = {
 			isa = PBXGroup;
 			children = (
-				1292434328D70C5700A20A84 /* EntryFavoriteFuluLogView.swift */,
+				1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */,
 			);
 			path = FavoriteFuluLog;
 			sourceTree = "<group>";
@@ -175,6 +229,7 @@
 		1292434B28DB568800A20A84 /* DetailFuluLog */ = {
 			isa = PBXGroup;
 			children = (
+				12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */,
 				1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */,
 				1292434928DB55CF00A20A84 /* ShareBtnView.swift */,
 			);
@@ -208,15 +263,10 @@
 				125AACDB291D377700F7B542 /* FuluLog.entitlements */,
 				12ED239F28CCBDA600CCED4F /* Info.plist */,
 				12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */,
-				12ED239328CCBD4D00CCED4F /* ContentView.swift */,
-				12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */,
-				12ED23A728CCC03C00CCED4F /* ListFuluLogView.swift */,
-				1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */,
-				12ED23AC28CCC20C00CCED4F /* SettingView.swift */,
-				12ED23BE28D529A000CCED4F /* ChildView */,
-				12ED23AB28CCC04C00CCED4F /* ViewComponents */,
+				121F7F9029D390B50017F5E2 /* View */,
 				1244A58629C26C56003F2FE2 /* ViewModels */,
 				12ED23A028CCBDC300CCED4F /* Models */,
+				121F7F9129D47B950017F5E2 /* Extensions */,
 				12ED239528CCBD4D00CCED4F /* Assets.xcassets */,
 				121F7F4829C3BF6B0017F5E2 /* GoogleService-Info.plist */,
 				12ED239728CCBD4D00CCED4F /* Preview Content */,
@@ -235,11 +285,10 @@
 		12ED23A028CCBDC300CCED4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				12ED23A128CCBDDA00CCED4F /* FuluLogModels.swift */,
+				121F7F9929D5B1610017F5E2 /* OldModels */,
 				121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */,
 				121F7F4A29C3C5260017F5E2 /* FuluLogRealmModel.swift */,
-				12ED23A328CCBE3500CCED4F /* FileController.swift */,
-				1244A58729C26C93003F2FE2 /* DeviceSizeModel.swift */,
+				121F7F8C29D246EC0017F5E2 /* ShareLinkModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,29 +296,18 @@
 		12ED23AB28CCC04C00CCED4F /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				121F7F9429D480270017F5E2 /* InputFuluLog */,
 				12ED23B228CDB1D800CCED4F /* UpdateFuluLogView.swift */,
-				12ED23B028CDAF4B00CCED4F /* DetailFuluLogView.swift */,
 				12ED23A928CCC04800CCED4F /* RowFuluLogView.swift */,
-				12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */,
 				12ED23BA28CFD69200CCED4F /* HeaderView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
 		};
-		12ED23BE28D529A000CCED4F /* ChildView */ = {
-			isa = PBXGroup;
-			children = (
-				1292434B28DB568800A20A84 /* DetailFuluLog */,
-				12ED23C628D5D37500CCED4F /* ListFuluLog */,
-				1292434228D70B9400A20A84 /* FavoriteFuluLog */,
-				12ED23C528D5D35200CCED4F /* Setting */,
-			);
-			path = ChildView;
-			sourceTree = "<group>";
-		};
 		12ED23C528D5D35200CCED4F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				12ED23AC28CCC20C00CCED4F /* SettingView.swift */,
 				12ED23BF28D529D400CCED4F /* DonationLimitView.swift */,
 				12ED23C128D5560E00CCED4F /* ListDonationLimitHistory.swift */,
 				1292434528DA66D500A20A84 /* RewardBtnView.swift */,
@@ -280,6 +318,7 @@
 		12ED23C628D5D37500CCED4F /* ListFuluLog */ = {
 			isa = PBXGroup;
 			children = (
+				12ED23A728CCC03C00CCED4F /* ListFuluLogView.swift */,
 				12ED23C928D5F61100CCED4F /* SearchBoxView.swift */,
 				12ED23C728D5F35700CCED4F /* PickerTimeView.swift */,
 				12ED23C328D5D01600CCED4F /* SumDonationAmountView.swift */,
@@ -462,6 +501,8 @@
 			files = (
 				12ED23C828D5F35700CCED4F /* PickerTimeView.swift in Sources */,
 				12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */,
+				121F7F9329D47BDC0017F5E2 /* Modifier.swift in Sources */,
+				121F7F8F29D247140017F5E2 /* ShareLinkViewModel.swift in Sources */,
 				12ED23AA28CCC04800CCED4F /* RowFuluLogView.swift in Sources */,
 				12ED23C028D529D400CCED4F /* DonationLimitView.swift in Sources */,
 				121F7F4B29C3C5260017F5E2 /* FuluLogRealmModel.swift in Sources */,
@@ -473,19 +514,22 @@
 				1244A58A29C26D5C003F2FE2 /* DisplayDateViewModel.swift in Sources */,
 				121F7F4D29C3C7540017F5E2 /* RealmDataBaseModel.swift in Sources */,
 				12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */,
+				121F7F9829D5A82E0017F5E2 /* InputAmountView.swift in Sources */,
 				12ED23C428D5D01600CCED4F /* SumDonationAmountView.swift in Sources */,
 				1244A58C29C26EA7003F2FE2 /* ValidationViewModel.swift in Sources */,
 				12ED23B328CDB1D900CCED4F /* UpdateFuluLogView.swift in Sources */,
+				121F7F8929D1DE250017F5E2 /* TransferConfigurationViewModel.swift in Sources */,
 				12ED23A628CCC02C00CCED4F /* EntryFuluLogView.swift in Sources */,
 				121F7F4F29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift in Sources */,
-				1244A58829C26C93003F2FE2 /* DeviceSizeModel.swift in Sources */,
+				121F7F9629D5A6250017F5E2 /* InputDatePickerView.swift in Sources */,
+				1244A58829C26C93003F2FE2 /* DeviceSizeViewModel.swift in Sources */,
 				12ED23BD28D0C24D00CCED4F /* AdMobViewModels.swift in Sources */,
 				12ED23A228CCBDDA00CCED4F /* FuluLogModels.swift in Sources */,
 				1292434828DB554700A20A84 /* EntryFavoriteBtnView.swift in Sources */,
 				12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */,
 				12ED23AD28CCC20C00CCED4F /* SettingView.swift in Sources */,
 				12ED23B128CDAF4B00CCED4F /* DetailFuluLogView.swift in Sources */,
-				1292434428D70C5800A20A84 /* EntryFavoriteFuluLogView.swift in Sources */,
+				121F7F8D29D246EC0017F5E2 /* ShareLinkModel.swift in Sources */,
 				1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */,
 				12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */,
 				1292434A28DB55CF00A20A84 /* ShareBtnView.swift in Sources */,
@@ -511,7 +555,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = FuluLogWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.9;
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuluLogWidget/Info.plist;
@@ -522,7 +566,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog.FuluLogWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -539,7 +583,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = FuluLogWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.9;
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FuluLogWidget/Info.plist;
@@ -550,7 +594,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog.FuluLogWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -683,7 +727,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FuluLog/FuluLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.9;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -700,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -718,7 +762,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FuluLog/FuluLog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.5;
+				CURRENT_PROJECT_VERSION = 2.9;
 				DEVELOPMENT_ASSET_PATHS = "\"FuluLog/Preview Content\"";
 				DEVELOPMENT_TEAM = CGD79LB65H;
 				ENABLE_PREVIEWS = YES;
@@ -735,7 +779,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.0.0;
+				MARKETING_VERSION = 3.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ame.FuluLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -32,4 +32,16 @@ class DisplayDateViewModel {
         df.dateFormat = "yyyy/MM/dd"
         return df.date(from: str)!
     }
+    
+    public func nowFullDateString() -> String{
+        let Str = df.string(from: Date())
+        return String(Str)
+    }
+    
+    public func nowYearString() -> String{
+        let Str = df.string(from: Date()).prefix(4)
+        return String(Str) // 2022 形式で年を返す
+    }
+    
+
 }

@@ -10,8 +10,6 @@ import RealmSwift
 
 // ReplaceMent RealmSwift
 
-
-
 class FuluLogRecord: Object,ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = UUID()             // 一意の値
     @Persisted var productName:String      // 商品名
@@ -27,6 +25,8 @@ class FuluLogRecord: Object,ObjectKeyIdentifiable {
     }
 }
 
+class FavoriteFuluLogRecord: FuluLogRecord { }
+
 class UserDonationInfoRecord: Object,ObjectKeyIdentifiable, Codable {
     @Persisted(primaryKey: true) var id = UUID()  // 一意の値
     @Persisted var year:String             // 年
@@ -34,6 +34,3 @@ class UserDonationInfoRecord: Object,ObjectKeyIdentifiable, Codable {
 
 }
 
-class FavoriteFuluLogRecord: FuluLogRecord {
-    
-}
