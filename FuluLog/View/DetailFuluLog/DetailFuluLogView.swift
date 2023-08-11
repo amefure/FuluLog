@@ -138,11 +138,9 @@ struct DetailFuluLogView: View {
                         .padding(.trailing,10)
                         .tint(.orange)
                         .onChange(of: isOn) { newValue in
-                            if newValue {
-                                realmDataBase.updateRecord(id: item.id, productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url, memo: item.memo, request: isOn, time: item.time)
-                                // MARK: - ワンストップ申請の変更を反映する
-                                updateAppGroupandWidget()
-                            }
+                            realmDataBase.updateRecord(id: item.id, productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url, memo: item.memo, request: isOn, time: item.time)
+                            // MARK: - ワンストップ申請の変更を反映する
+                            updateAppGroupandWidget()
                         }
                 }
                 // MARK: - ワンストップ申請発送
@@ -164,7 +162,7 @@ struct DetailFuluLogView: View {
                 // MARK: - DeleteBtn
                 
             } // ScrollView
-                
+            
             // MARK: - AdMob
             AdMobBannerView().frame(height: 40).padding(.vertical)
             
@@ -188,7 +186,7 @@ struct DetailFuluLogView: View {
                 Text(isFavorite ? "解除する" : "削除する")
             })
         } message: {
-
+            
         }
         // MARK: - UpdateModal
         .sheet(isPresented: $isModal, content: {
@@ -196,4 +194,3 @@ struct DetailFuluLogView: View {
         })
     }
 }
-                     
