@@ -91,11 +91,6 @@ struct SettingView: View {
                     }
                 })
                 
-                // MARK: - AdMob iPhoneSEサイズが非表示
-                if !deviceSize.isSESize {
-                    AdMobBannerView().frame(height:100).padding(.bottom)
-                }
-                
             }.foregroundColor(colorScheme == .dark ? .white : .black) // VStack
         .navigationBarHidden(true)
         }.navigationViewStyle(.stack) // NavigationView

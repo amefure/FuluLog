@@ -19,29 +19,35 @@ struct ContentView: View {
        }
     
     var body: some View {
-        TabView(selection:$selectedTag){
+        VStack(spacing: 0) {
             
-            // MARK: - Entry
-            EntryFuluLogView(isModal: Binding.constant(false)).tabItem{
-                Image(systemName:"plus.circle")
-            }.tag(1)
+            TabView(selection:$selectedTag){
+                
+                // MARK: - Entry
+                EntryFuluLogView(isModal: Binding.constant(false)).tabItem{
+                    Image(systemName:"plus.circle")
+                }.tag(1)
+                
+                
+                // MARK: - List
+                ListFuluLogView().tabItem{
+                    Image(systemName:"list.bullet")
+                }.tag(2)
+                
+                // MARK: - Favorite
+                FavoriteFuluLogView().tabItem{
+                    Image(systemName:"star.fill")
+                }.tag(3)
+                
+                // MARK: - Setting
+                SettingView().tabItem{
+                    Image(systemName:"gear")
+                }.tag(4)
+                
+            }
             
-            
-            // MARK: - List
-            ListFuluLogView().tabItem{
-                Image(systemName:"list.bullet")
-            }.tag(2)
-            
-            // MARK: - Favorite
-            FavoriteFuluLogView().tabItem{
-                Image(systemName:"star.fill")
-            }.tag(3)
-            
-            // MARK: - Setting
-            SettingView().tabItem{
-                Image(systemName:"gear")
-            }.tag(4)
-            
+            // MARK: - AdMob
+            AdMobBannerView().frame(height: 60)
         }
         .onAppear{
             if userDefaultsViewModel.getMigrationKey() == 0{

@@ -73,9 +73,6 @@ struct ListFuluLogView: View {
                     }.listStyle(GroupedListStyle())
                     
                 
-                // MARK: - AdMob
-                AdMobBannerView().frame(height: 60).padding(.bottom)
-                
             }.ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarHidden(true)
         }.navigationViewStyle(.stack) // NavigationView
