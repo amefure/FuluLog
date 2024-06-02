@@ -25,7 +25,7 @@ class TransferConfigurationViewModel{
     // MARK: - FuluLogRecord
     private func transfer_FuluLogRecord(){
         let allFule = AllFuluLog()
-        let displayDateVM = DisplayDateViewModel()
+        let displayDateVM = DateFormatUtility()
         for item in allFule.allData {
             let record = FuluLogRecord()
             record.productName = item.productName   // 商品名
@@ -42,7 +42,7 @@ class TransferConfigurationViewModel{
     // MARK: - FavoriteFuluLogRecord
     private func transfer_FavoriteFuluLogRecord(){
         let allFule = AllFuluLog()
-        let displayDateVM = DisplayDateViewModel()
+        let displayDateVM = DateFormatUtility()
         for item in allFule.allFavoriteData {
             let record = FavoriteFuluLogRecord()
             record.productName = item.productName   // 商品名
@@ -70,7 +70,7 @@ class TransferConfigurationViewModel{
     // MARK: - RecordLimit
     private func transfer_RecordLimit(){
         let limit = FileController().loadLimitTxt()
-        UserDefaultsViewModel().setRecordLimitKey(num: limit)
+        UserDefaultsManager().setRecordLimitKey(limit)
     }
 }
 

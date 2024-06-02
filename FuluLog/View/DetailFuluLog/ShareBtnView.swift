@@ -12,21 +12,19 @@ import SwiftUI
 struct ShareBtnView: View {
     
     // MARK: - Receive
-    var item:FuluLogRecord
-    
-    // MARK: - ViewModels
-    private let shareLinkViewModel = ShareLinkViewModel()
+    var item: FuluLogRecord
     
     var body: some View {
-        Button(action: {
-            if item.url.isEmpty{
-                shareLinkViewModel.shareApp(shareText: "ふるさと納税「\(item.productName)」がおすすめだよ！\n「ふるログ」でふるさと納税を管理してみてね♪", shareLink: "https://apps.apple.com/jp/app/mapping/id1639823172")
-            }else{
-                shareLinkViewModel.shareApp(shareText: "ふるさと納税「\(item.productName)」がおすすめだよ！", shareLink: item.url)
+        Button {
+            if item.url.isEmpty {
+                ShareContentUtility.share(text: "ふるさと納税「\(item.productName)」がおすすめだよ！\n「ふるログ」でふるさと納税を管理してみてね♪", urlStr: "https://apps.apple.com/jp/app/mapping/id1639823172")
+            } else {
+                ShareContentUtility.share(text: "ふるさと納税「\(item.productName)」がおすすめだよ！", urlStr: item.url)
             }
-        }, label: {
+        } label: {
             Image(systemName: "square.and.arrow.up")
-        })
+                .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+        }
     }
 }
 

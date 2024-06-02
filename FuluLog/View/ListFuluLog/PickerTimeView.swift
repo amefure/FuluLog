@@ -10,11 +10,11 @@ import RealmSwift
 
 // ListFuluLogView > PickerTimeView
 struct PickerTimeView: View {
-    @Binding var selectTime:String
     
+    @Binding var selectTime:String
     @ObservedResults(FuluLogRecord.self) var allFuleRelam
     
-    private var timeArray:[String] {
+    private var timeArray: [String] {
         var array:[String] = ["all"]
         for item in allFuleRelam {
             array.append(String(item.timeString.prefix(4)))
@@ -24,15 +24,16 @@ struct PickerTimeView: View {
     }
     
     var body: some View {
-        Image(systemName: "calendar").foregroundColor(.orange)
+        Image(systemName: "calendar")
+            .foregroundColor(.orange)
         
         Picker(selection: $selectTime, content: {
             ForEach(timeArray,id:\.self) { item in
                 Text(item)
             }
             
-        }, label: {
-        }).padding(.trailing)
+        }, label: { }
+        ).padding(.trailing)
             .frame(minWidth: 100)
     }
 }

@@ -33,7 +33,7 @@ struct EntryFavoriteBtnView: View {
                 Text("キャンセル")
             })
             Button(action: {
-                realmDataBase.favorite_createRecord(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,time: DisplayDateViewModel().getConvertStringDate(item.timeString))
+                realmDataBase.favorite_createRecord(productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url,memo: item.memo,time: DateFormatUtility().getConvertStringDate(item.timeString))
                 isAlertEntry = true
             }, label: {
                 Text("OK")

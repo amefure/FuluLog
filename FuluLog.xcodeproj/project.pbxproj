@@ -11,28 +11,33 @@
 		121F7F4B29C3C5260017F5E2 /* FuluLogRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4A29C3C5260017F5E2 /* FuluLogRealmModel.swift */; };
 		121F7F4D29C3C7540017F5E2 /* RealmDataBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */; };
 		121F7F4F29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */; };
-		121F7F5129CCF9590017F5E2 /* UserDefaultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F5029CCF9590017F5E2 /* UserDefaultsViewModel.swift */; };
+		121F7F5129CCF9590017F5E2 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F5029CCF9590017F5E2 /* UserDefaultsManager.swift */; };
 		121F7F8929D1DE250017F5E2 /* TransferConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */; };
-		121F7F8D29D246EC0017F5E2 /* ShareLinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F8C29D246EC0017F5E2 /* ShareLinkModel.swift */; };
-		121F7F8F29D247140017F5E2 /* ShareLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F8E29D247140017F5E2 /* ShareLinkViewModel.swift */; };
-		121F7F9329D47BDC0017F5E2 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F9229D47BDC0017F5E2 /* Modifier.swift */; };
 		121F7F9629D5A6250017F5E2 /* InputDatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F9529D5A6250017F5E2 /* InputDatePickerView.swift */; };
-		121F7F9829D5A82E0017F5E2 /* InputAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F9729D5A82E0017F5E2 /* InputAmountView.swift */; };
-		1244A58829C26C93003F2FE2 /* DeviceSizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58729C26C93003F2FE2 /* DeviceSizeViewModel.swift */; };
-		1244A58A29C26D5C003F2FE2 /* DisplayDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58929C26D5C003F2FE2 /* DisplayDateViewModel.swift */; };
-		1244A58C29C26EA7003F2FE2 /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58B29C26EA7003F2FE2 /* ValidationViewModel.swift */; };
+		123DA73F2C0C35C70016CFCB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 123DA73E2C0C35C70016CFCB /* Images.xcassets */; };
+		123DA7412C0C362D0016CFCB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 123DA7402C0C362D0016CFCB /* Localizable.strings */; };
+		123DA7452C0C36990016CFCB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA7432C0C36990016CFCB /* Strings.swift */; };
+		123DA7462C0C36990016CFCB /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA7442C0C36990016CFCB /* Assets.swift */; };
+		123DA7482C0C4B210016CFCB /* StaticUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA7472C0C4B210016CFCB /* StaticUrls.swift */; };
+		1244A58829C26C93003F2FE2 /* DeviceSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58729C26C93003F2FE2 /* DeviceSizeUtility.swift */; };
+		1244A58A29C26D5C003F2FE2 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58929C26D5C003F2FE2 /* DateFormatUtility.swift */; };
+		1244A58C29C26EA7003F2FE2 /* ValidationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58B29C26EA7003F2FE2 /* ValidationUtility.swift */; };
 		125AACCA291D372100F7B542 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125AACC9291D372100F7B542 /* WidgetKit.framework */; };
 		125AACCC291D372100F7B542 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 125AACCB291D372100F7B542 /* SwiftUI.framework */; };
 		125AACCF291D372100F7B542 /* FuluLogWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125AACCE291D372100F7B542 /* FuluLogWidget.swift */; };
 		125AACD1291D372300F7B542 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 125AACD0291D372300F7B542 /* Assets.xcassets */; };
 		125AACD5291D372300F7B542 /* FuluLogWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		127EFBCD2C0978F800DA117B /* UserDefaultsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127EFBCC2C0978F800DA117B /* UserDefaultsRepository.swift */; };
+		127EFBD02C09799D00DA117B /* RepositoryDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127EFBCF2C09799D00DA117B /* RepositoryDependency.swift */; };
+		127EFBD22C097C5A00DA117B /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127EFBD12C097C5A00DA117B /* Modifier.swift */; };
 		1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */; };
 		1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434528DA66D500A20A84 /* RewardBtnView.swift */; };
 		1292434828DB554700A20A84 /* EntryFavoriteBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */; };
 		1292434A28DB55CF00A20A84 /* ShareBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292434928DB55CF00A20A84 /* ShareBtnView.swift */; };
+		129DF62E2C0984AE002A1A09 /* ShareContentUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129DF62D2C0984AE002A1A09 /* ShareContentUtility.swift */; };
 		12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */; };
-		12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239328CCBD4D00CCED4F /* ContentView.swift */; };
-		12ED239628CCBD4D00CCED4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12ED239528CCBD4D00CCED4F /* Assets.xcassets */; };
+		12ED239428CCBD4D00CCED4F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED239328CCBD4D00CCED4F /* RootView.swift */; };
+		12ED239628CCBD4D00CCED4F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12ED239528CCBD4D00CCED4F /* Colors.xcassets */; };
 		12ED239928CCBD4D00CCED4F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12ED239828CCBD4D00CCED4F /* Preview Assets.xcassets */; };
 		12ED23A228CCBDDA00CCED4F /* FuluLogModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23A128CCBDDA00CCED4F /* FuluLogModels.swift */; };
 		12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12ED23A328CCBE3500CCED4F /* FileController.swift */; };
@@ -82,16 +87,17 @@
 		121F7F4A29C3C5260017F5E2 /* FuluLogRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogRealmModel.swift; sourceTree = "<group>"; };
 		121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseModel.swift; sourceTree = "<group>"; };
 		121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseViewModel.swift; sourceTree = "<group>"; };
-		121F7F5029CCF9590017F5E2 /* UserDefaultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsViewModel.swift; sourceTree = "<group>"; };
+		121F7F5029CCF9590017F5E2 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferConfigurationViewModel.swift; sourceTree = "<group>"; };
-		121F7F8C29D246EC0017F5E2 /* ShareLinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkModel.swift; sourceTree = "<group>"; };
-		121F7F8E29D247140017F5E2 /* ShareLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkViewModel.swift; sourceTree = "<group>"; };
-		121F7F9229D47BDC0017F5E2 /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		121F7F9529D5A6250017F5E2 /* InputDatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDatePickerView.swift; sourceTree = "<group>"; };
-		121F7F9729D5A82E0017F5E2 /* InputAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAmountView.swift; sourceTree = "<group>"; };
-		1244A58729C26C93003F2FE2 /* DeviceSizeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeViewModel.swift; sourceTree = "<group>"; };
-		1244A58929C26D5C003F2FE2 /* DisplayDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDateViewModel.swift; sourceTree = "<group>"; };
-		1244A58B29C26EA7003F2FE2 /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
+		123DA73E2C0C35C70016CFCB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		123DA7402C0C362D0016CFCB /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		123DA7432C0C36990016CFCB /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		123DA7442C0C36990016CFCB /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		123DA7472C0C4B210016CFCB /* StaticUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticUrls.swift; sourceTree = "<group>"; };
+		1244A58729C26C93003F2FE2 /* DeviceSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeUtility.swift; sourceTree = "<group>"; };
+		1244A58929C26D5C003F2FE2 /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
+		1244A58B29C26EA7003F2FE2 /* ValidationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtility.swift; sourceTree = "<group>"; };
 		125AACC8291D372100F7B542 /* FuluLogWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FuluLogWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		125AACC9291D372100F7B542 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		125AACCB291D372100F7B542 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -100,14 +106,18 @@
 		125AACD2291D372300F7B542 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		125AACDA291D376900F7B542 /* FuluLogWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuluLogWidgetExtension.entitlements; sourceTree = "<group>"; };
 		125AACDB291D377700F7B542 /* FuluLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuluLog.entitlements; sourceTree = "<group>"; };
+		127EFBCC2C0978F800DA117B /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
+		127EFBCF2C09799D00DA117B /* RepositoryDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDependency.swift; sourceTree = "<group>"; };
+		127EFBD12C097C5A00DA117B /* Modifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
 		1292433F28D6BF4E00A20A84 /* FavoriteFuluLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteFuluLogView.swift; sourceTree = "<group>"; };
 		1292434528DA66D500A20A84 /* RewardBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardBtnView.swift; sourceTree = "<group>"; };
 		1292434728DB554700A20A84 /* EntryFavoriteBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFavoriteBtnView.swift; sourceTree = "<group>"; };
 		1292434928DB55CF00A20A84 /* ShareBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareBtnView.swift; sourceTree = "<group>"; };
+		129DF62D2C0984AE002A1A09 /* ShareContentUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareContentUtility.swift; sourceTree = "<group>"; };
 		12ED238E28CCBD4D00CCED4F /* FuluLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuluLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogApp.swift; sourceTree = "<group>"; };
-		12ED239328CCBD4D00CCED4F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		12ED239528CCBD4D00CCED4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12ED239328CCBD4D00CCED4F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		12ED239528CCBD4D00CCED4F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		12ED239828CCBD4D00CCED4F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		12ED239F28CCBDA600CCED4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		12ED23A128CCBDDA00CCED4F /* FuluLogModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogModels.swift; sourceTree = "<group>"; };
@@ -155,7 +165,8 @@
 		121F7F9029D390B50017F5E2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				12ED239328CCBD4D00CCED4F /* ContentView.swift */,
+				12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */,
+				12ED239328CCBD4D00CCED4F /* RootView.swift */,
 				12ED23A528CCC02C00CCED4F /* EntryFuluLogView.swift */,
 				12ED23C628D5D37500CCED4F /* ListFuluLog */,
 				1292434228D70B9400A20A84 /* FavoriteFuluLog */,
@@ -166,12 +177,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		121F7F9129D47B950017F5E2 /* Extensions */ = {
+		121F7F9129D47B950017F5E2 /* Extension&Utility */ = {
 			isa = PBXGroup;
 			children = (
-				121F7F9229D47BDC0017F5E2 /* Modifier.swift */,
+				1244A58729C26C93003F2FE2 /* DeviceSizeUtility.swift */,
+				129DF62D2C0984AE002A1A09 /* ShareContentUtility.swift */,
+				1244A58B29C26EA7003F2FE2 /* ValidationUtility.swift */,
+				1244A58929C26D5C003F2FE2 /* DateFormatUtility.swift */,
+				127EFBD12C097C5A00DA117B /* Modifier.swift */,
 			);
-			path = Extensions;
+			path = "Extension&Utility";
 			sourceTree = "<group>";
 		};
 		121F7F9429D480270017F5E2 /* InputFuluLog */ = {
@@ -179,7 +194,6 @@
 			children = (
 				12ED23AE28CCC6E100CCED4F /* InputFuluLogView.swift */,
 				121F7F9529D5A6250017F5E2 /* InputDatePickerView.swift */,
-				121F7F9729D5A82E0017F5E2 /* InputAmountView.swift */,
 			);
 			path = InputFuluLog;
 			sourceTree = "<group>";
@@ -193,17 +207,31 @@
 			path = OldModels;
 			sourceTree = "<group>";
 		};
+		123DA73D2C0C35B40016CFCB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				12ED239528CCBD4D00CCED4F /* Colors.xcassets */,
+				123DA73E2C0C35C70016CFCB /* Images.xcassets */,
+				123DA7402C0C362D0016CFCB /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		123DA7422C0C363D0016CFCB /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				123DA7442C0C36990016CFCB /* Assets.swift */,
+				123DA7432C0C36990016CFCB /* Strings.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		1244A58629C26C56003F2FE2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				12ED23BC28D0C24D00CCED4F /* AdMobViewModels.swift */,
 				121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */,
-				121F7F5029CCF9590017F5E2 /* UserDefaultsViewModel.swift */,
-				1244A58B29C26EA7003F2FE2 /* ValidationViewModel.swift */,
-				121F7F8E29D247140017F5E2 /* ShareLinkViewModel.swift */,
-				1244A58929C26D5C003F2FE2 /* DisplayDateViewModel.swift */,
 				121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */,
-				1244A58729C26C93003F2FE2 /* DeviceSizeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -216,6 +244,23 @@
 				125AACD2291D372300F7B542 /* Info.plist */,
 			);
 			path = FuluLogWidget;
+			sourceTree = "<group>";
+		};
+		127EFBCB2C0978DB00DA117B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				127EFBCC2C0978F800DA117B /* UserDefaultsRepository.swift */,
+				127EFBCE2C09799600DA117B /* DI */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		127EFBCE2C09799600DA117B /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				127EFBCF2C09799D00DA117B /* RepositoryDependency.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 		1292434228D70B9400A20A84 /* FavoriteFuluLog */ = {
@@ -234,6 +279,14 @@
 				1292434928DB55CF00A20A84 /* ShareBtnView.swift */,
 			);
 			path = DetailFuluLog;
+			sourceTree = "<group>";
+		};
+		129DF62C2C098460002A1A09 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				121F7F5029CCF9590017F5E2 /* UserDefaultsManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		12ED238528CCBD4D00CCED4F = {
@@ -262,13 +315,15 @@
 			children = (
 				125AACDB291D377700F7B542 /* FuluLog.entitlements */,
 				12ED239F28CCBDA600CCED4F /* Info.plist */,
-				12ED239128CCBD4D00CCED4F /* FuluLogApp.swift */,
+				121F7F4829C3BF6B0017F5E2 /* GoogleService-Info.plist */,
+				123DA7422C0C363D0016CFCB /* Generated */,
+				123DA73D2C0C35B40016CFCB /* Resources */,
+				121F7F9129D47B950017F5E2 /* Extension&Utility */,
+				12ED23A028CCBDC300CCED4F /* Models */,
 				121F7F9029D390B50017F5E2 /* View */,
 				1244A58629C26C56003F2FE2 /* ViewModels */,
-				12ED23A028CCBDC300CCED4F /* Models */,
-				121F7F9129D47B950017F5E2 /* Extensions */,
-				12ED239528CCBD4D00CCED4F /* Assets.xcassets */,
-				121F7F4829C3BF6B0017F5E2 /* GoogleService-Info.plist */,
+				127EFBCB2C0978DB00DA117B /* Repository */,
+				129DF62C2C098460002A1A09 /* Managers */,
 				12ED239728CCBD4D00CCED4F /* Preview Content */,
 			);
 			path = FuluLog;
@@ -287,8 +342,8 @@
 			children = (
 				121F7F9929D5B1610017F5E2 /* OldModels */,
 				121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */,
+				123DA7472C0C4B210016CFCB /* StaticUrls.swift */,
 				121F7F4A29C3C5260017F5E2 /* FuluLogRealmModel.swift */,
-				121F7F8C29D246EC0017F5E2 /* ShareLinkModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,8 +491,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123DA7412C0C362D0016CFCB /* Localizable.strings in Resources */,
 				12ED239928CCBD4D00CCED4F /* Preview Assets.xcassets in Resources */,
-				12ED239628CCBD4D00CCED4F /* Assets.xcassets in Resources */,
+				123DA73F2C0C35C70016CFCB /* Images.xcassets in Resources */,
+				12ED239628CCBD4D00CCED4F /* Colors.xcassets in Resources */,
 				121F7F4929C3BF6B0017F5E2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,40 +556,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123DA7452C0C36990016CFCB /* Strings.swift in Sources */,
 				12ED23C828D5F35700CCED4F /* PickerTimeView.swift in Sources */,
-				12ED239428CCBD4D00CCED4F /* ContentView.swift in Sources */,
-				121F7F9329D47BDC0017F5E2 /* Modifier.swift in Sources */,
-				121F7F8F29D247140017F5E2 /* ShareLinkViewModel.swift in Sources */,
+				123DA7462C0C36990016CFCB /* Assets.swift in Sources */,
+				12ED239428CCBD4D00CCED4F /* RootView.swift in Sources */,
 				12ED23AA28CCC04800CCED4F /* RowFuluLogView.swift in Sources */,
 				12ED23C028D529D400CCED4F /* DonationLimitView.swift in Sources */,
 				121F7F4B29C3C5260017F5E2 /* FuluLogRealmModel.swift in Sources */,
-				121F7F5129CCF9590017F5E2 /* UserDefaultsViewModel.swift in Sources */,
+				121F7F5129CCF9590017F5E2 /* UserDefaultsManager.swift in Sources */,
 				1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */,
 				12ED23CA28D5F61100CCED4F /* SearchBoxView.swift in Sources */,
 				12ED23C228D5560E00CCED4F /* ListDonationLimitHistory.swift in Sources */,
 				12ED23AF28CCC6E100CCED4F /* InputFuluLogView.swift in Sources */,
-				1244A58A29C26D5C003F2FE2 /* DisplayDateViewModel.swift in Sources */,
+				1244A58A29C26D5C003F2FE2 /* DateFormatUtility.swift in Sources */,
 				121F7F4D29C3C7540017F5E2 /* RealmDataBaseModel.swift in Sources */,
 				12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */,
-				121F7F9829D5A82E0017F5E2 /* InputAmountView.swift in Sources */,
 				12ED23C428D5D01600CCED4F /* SumDonationAmountView.swift in Sources */,
-				1244A58C29C26EA7003F2FE2 /* ValidationViewModel.swift in Sources */,
+				1244A58C29C26EA7003F2FE2 /* ValidationUtility.swift in Sources */,
 				12ED23B328CDB1D900CCED4F /* UpdateFuluLogView.swift in Sources */,
 				121F7F8929D1DE250017F5E2 /* TransferConfigurationViewModel.swift in Sources */,
 				12ED23A628CCC02C00CCED4F /* EntryFuluLogView.swift in Sources */,
 				121F7F4F29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift in Sources */,
 				121F7F9629D5A6250017F5E2 /* InputDatePickerView.swift in Sources */,
-				1244A58829C26C93003F2FE2 /* DeviceSizeViewModel.swift in Sources */,
+				1244A58829C26C93003F2FE2 /* DeviceSizeUtility.swift in Sources */,
 				12ED23BD28D0C24D00CCED4F /* AdMobViewModels.swift in Sources */,
 				12ED23A228CCBDDA00CCED4F /* FuluLogModels.swift in Sources */,
 				1292434828DB554700A20A84 /* EntryFavoriteBtnView.swift in Sources */,
 				12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */,
 				12ED23AD28CCC20C00CCED4F /* SettingView.swift in Sources */,
 				12ED23B128CDAF4B00CCED4F /* DetailFuluLogView.swift in Sources */,
-				121F7F8D29D246EC0017F5E2 /* ShareLinkModel.swift in Sources */,
+				127EFBCD2C0978F800DA117B /* UserDefaultsRepository.swift in Sources */,
+				129DF62E2C0984AE002A1A09 /* ShareContentUtility.swift in Sources */,
+				123DA7482C0C4B210016CFCB /* StaticUrls.swift in Sources */,
+				127EFBD22C097C5A00DA117B /* Modifier.swift in Sources */,
 				1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */,
 				12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */,
 				1292434A28DB55CF00A20A84 /* ShareBtnView.swift in Sources */,
+				127EFBD02C09799D00DA117B /* RepositoryDependency.swift in Sources */,
 				12ED23A828CCC03C00CCED4F /* ListFuluLogView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +621,7 @@
 				INFOPLIST_FILE = FuluLogWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FuluLogWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -589,6 +650,7 @@
 				INFOPLIST_FILE = FuluLogWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FuluLogWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -654,7 +716,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -708,7 +770,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -740,6 +802,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -775,6 +838,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -10,8 +10,8 @@ import SwiftUI
 struct RewardBtnView: View {
     
     // MARK: - ViewModels
-    private let userDefaults = UserDefaultsViewModel()
-    private let displayDate = DisplayDateViewModel()
+    private let userDefaults = UserDefaultsManager()
+    private let displayDate = DateFormatUtility()
     @ObservedObject var reward = Reward() // MARK: - AdMob
     
     // MARK: - View
@@ -22,7 +22,7 @@ struct RewardBtnView: View {
             // 1日1回までしか視聴できないようにする
             if userDefaults.getLastAcquisitionDateKey() != displayDate.nowFullDateString() {
                 reward.showReward()          //  広告配信
-                userDefaults.setLastAcquisitionDateKey(now: displayDate.nowFullDateString())
+                userDefaults.setLastAcquisitionDateKey( displayDate.nowFullDateString())
                 userDefaults.addRecordLimitKey() // 報酬を付与
             }else{
                 isAlertReward = true
@@ -33,8 +33,10 @@ struct RewardBtnView: View {
                     .frame(width: 30)
                     .foregroundColor(.orange)
                 Text("広告を見て保存容量を追加する")
+                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                 Spacer()
-                Text("容量:\(userDefaults.getRecordLimitKey())")
+                Text("容量：\(userDefaults.getRecordLimitKey())")
+                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
             }
         }
         .onAppear() {

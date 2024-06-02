@@ -11,71 +11,96 @@ import RealmSwift
 struct ListFuluLogView: View {
     
     // MARK: - ViewModels
-    private let validation = ValidationViewModel()
+    private let validation = ValidationUtility()
     private let realmDataBase = RealmDataBaseViewModel()
-    private let userDefaults = UserDefaultsViewModel()
-    private let deviceSize = DeviceSizeViewModel()
+    private let userDefaults = UserDefaultsManager()
     
     @ObservedResults(FuluLogRecord.self) var allFuleRelam
     
-    @State var searchText:String = ""    // Binding-SearchBoxView
-    @State var selectTime:String = "all" // Binding-PickerTimeView
+    @State private var searchText = ""
+    @State private var selectTime = "all"
+    @State private var showEntryView = false
     
     // MARK: - List Filtering Data
-   private var realm_filteringAllFuludata:[FuluLogRecord]{
-        if searchText.isEmpty && selectTime == "all"{
+    private var realm_filteringAllFuludata:[FuluLogRecord] {
+        if searchText.isEmpty && selectTime == "all" {
             // フィルタリングなし
             return allFuleRelam.reversed().sorted(by: {$0.time > $1.time})
-        }else if searchText.isEmpty && selectTime != "all" {
+        } else if searchText.isEmpty && selectTime != "all" {
             // 年数のみ
             return allFuleRelam.filter({$0.timeString.contains(selectTime)}).sorted(by: {$0.time > $1.time})
-        }else if searchText.isEmpty == false &&  selectTime != "all" {
+        } else if searchText.isEmpty == false &&  selectTime != "all" {
             // 検索値＆年数
             return allFuleRelam.reversed().filter({$0.productName.contains(searchText)}).filter({$0.timeString.contains(selectTime)}).sorted(by: {$0.time > $1.time})
-        }else{
+        } else {
             // 検索値のみ
             return allFuleRelam.reversed().filter({$0.productName.contains(searchText)}).sorted(by: {$0.time > $1.time})
         }
     }
     
-
+    
     var body: some View {
         
-        NavigationView{
-            VStack(spacing:0){
-                // MARK: - Header
-                HeaderView(headerTitle: "寄付履歴")
+        
+        VStack(spacing:0) {
+            // MARK: - Header
+            HeaderView(
+                headerTitle: "寄付履歴",
+                trailingIcon: "plus.circle.fill",
+                trailingAction: {
+                    showEntryView = true
+                }
+            )
+            
+            // MARK: - SearchBox
+            SearchBoxView(searchText: $searchText)
+            
+            // MARK: - 寄付金額＆日付Picker
+            HStack {
                 
-                // MARK: - SearchBox
-                SearchBoxView(searchText: $searchText)
+                // MARK: - Display
+                SumDonationAmountView(selectTime: $selectTime)
                 
-                // MARK: - 寄付金額＆日付Picker
-                HStack{
-                    
-                    // MARK: - Display
-                    SumDonationAmountView(selectTime: $selectTime)
-                    
-                    Spacer()
-                    
-                    // MARK: - Picker
-                    PickerTimeView(selectTime: $selectTime)
-                    
-                }.frame(width:deviceSize.deviceWidth).padding([.top,.horizontal]).background(Color("BaseColor"))
+                Spacer()
                 
+                // MARK: - Picker
+                PickerTimeView(selectTime: $selectTime)
                 
-                // MARK: - List
-                    List(realm_filteringAllFuludata){ item in
-                        NavigationLink(destination: {DetailFuluLogView(item: item,isOn: item.request,isFavorite: false)
-                        }, label: {
-                            RowFuluLogView(item: item, isFavorite: false)
-                        })
-                       
-                    }.listStyle(GroupedListStyle())
+            }.frame(width:DeviceSizeUtility.deviceWidth)
+                .padding([.top,.horizontal])
+                .background(Asset.Colors.baseColor.swiftUIColor)
+            
+            
+            // MARK: - List
+            if realm_filteringAllFuludata.count != 0 {
+                List(realm_filteringAllFuludata) { item in
                     
+                    NavigationLink {
+                        DetailFuluLogView(
+                            item: item,
+                            isOn: item.request,
+                            isFavorite: false
+                        )
+                    } label: {
+                        RowFuluLogView(item: item, isFavorite: false)
+                    }
+                    
+                }.scrollContentBackground(.hidden)
+                    .background(Asset.Colors.baseColor.swiftUIColor)
+            } else {
+                Spacer()
                 
-            }.ignoresSafeArea(.keyboard, edges: .bottom)
+                Text("表示するデータがありません。")
+                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                
+                Spacer()
+            }
+            
+        }.ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarHidden(true)
-        }.navigationViewStyle(.stack) // NavigationView
+            .sheet(isPresented: $showEntryView, content: {
+                EntryFuluLogView(isModal: $showEntryView)
+            })
     }
 }
 

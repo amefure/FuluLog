@@ -14,8 +14,8 @@ struct DonationLimitView: View {
     
     // MARK: - ViewModels
     private let realmDataBase = RealmDataBaseViewModel()
-    private let userDefaults = UserDefaultsViewModel()
-    private let displayDate = DisplayDateViewModel()
+    private let userDefaults = UserDefaultsManager()
+    private let displayDate = DateFormatUtility()
     
     @ObservedResults(UserDonationInfoRecord.self) var allUserDonationInfoRecord
     

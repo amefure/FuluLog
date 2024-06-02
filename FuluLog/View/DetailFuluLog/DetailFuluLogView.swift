@@ -13,9 +13,8 @@ struct DetailFuluLogView: View {
     
     // MARK: - ViewModels
     private let realmDataBase = RealmDataBaseViewModel()
-    private let userDefaults = UserDefaultsViewModel()
-    private let deviceSize = DeviceSizeViewModel()
-    private let displayDate = DisplayDateViewModel()
+    private let userDefaults = UserDefaultsManager()
+    private let displayDate = DateFormatUtility()
     
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
@@ -28,18 +27,18 @@ struct DetailFuluLogView: View {
     @ObservedResults(FavoriteFuluLogRecord.self) var allFavoriteFuluLogRecord
     
     // MARK: - View
-    @State var isModal:Bool = false
-    @State var isAlertDelete:Bool = false
-    @State var isOn:Bool // ワンストップ申請トグルボタン
+    @State private var showUpdateView = false
+    @State private var isAlertDelete = false
+    @State var isOn = false// ワンストップ申請トグルボタン
     
-    var isFavorite:Bool // Favoriteからの呼出
+    public var isFavorite: Bool // Favoriteからの呼出
     
     
     // MARK: - Method
     private  func updateItem(){
         if let result = allFuleRelam.first(where: { $0.id == item.id }){
             self.item = result
-        }else{
+        } else {
             if let result2 = allFavoriteFuluLogRecord.first(where: { $0.id == item.id }){
                 self.item = result2
             }
@@ -56,81 +55,104 @@ struct DetailFuluLogView: View {
     
     
     var body: some View {
-        VStack{
-            
+        VStack {
             
             // MARK: - Header
-            HeaderView(headerTitle: item.productName,leftImageName: "chevron.backward",rightImageName: "square.and.pencil", parentLeftButtonFunction: {dismiss()}, parentRightButtonFunction: { isModal = true})
+            HeaderView(
+                headerTitle: item.productName,
+                leadingIcon: "chevron.backward",
+                trailingIcon: "square.and.pencil",
+                leadingAction: { dismiss() },
+                trailingAction: { showUpdateView = true}
+            )
             
-            ScrollView{
+            ScrollView {
                 
-                // MARK: - productName / municipality / time
-                VStack(alignment:.leading){
+                VStack(alignment: .leading) {
                     HStack{
-                        Text(item.productName).font(.system(size: 20)).fontWeight(.bold)
+                        // 商品名
+                        Text(item.productName)
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                        
                         Spacer()
                         
-                        // MARK: - ShareBtn
+                        // 共有ボタン
                         ShareBtnView(item: item)
                         
-                        // MARK: - EntryFavoriteBtn
-                        if isFavorite == false{
+                        // お気に入り登録ボタン
+                        if isFavorite == false {
                             EntryFavoriteBtnView(item: item)
+                                .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                         }
                         
                     }
-                    // MARK: -
+                    
                     HStack{
                         Text("寄付した自治体：")
                         Text(item.municipality)
                         Spacer()
                         Text(item.timeString)
-                    }.font(.system(size: 15)).padding(.vertical,5).foregroundColor(.gray)
-                    Rectangle().fill(.gray).frame(height: 2).opacity(0.5)
+                    }.font(.system(size: 15))
+                        .padding(.vertical, 5)
+                        .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                    
+                    Rectangle()
+                        .fill(Asset.Colors.exText.swiftUIColor)
+                        .frame(height: 2)
+                        .opacity(0.5)
+                    
                 }.padding(.vertical)
-                // MARK: - productName / municipality / time
                 
-                // MARK: - amount
+                
                 HStack{
-                    Text("\(item.amount)").font(.system(size: 35)).foregroundColor(.orange)
-                    Text("円").font(.system(size: 20)).offset(x: 0, y: 5)
+                    Text("\(item.amount)")
+                        .font(.system(size: 35))
+                        .foregroundColor(.orange)
+                        .fontWeight(.bold)
+                    Text("円")
+                        .font(.system(size: 20))
+                        .offset(x: 0, y: 5)
+                        .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                 }.padding(.bottom)
-                // MARK: - amount
+
                 
-                // MARK: - memo
-                HStack(){
-                    Text(item.memo).foregroundColor(.gray).padding()
+                HStack {
+                    Text(item.memo)
+                        .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                        .padding()
                     Spacer()
-                }.frame(width:deviceSize.deviceWidth - 30).background(Color("BaseColor")).cornerRadius(5)
-                // MARK: - memo
+                }.frame(width: DeviceSizeUtility.deviceWidth - 30)
+                    .background(Asset.Colors.baseColor.swiftUIColor)
+                    .cornerRadius(5)
                 
                 
-                // MARK: - url
-                HStack{
+                HStack {
                     Text("購入URL：")
-                    if item.url.isEmpty{
+                        .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                    if item.url.isEmpty {
                         Text("URL未登録")
-                    }else{
-                        Link(destination: {
-                            URL(string: item.url)!
-                        }(), label: {
-                            HStack{
+                            .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                    } else {
+                        Link(destination: URL(string: item.url)!) {
+                            HStack {
                                 Text("\(item.url)")
+                                    .lineLimit(1)
                                 Image(systemName: "link")
                             }
-                        })
+                        }
                     }
                 }.padding(.vertical)
-                // MARK: - url
                 
                 
                 Spacer()
                 
-                // MARK: - ワンストップ申請発送
                 if isFavorite == false {
                     Toggle(isOn: $isOn) {
                         HStack{
                             Text("ワンストップ申請発送")
+                                .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                             Image(systemName: isOn == true ? "checkmark.seal.fill" : "checkmark.seal")
                                 .foregroundColor(isOn == true ? .orange : .gray)
                         }
@@ -143,11 +165,10 @@ struct DetailFuluLogView: View {
                             updateAppGroupandWidget()
                         }
                 }
-                // MARK: - ワンストップ申請発送
                 
                 Spacer()
                 
-                // MARK: - DeleteBtn
+            
                 Button(action: {
                     isAlertDelete = true
                 }, label: {
@@ -156,41 +177,42 @@ struct DetailFuluLogView: View {
                         Text(isFavorite ? "お気に入りを解除する" : "寄付情報を削除する")
                     }
                 }).padding()
-                    .background(Color("SubColor"))
-                    .foregroundColor(Color("ThemaColor"))
+                    .background(Asset.Colors.subColor.swiftUIColor)
+                    .foregroundColor(Asset.Colors.themaColor.swiftUIColor)
                     .cornerRadius(5)
-                // MARK: - DeleteBtn
                 
             } // ScrollView
             
             // MARK: - AdMob
             AdMobBannerView().frame(height: 40).padding(.vertical)
             
-        } // Vstack
-        .textSelection(.enabled)
-        .padding(.horizontal)
-        .navigationBarHidden(true)
-        // MARK: - DeleteAlert
-        .alert(Text(isFavorite ? "お気に入りを解除しますか？" : "寄付情報を削除しますか？"),isPresented: $isAlertDelete){
-            Button(role: .destructive, action: {
-                withAnimation(.linear(duration: 0.3)){
-                    if isFavorite == false {
-                        realmDataBase.deleteRecord(id: item.id)
-                    }else{
-                        // MARK: - Favorite
-                        realmDataBase.favorite_deleteRecord(id: item.id)
+        }.background(Asset.Colors.baseColor.swiftUIColor)
+            .textSelection(.enabled)
+            .padding(.horizontal)
+            .navigationBarHidden(true)
+            .alert(Text(isFavorite ? "お気に入りを解除しますか？" : "寄付情報を削除しますか？"),isPresented: $isAlertDelete){
+                Button(role: .destructive, action: {
+                    withAnimation(.linear(duration: 0.3)){
+                        if isFavorite == false {
+                            realmDataBase.deleteRecord(id: item.id)
+                        } else {
+                            // MARK: - Favorite
+                            realmDataBase.favorite_deleteRecord(id: item.id)
+                        }
+                        dismiss()
                     }
-                    dismiss()
-                }
-            }, label: {
-                Text(isFavorite ? "解除する" : "削除する")
+                }, label: {
+                    Text(isFavorite ? "解除する" : "削除する")
+                })
+            } message: {
+                
+            }.sheet(isPresented: $showUpdateView, content: {
+                UpdateFuluLogView(
+                    item: item,
+                    isModal: $showUpdateView,
+                    parentUpdateItemFunction: updateItem,
+                    isFavorite: isFavorite
+                )
             })
-        } message: {
-            
-        }
-        // MARK: - UpdateModal
-        .sheet(isPresented: $isModal, content: {
-            UpdateFuluLogView(item: item,isModal:$isModal,parentUpdateItemFunction: updateItem,isFavorite: isFavorite)
-        })
     }
 }

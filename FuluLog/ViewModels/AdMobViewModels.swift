@@ -10,7 +10,17 @@ import Foundation
 import UIKit
 import GoogleMobileAds
 
+// MARK: - Widgetターゲットもビルド番号とバージョンをインクリメント！！！
 
+// MARK: - アプリID
+// テスト  : ca-app-pub-3940256099942544~1458002511
+// 本番  　: ca-app-pub-4475684244743114~2052208141
+// MARK: - バナー
+// テスト  : ca-app-pub-3940256099942544/2934735716
+// 本番  　: ca-app-pub-4475684244743114/4486799795
+// MARK: - リワード
+// テスト  : ca-app-pub-3940256099942544/1712485313
+// 本番  　: ca-app-pub-4475684244743114/6729819750
 
 struct AdMobBannerView: UIViewRepresentable {
     func makeUIView(context: Context) -> GADBannerView {

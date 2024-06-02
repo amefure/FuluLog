@@ -9,91 +9,109 @@ import SwiftUI
 
 struct SettingView: View {
     
-    // MARK: - ViewModels
-    private let shareLinkViewModel = ShareLinkViewModel()
-    private let deviceSize = DeviceSizeViewModel()
-
+    private let deviceSize = DeviceSizeUtility()
+    
     // MARK: - View
-    @State var isShowTextField:Bool = false    // 上限入力Field
-    @State var limitAmount:String = ""         // 上限金額
+    @State private var isShowTextField = false    // 上限入力Field
+    @State private var limitAmount = ""         // 上限金額
     @Environment(\.colorScheme) var colorScheme : ColorScheme
     
     var body: some View {
-        NavigationView{
-            VStack(spacing:0){
-                
-                // MARK: - Header
-                HeaderView(headerTitle: "設定")
-                
-                Spacer()
-                
-                // MARK: - 寄付金上限金額
-                Section(content: {
-                    DonationLimitView()
-                }, header: {
-                    HStack{
-                        Text("今年の寄付金上限金額設定")
-                            .font(.system(size: 20))
-                            .fontWeight(.bold)
-                            .foregroundColor(.gray)
-                            .padding()
-                        Spacer()
-                    }
-                })
-                
-                Spacer()
-                
-                // MARK: - List
-                Section(content: {
-                    List{
-                        // 1:容量追加
-                        RewardBtnView()
-                        // 1:容量追加
-                        
-                        
-                        // 2:レビューページ
-                        Link(destination:URL.init(string: "https://apps.apple.com/jp/app/%E3%81%B5%E3%82%8B%E3%83%AD%E3%82%B0/id1644963031?action=write-review")!, label: {
-                            HStack{
-                                Image(systemName:"hand.thumbsup").frame(width: 30).frame(width: 30).foregroundColor(.orange)
+        
+        VStack(spacing: 0) {
+            
+            // MARK: - Header
+            HeaderView(headerTitle: "設定")
+            
+            Spacer()
+            
+            // MARK: - 寄付金上限金額
+            Section(content: {
+                DonationLimitView()
+            }, header: {
+                HStack{
+                    Text("今年の寄付金上限金額設定")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .foregroundColor(.gray)
+                        .padding()
+                    Spacer()
+                }
+            })
+            
+            Spacer()
+            
+            // MARK: - List
+            Section(content: {
+                List {
+                    // 1:容量追加
+                    RewardBtnView()
+                    // 1:容量追加
+                    
+                    
+                    // 2:レビューページ
+                    if let url = URL(string: StaticUrls.APP_REVIEW_URL) {
+                        Link(destination: url, label: {
+                            HStack {
+                                Image(systemName:"hand.thumbsup")
+                                    .frame(width: 30)
+                                    .foregroundStyle(.orange)
                                 Text("アプリをレビューする")
+                                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                             }
                         })
-                        // 2:レビューページ
-                        
-                        
-                        // 3:シェアボタン
-                        Button(action: {
-                            shareLinkViewModel.shareApp(shareText: "寄付したふるさと納税を管理できるアプリ「ふるログ」を使ってみてね♪", shareLink: "https://apps.apple.com/jp/app/%E3%81%B5%E3%82%8B%E3%83%AD%E3%82%B0/id1644963031")
-                        }) {
-                            HStack{
-                                Image(systemName:"star.bubble").frame(width: 30).frame(width: 30).foregroundColor(.orange)
-                                Text("ふるログをオススメする")
-                            }
-                        }
-                        // 3:シェアボタン
-                        
-                        
-                        // 4:利用規約とプライバシーポリシー
-                        Link(destination:URL.init(string: "https://tech.amefure.com/app-terms-of-service")!, label: {
-                            HStack{
-                                Image(systemName:"note.text").frame(width: 30).frame(width: 30).foregroundColor(.orange)
-                                Text("利用規約とプライバシーポリシー")
-                                Image(systemName:"link").font(.caption)
-                            }
-                        })
-                        // 4:プライバシーポリシー
-                        
-                    }.listStyle(GroupedListStyle()) // Listのスタイルを横に広げる
-                }, header: {
-                    HStack{
-                        Text("設定").font(.system(size: 20)).fontWeight(.bold).foregroundColor(.gray).padding()
-                        Spacer()
                     }
-                })
-                
-            }.foregroundColor(colorScheme == .dark ? .white : .black) // VStack
-        .navigationBarHidden(true)
-        }.navigationViewStyle(.stack) // NavigationView
+                    
+                    // 2:レビューページ
+                    
+                    
+                    // 3:シェアボタン
+                    Button(action: {
+                        ShareContentUtility.share(text: "寄付したふるさと納税を管理できるアプリ「ふるログ」を使ってみてね♪", urlStr: StaticUrls.APP_URL)
+                    }) {
+                        HStack{
+                            Image(systemName:"star.bubble")
+                                .frame(width: 30)
+                                .foregroundColor(.orange)
+                            Text("ふるログをオススメする")
+                                .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                        }
+                    }
+                    // 3:シェアボタン
+                    
+                    
+                    // 4:利用規約とプライバシーポリシー
+                    if let url = URL(string: StaticUrls.APP_TERMS_OF_SERVICE_URL) {
+                        Link(destination: url, label: {
+                            HStack{
+                                Image(systemName:"note.text")
+                                    .frame(width: 30)
+                                    .foregroundColor(.orange)
+                                Text("利用規約とプライバシーポリシー")
+                                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                                Image(systemName:"link")
+                                    .font(.caption)
+                                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                                
+                            }
+                        })
+                    }
+                    // 4:プライバシーポリシー
+                    
+                }.listStyle(GroupedListStyle()) // Listのスタイルを横に広げる
+                    .scrollContentBackground(.hidden)
+                        .background(Asset.Colors.baseColor.swiftUIColor)
+            }, header: {
+                HStack{
+                    Text("設定")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .foregroundColor(.gray)
+                        .padding()
+                    Spacer()
+                }
+            })
+        }.navigationBarHidden(true)
     }
 }
 

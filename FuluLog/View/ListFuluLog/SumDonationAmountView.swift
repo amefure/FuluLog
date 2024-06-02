@@ -12,7 +12,7 @@ import RealmSwift
 
 struct SumDonationAmountView: View {
     // MARK: - ViewModels
-    private let displayDate = DisplayDateViewModel()
+    private let displayDate = DateFormatUtility()
     
     @Binding var selectTime:String
     
@@ -20,17 +20,17 @@ struct SumDonationAmountView: View {
     @ObservedResults(UserDonationInfoRecord.self) var allUserDonationInfoRecord
 
     // MARK: - Method
-    private func currentSelectionYear() -> String{
+    private func currentSelectionYear() -> String {
         // 2022 形式で年を返す
         if selectTime == "all"{
             return displayDate.nowYearString()
-        }else{
+        } else {
             return selectTime
         }
     }
     
-    private func CheckOverAmount() -> Bool{
-        if let index = allUserDonationInfoRecord.firstIndex(where: {$0.year == currentSelectionYear()}){
+    private func CheckOverAmount() -> Bool {
+        if let index = allUserDonationInfoRecord.firstIndex(where: { $0.year == currentSelectionYear()}) {
             if sumYearAmount(String(currentSelectionYear())) > allUserDonationInfoRecord[index].limitAmount {
                 return true // Over
             }
@@ -38,7 +38,7 @@ struct SumDonationAmountView: View {
         return false
     }
     
-    private func sumYearAmount(_ year:String) -> Int{
+    private func sumYearAmount(_ year:String) -> Int {
         var sum = 0
 
         let filterData = allFuleRelam.filter({$0.timeString.prefix(4) == year })
@@ -52,9 +52,9 @@ struct SumDonationAmountView: View {
         
         Spacer()
         
-        VStack{
+        VStack {
             Text("\(currentSelectionYear())年：合計寄付金額")
-                .foregroundColor(.gray)
+                .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                 .font(.system(size: 12))
             HStack{
                 Text("\(sumYearAmount(String(currentSelectionYear())))")
@@ -65,17 +65,19 @@ struct SumDonationAmountView: View {
             }
         }
         if let index = allUserDonationInfoRecord.firstIndex(where: {$0.year == currentSelectionYear()}){
-            Text("/").offset(x: 0, y: 5)
-            VStack{
+            Text("/")
+                .offset(x: 0, y: 5)
+            VStack {
                 Text("上限寄付金額")
-                    .foregroundColor(.gray)
+                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                     .font(.system(size: 12))
-                HStack{
+                HStack {
                     Text("\(allUserDonationInfoRecord[index].limitAmount)")
                         .foregroundColor(.orange)
                         .lineLimit(1)
                     Text("円")
                         .font(.system(size: 10))
+                        .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                 }
             }
             Spacer()

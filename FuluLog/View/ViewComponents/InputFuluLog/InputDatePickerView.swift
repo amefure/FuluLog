@@ -10,8 +10,7 @@ import SwiftUI
 struct InputDatePickerView: View {
     
     // MARK: - ViewModels
-    private let deviceSize = DeviceSizeViewModel()
-    private let displayDate = DisplayDateViewModel()
+    private let displayDate = DateFormatUtility()
     
     @Binding var time:String              // 時間 String
     @State var selectedTime:Date = Date() // 時間
@@ -25,7 +24,7 @@ struct InputDatePickerView: View {
                 .environment(\.locale, Locale(identifier: "ja_JP"))
                 .labelsHidden()
                 .padding(5)
-                .frame(width: deviceSize.flexWidth)
+                .frame(width: DeviceSizeUtility.flexWidth)
             
         }.accentColor(.orange)
             .onChange(of: selectedTime){ newValue in

@@ -12,30 +12,48 @@ struct FavoriteFuluLogView: View {
     
     @ObservedResults(FavoriteFuluLogRecord.self) var allFavoriteFuluRelam
     
-    // MARK: - View
-    @State var isModal:Bool = false
+    @State private var showEntryView = false
+    
+    private var showList: [FavoriteFuluLogRecord] {
+        return allFavoriteFuluRelam.reversed().sorted(by: {$0.time > $1.time})
+    }
     
     var body: some View {
-        NavigationView{
-            VStack(spacing:0){
-                // MARK: - Header
-                HeaderView(headerTitle: "お気に入りリスト",rightImageName: "star.bubble", parentRightButtonFunction: { isModal = true})
-                
+        VStack(spacing:0) {
+            // MARK: - Header
+            HeaderView(
+                headerTitle: "お気に入りリスト",
+                trailingIcon: "star.bubble",
+                trailingAction: { showEntryView = true}
+            )
+            
+            if showList.count == 0 {
                 // MARK: - List
-                List(allFavoriteFuluRelam.reversed().sorted(by: {$0.time > $1.time})){ item in
-                    NavigationLink(destination: {
-                        DetailFuluLogView(item: item,isOn: item.request,isFavorite: true)  
-                    },label: {
-                        RowFuluLogView(item: item,isFavorite: true)
-                        }
-                    )
+                List(showList){ item in
+                    
+                    NavigationLink {
+                        DetailFuluLogView(item: item, isOn: item.request, isFavorite: true)
+                    } label: {
+                        RowFuluLogView(item: item, isFavorite: true)
+                    }
+
                 }.listStyle(GroupedListStyle())
+                    .scrollContentBackground(.hidden)
+                    .background(Asset.Colors.baseColor.swiftUIColor)
+            } else {
+                Spacer()
                 
-            }.sheet(isPresented: $isModal, content: {
-                EntryFuluLogView(isModal:$isModal,isFavorite: true)
-            })
+                Text("表示するデータがありません。")
+                    .foregroundStyle(Asset.Colors.exText.swiftUIColor)
+                
+                Spacer()
+            }
+            
+        }.background(Asset.Colors.baseColor.swiftUIColor)
             .navigationBarHidden(true)
-        }.navigationViewStyle(.stack) // NavigationView
+            .sheet(isPresented: $showEntryView, content: {
+                EntryFuluLogView(isModal: $showEntryView, isFavorite: true)
+            })
     }
 }
 

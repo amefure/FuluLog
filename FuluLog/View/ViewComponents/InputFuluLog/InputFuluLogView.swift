@@ -10,69 +10,72 @@ import UIKit
 
 struct InputFuluLogView: View {
     
-    // MARK: - ViewModels
-    private let deviceSize = DeviceSizeViewModel()
     
     // MARK: - TextField & Receive
     @Binding var productName:String       // 商品名
     @Binding var amount:Int               // 金額情報
+    @State private var amountString = ""   // 金額情報 String
     @Binding var municipality:String      // 自治体
     @Binding var url:String               // URL
     @Binding var memo:String              // メモ
     @Binding var time:String              // 時間 String
     
     var body: some View {
-        ScrollView{
+        ScrollView {
             
-            VStack{
-                // MARK: - productName
-                Group{
-                    Text("商品名")
+            VStack {
+                
+                Group {
+                    Text("商品名（＊）")
                         .inputItemBackView()
                     TextField("北海道産ほたて 2kg", text: $productName)
-                        .frame(width: deviceSize.flexWidth)
+                        .frame(width: DeviceSizeUtility.flexWidth)
                 }
-                // MARK: - productName
                 
-                // MARK: - amount
-                InputAmountView(amount: $amount)
-                // MARK: - amount
+                Group {
+                    Text("寄付金額（＊）")
+                        .inputItemBackView()
+                    TextField("20000", text: $amountString)
+                        .keyboardType(.numberPad)
+                        .frame(width: DeviceSizeUtility.flexWidth)
+                }
+                .onChange(of: amountString) { newValue in
+                    // 入力時数値変換用
+                    amount = Int(newValue) ?? -1
+                }.onChange(of: amount) { newValue in
+                    // データリセット & 更新View初期値格納用
+                    amountString = amount != -1 ? String(newValue) : ""
+                }
                 
-                // MARK: - municipality
-                Group{
+                Group {
                     Text("自治体名")
                         .inputItemBackView()
                     TextField("北海道札幌市", text: $municipality)
-                        .frame(width: deviceSize.flexWidth)
+                        .frame(width: DeviceSizeUtility.flexWidth)
                 }
-                // MARK: - municipality
                 
-                // MARK: - url
-                Group{
+                Group {
                     Text("購入URL(※有効なURLを入力してください)")
                         .inputItemBackView()
-                    TextField("https://www.XXXX.com/post12", text: $url)
-                        .frame(width: deviceSize.flexWidth)
+                    TextField("URL", text: $url)
+                        .frame(width: DeviceSizeUtility.flexWidth)    
                 }
-                // MARK: - url
                 
-                // MARK: - memo
-                Group{
+                Group {
                     Text("Memo")
                         .inputItemBackView()
                     TextEditor(text: $memo)
-                        .frame(minHeight:deviceSize.isSESize ? 60 : 150)
-                        .frame(width: deviceSize.flexWidth)
+                        .frame(minHeight: DeviceSizeUtility.isSESize ? 60 : 150)
+                        .frame(width: DeviceSizeUtility.flexWidth)
+                        .background(.white)
                 }
-                // MARK: - memo
                 
-                // MARK: - time
                 InputDatePickerView(time: $time)
-                // MARK: - time
                 
             }
-        }
-        .padding()
-        .textFieldStyle(RoundedBorderTextFieldStyle())
+        }.scrollContentBackground(.hidden)
+            .background(Asset.Colors.baseColor.swiftUIColor)
+            .padding()
+            .textFieldStyle(RoundedBorderTextFieldStyle())
     }
 }
