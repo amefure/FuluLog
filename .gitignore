@@ -42,6 +42,7 @@ Pods/
 
 # Firebase
 GoogleService-Info.plist
+FuluLog/View/Components/AdMobView.swift
 
 # Carthage
 Carthage/Build/
