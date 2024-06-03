@@ -33,7 +33,7 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    var count:Int = 0
+    var count: Int = 0
 }
 
 struct FuluLogWidgetEntryView : View {

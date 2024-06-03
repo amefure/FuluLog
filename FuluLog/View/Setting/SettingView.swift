@@ -31,10 +31,10 @@ struct SettingView: View {
             }, header: {
                 HStack{
                     Text("今年の寄付金上限金額設定")
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                         .fontWeight(.bold)
-                        .foregroundColor(.gray)
-                        .padding()
+                        .foregroundStyle(.gray)
+                        .padding(8)
                     Spacer()
                 }
             })
@@ -102,12 +102,12 @@ struct SettingView: View {
                     .scrollContentBackground(.hidden)
                         .background(Asset.Colors.baseColor.swiftUIColor)
             }, header: {
-                HStack{
+                HStack {
                     Text("設定")
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                         .fontWeight(.bold)
-                        .foregroundColor(.gray)
-                        .padding()
+                        .foregroundStyle(.gray)
+                        .padding(8)
                     Spacer()
                 }
             })

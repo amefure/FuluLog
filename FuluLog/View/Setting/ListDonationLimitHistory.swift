@@ -13,46 +13,46 @@ import RealmSwift
 struct ListDonationLimitHistory: View {
     
     // MARK: - ViewModels
-    private let realmDataBase = RealmDataBaseViewModel()
-    
-    @ObservedResults(FuluLogRecord.self) var allFuleRelam
-    @ObservedResults(UserDonationInfoRecord.self) var allUserDonationInfoRecord
-    
-    private var realm_filteringAllFuludata:[UserDonationInfoRecord]{
-       return allUserDonationInfoRecord.sorted(by: { $0.year < $1.year }).reversed()
-    }
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
     
     // MARK: - Method
-    private func CheckOverAmount(_ year:String) -> Bool{
-        if let index = allUserDonationInfoRecord.firstIndex(where: {$0.year == year}){
-            if sumYearAmount(year) > allUserDonationInfoRecord[index].limitAmount {
-                return true // Over
-            }
+    private func CheckOverAmount(_ year:String) -> Bool {
+        if let userDonationInfo = realmViewModel.userDonationInfoList.first(where: {$0.year == year}) {
+            return sumYearAmount(year) > userDonationInfo.limitAmount
         }
         return false
     }
     
-    private func sumYearAmount(_ year:String) -> Int{
+    private func sumYearAmount(_ year:String) -> Int {
         var sum = 0
-
-        let filterData = allFuleRelam.filter({$0.timeString.prefix(4) == year })
+        let filterData = realmViewModel.records.filter({$0.timeString.prefix(4) == year })
         for data in filterData {
             sum += data.amount
         }
         return sum
     }
     
+    // MARK: - Environment
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        VStack{
+        VStack {
             
-            List(realm_filteringAllFuludata){ item in
+            // MARK: - Header
+            HeaderView(
+                headerTitle: "寄付金上限履歴",
+                leadingIcon: "chevron.backward",
+                leadingAction: { dismiss() }
+            )
+            
+            List(realmViewModel.userDonationInfoList) { item in
                 HStack{
                     Text("\(item.year)年")
                         .fontWeight(.bold)
                     Spacer()
                     HStack{
                         Text("\(sumYearAmount(item.year))")
-                            .foregroundColor(CheckOverAmount(item.year) ? .red : .orange)
+                            .foregroundStyle(CheckOverAmount(item.year) ? .red : .orange)
                             .lineLimit(1)
                         Text("円")
                             .font(.system(size: 15))
@@ -60,16 +60,16 @@ struct ListDonationLimitHistory: View {
                     Text("/")
                     HStack{
                         Text("\(item.limitAmount)")
-                            .foregroundColor(.orange)
+                            .foregroundStyle(.orange)
                             .lineLimit(1)
                         Text("円")
                             .font(.system(size: 15))
                     }
-                }.foregroundColor(.gray)
-            }
-            
-            AdMobBannerView().frame(height:150).padding(.bottom)
-        }
+                }.foregroundStyle(Asset.Colors.exText.swiftUIColor)
+            }.scrollContentBackground(.hidden)
+                .background(Asset.Colors.baseColor.swiftUIColor)
+        }.background(Asset.Colors.baseColor.swiftUIColor)
+            .navigationBarHidden(true)
     }
 }
 

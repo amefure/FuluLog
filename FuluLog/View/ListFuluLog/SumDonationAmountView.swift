@@ -14,10 +14,10 @@ struct SumDonationAmountView: View {
     // MARK: - ViewModels
     private let displayDate = DateFormatUtility()
     
-    @Binding var selectTime:String
+    @Binding var selectTime: String
     
-    @ObservedResults(FuluLogRecord.self) var allFuleRelam
-    @ObservedResults(UserDonationInfoRecord.self) var allUserDonationInfoRecord
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
+    
 
     // MARK: - Method
     private func currentSelectionYear() -> String {
@@ -30,18 +30,14 @@ struct SumDonationAmountView: View {
     }
     
     private func CheckOverAmount() -> Bool {
-        if let index = allUserDonationInfoRecord.firstIndex(where: { $0.year == currentSelectionYear()}) {
-            if sumYearAmount(String(currentSelectionYear())) > allUserDonationInfoRecord[index].limitAmount {
-                return true // Over
-            }
-        }
-        return false
+        guard let userDonationInfo = realmViewModel.userDonationInfoList.first(where: { $0.year == currentSelectionYear()}) else { return false }
+        return sumYearAmount(String(currentSelectionYear())) > userDonationInfo.limitAmount
     }
     
     private func sumYearAmount(_ year:String) -> Int {
         var sum = 0
 
-        let filterData = allFuleRelam.filter({$0.timeString.prefix(4) == year })
+        let filterData = realmViewModel.records.filter({$0.timeString.prefix(4) == year })
         for data in filterData {
             sum += data.amount
         }
@@ -64,7 +60,8 @@ struct SumDonationAmountView: View {
                     .font(.system(size: 12))
             }
         }
-        if let index = allUserDonationInfoRecord.firstIndex(where: {$0.year == currentSelectionYear()}){
+        
+        if let userDonationInfo = realmViewModel.userDonationInfoList.first(where: {$0.year == currentSelectionYear()}) {
             Text("/")
                 .offset(x: 0, y: 5)
             VStack {
@@ -72,7 +69,7 @@ struct SumDonationAmountView: View {
                     .foregroundStyle(Asset.Colors.exText.swiftUIColor)
                     .font(.system(size: 12))
                 HStack {
-                    Text("\(allUserDonationInfoRecord[index].limitAmount)")
+                    Text("\(userDonationInfo.limitAmount)")
                         .foregroundColor(.orange)
                         .lineLimit(1)
                     Text("円")
@@ -81,7 +78,7 @@ struct SumDonationAmountView: View {
                 }
             }
             Spacer()
-        } // if
+        }
     }
 }
 

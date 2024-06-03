@@ -11,30 +11,26 @@ import RealmSwift
 struct ListFuluLogView: View {
     
     // MARK: - ViewModels
-    private let validation = ValidationUtility()
-    private let realmDataBase = RealmDataBaseViewModel()
-    private let userDefaults = UserDefaultsManager()
-    
-    @ObservedResults(FuluLogRecord.self) var allFuleRelam
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
     
     @State private var searchText = ""
     @State private var selectTime = "all"
     @State private var showEntryView = false
     
     // MARK: - List Filtering Data
-    private var realm_filteringAllFuludata:[FuluLogRecord] {
+    private var realm_filteringAllFuludata: [FuluLogRecord] {
         if searchText.isEmpty && selectTime == "all" {
             // フィルタリングなし
-            return allFuleRelam.reversed().sorted(by: {$0.time > $1.time})
+            return realmViewModel.records
         } else if searchText.isEmpty && selectTime != "all" {
             // 年数のみ
-            return allFuleRelam.filter({$0.timeString.contains(selectTime)}).sorted(by: {$0.time > $1.time})
-        } else if searchText.isEmpty == false &&  selectTime != "all" {
+            return realmViewModel.records.filter({$0.timeString.contains(selectTime)})
+        } else if searchText.isEmpty == false && selectTime != "all" {
             // 検索値＆年数
-            return allFuleRelam.reversed().filter({$0.productName.contains(searchText)}).filter({$0.timeString.contains(selectTime)}).sorted(by: {$0.time > $1.time})
+            return realmViewModel.records.filter({$0.productName.contains(searchText)}).filter({$0.timeString.contains(selectTime)})
         } else {
             // 検索値のみ
-            return allFuleRelam.reversed().filter({$0.productName.contains(searchText)}).sorted(by: {$0.time > $1.time})
+            return realmViewModel.records.filter({$0.productName.contains(searchText)})
         }
     }
     
@@ -98,6 +94,7 @@ struct ListFuluLogView: View {
             
         }.ignoresSafeArea(.keyboard, edges: .bottom)
             .navigationBarHidden(true)
+            .background(Asset.Colors.baseColor.swiftUIColor)
             .sheet(isPresented: $showEntryView, content: {
                 EntryFuluLogView(isModal: $showEntryView)
             })
@@ -109,3 +106,4 @@ struct ListFuluLogView_Previews: PreviewProvider {
         ListFuluLogView()
     }
 }
+

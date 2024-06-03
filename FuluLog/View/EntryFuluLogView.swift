@@ -11,11 +11,10 @@ import RealmSwift
 struct EntryFuluLogView: View {
     
     // MARK: - ViewModels
-    private let realmDataBase = RealmDataBaseViewModel()
     private let userDefaults = UserDefaultsManager()
     private let dateFormatUtility = DateFormatUtility()
     
-    @ObservedResults(FuluLogRecord.self) var allFuluLogRecords
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
     
     // MARK: - TextField
     @State private var productName = ""     // 商品名
@@ -39,7 +38,7 @@ struct EntryFuluLogView: View {
     
     // MARK: - Method
     private func checkLimitCountData() -> Bool{
-        if allFuluLogRecords.count < userDefaults.getRecordLimitKey() {
+        if realmViewModel.records.count < userDefaults.getRecordLimitKey() {
             // 現在の要素数 < 上限数
             isLimitAlert = false
             return true
@@ -77,7 +76,7 @@ struct EntryFuluLogView: View {
                     if isFavorite {
                         // お気に入りからの呼び出しの場合
                         withAnimation(.linear(duration: 0.3)){
-                            realmDataBase.favorite_createRecord(
+                            realmViewModel.favorite_createRecord(
                                 productName: productName,
                                 amount: amount,
                                 municipality: municipality,
@@ -92,7 +91,7 @@ struct EntryFuluLogView: View {
                         // 新規登録処理
                         if checkLimitCountData(){
                             // 新規登録処理
-                            realmDataBase.createRecord(
+                            realmViewModel.createRecord(
                                 productName: productName,
                                 amount: amount,
                                 municipality: municipality,

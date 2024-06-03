@@ -11,8 +11,9 @@ struct UpdateFuluLogView: View {
     
     // MARK: - ViewModels
     private let validation = ValidationUtility()
-    private let realmDataBase = RealmDataBaseViewModel()
     private let displayDate = DateFormatUtility()
+    
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
     
     // MARK: - TextField
     @State private var productName = ""     // 商品名
@@ -33,12 +34,9 @@ struct UpdateFuluLogView: View {
     public var item: FuluLogRecord
     
     @Binding var isModal: Bool
-    // 親メソッドを受けとる
-    public var parentUpdateItemFunction: () -> Void
     
     public var isFavorite: Bool // Favoriteからの呼出かどうか
     
-   
     private func validatuonInput() -> Bool {
         ValidationUtility.checkInputValidity(text: productName, amount: amount, urlStr: url)
     }
@@ -59,36 +57,38 @@ struct UpdateFuluLogView: View {
             HeaderView(
                 headerTitle: "更新",
                 trailingIcon: "checkmark",
-                trailingAction: { 
+                trailingAction: {
                     guard validatuonInput() else { return isFailedEntryAlert = true}
                     withAnimation(.linear(duration: 0.3)) {
-                    
+                        
                         if isFavorite == false {
                             // MARK: - FuluLog
-                            realmDataBase.updateRecord(
+                            realmViewModel.updateRecord(
                                 id: item.id,
                                 productName: productName,
                                 amount: amount,
                                 municipality: municipality,
                                 url: url,
+                                request: item.request,
                                 memo: memo,
-                                request: item.request,time:displayDate.getConvertStringDate(time)
+                                time:displayDate.getConvertStringDate(time)
                             )
                             
                         } else {
                             // MARK: - Favorite
-                            realmDataBase.favorite_updateRecord(
+                            realmViewModel.favorite_updateRecord(
                                 id: item.id,
                                 productName: productName,
                                 amount: amount,
                                 municipality: municipality,
                                 url: url,
+                                request: item.request,
                                 memo: memo,
-                                request: item.request,time:displayDate.getConvertStringDate(time)
+                                time:displayDate.getConvertStringDate(time)
                             )
                         }
-                        parentUpdateItemFunction()
-                    isAlert = true
+                        // parentUpdateItemFunction()
+                        isAlert = true
                     }
                 }
             )
@@ -104,29 +104,28 @@ struct UpdateFuluLogView: View {
             
             Spacer()
             
-        }
-        .background(Asset.Colors.foundationColor.swiftUIColor)
-        .onAppear { // 初期値格納用
-            productName = item.productName     // 商品名
-            amount = item.amount               // 金額情報
-            municipality = item.municipality   // 自治体
-            url = item.url                     // URL
-            memo = item.memo                   // メモ
-            time = item.timeString                 // 日付
-        }.alert(Text("更新しました。"),isPresented: $isAlert){
-            Button(action: {
-                resetInputData()
-                isModal = false
-            }, label: {
-                Text("OK")
-            })
-        } message: {
-            Text("")
-        }.alert(Text("必要事項を入力し、有効なURLを入力してください。"), isPresented: $isFailedEntryAlert) {
-            
-        } message: {
-
-        }
+        }.background(Asset.Colors.foundationColor.swiftUIColor)
+            .onAppear { // 初期値格納用
+                productName = item.productName     // 商品名
+                amount = item.amount               // 金額情報
+                municipality = item.municipality   // 自治体
+                url = item.url                     // URL
+                memo = item.memo                   // メモ
+                time = item.timeString                 // 日付
+            }.alert(Text("更新しました。"),isPresented: $isAlert){
+                Button(action: {
+                    resetInputData()
+                    isModal = false
+                }, label: {
+                    Text("OK")
+                })
+            } message: {
+                Text("")
+            }.alert(Text("必要事項を入力し、有効なURLを入力してください。"), isPresented: $isFailedEntryAlert) {
+                
+            } message: {
+                
+            }
     }
 }
 

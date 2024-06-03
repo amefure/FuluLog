@@ -12,11 +12,11 @@ import RealmSwift
 struct PickerTimeView: View {
     
     @Binding var selectTime:String
-    @ObservedResults(FuluLogRecord.self) var allFuleRelam
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
     
     private var timeArray: [String] {
         var array:[String] = ["all"]
-        for item in allFuleRelam {
+        for item in realmViewModel.records {
             array.append(String(item.timeString.prefix(4)))
         }
         let timeSet = Set(array) // 重複値を除去

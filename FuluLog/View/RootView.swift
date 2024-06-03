@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    @State private var selectedTag = 1
-    
-    private var userDefaultsViewModel = UserDefaultsManager()
+    @State private var selectedTag = 0
     
     var body: some View {
         VStack(spacing: 0) {
@@ -18,39 +16,35 @@ struct RootView: View {
             TabView(selection: $selectedTag) {
                 
                 // MARK: - List
-                ListFuluLogView()
+                NavigationView {
+                    ListFuluLogView()
+                }.navigationViewStyle(.stack)
                     .tabItem {
                         Image(systemName:"list.bullet")
-                    }.tag(1)
+                    }.tag(0)
                 
                 // MARK: - Favorite
-                FavoriteFuluLogView()
+                NavigationView {
+                    FavoriteFuluLogView()
+                }.navigationViewStyle(.stack)
                     .tabItem {
                         Image(systemName:"star.fill")
-                    }.tag(2)
+                    }.tag(1)
                 
                 // MARK: - Setting
-                SettingView()
+                NavigationView {
+                    SettingView()
+                }.navigationViewStyle(.stack)
                     .tabItem {
                         Image(systemName:"gearshape.fill")
-                    }.tag(3)
+                    }.tag(2)
                 
             }
             
             // MARK: - AdMob
             AdMobBannerView()
                 .frame(height: 60)
-        }
-        .onAppear{
-            if userDefaultsViewModel.getMigrationKey() == 0 {
-                TransferConfigurationViewModel().jsonTransforRealmDB()
-                userDefaultsViewModel.setMigrationKey(1.0)
-            }
-            //            RealmDataBaseModel().deleteAllTable()
-            //            userDefaultsViewModel.setMigrationKey(verNum: 0)
-        }
-        .accentColor(.orange)
-        .ignoresSafeArea()
+        }.accentColor(.orange)
     }
 }
 

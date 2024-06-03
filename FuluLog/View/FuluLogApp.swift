@@ -26,9 +26,7 @@ struct FuluLogApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-                RootView()
-            }.navigationViewStyle(.stack)
+            RootView()
         }
     }
 }

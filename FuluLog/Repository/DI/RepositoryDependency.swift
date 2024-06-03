@@ -11,13 +11,15 @@ import UIKit
 class RepositoryDependency {
     
     public let userDefaultsRepository: UserDefaultsRepository
+    public let realmDataBaseRepository: RealmDataBaseRepository
 
     //　シングルトンインスタンスをここで保持する
     static let sharedUserDefaultsRepository = UserDefaultsRepository()
-    
+    static let sharedRealmDataBaseRepository = RealmDataBaseRepository()
     
     init() {
         userDefaultsRepository = RepositoryDependency.sharedUserDefaultsRepository
+        realmDataBaseRepository = RepositoryDependency.sharedRealmDataBaseRepository
     }
 }
 

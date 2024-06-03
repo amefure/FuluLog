@@ -12,7 +12,7 @@ import SwiftUI
 struct ShareBtnView: View {
     
     // MARK: - Receive
-    var item: FuluLogRecord
+    public var item: FuluLogRecord
     
     var body: some View {
         Button {

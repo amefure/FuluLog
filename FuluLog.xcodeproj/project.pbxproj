@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		121F7F4929C3BF6B0017F5E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 121F7F4829C3BF6B0017F5E2 /* GoogleService-Info.plist */; };
-		121F7F4B29C3C5260017F5E2 /* FuluLogRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4A29C3C5260017F5E2 /* FuluLogRealmModel.swift */; };
-		121F7F4D29C3C7540017F5E2 /* RealmDataBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */; };
+		121F7F4D29C3C7540017F5E2 /* RealmDataBaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4C29C3C7540017F5E2 /* RealmDataBaseRepository.swift */; };
 		121F7F4F29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */; };
 		121F7F5129CCF9590017F5E2 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F5029CCF9590017F5E2 /* UserDefaultsManager.swift */; };
 		121F7F8929D1DE250017F5E2 /* TransferConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */; };
@@ -19,6 +18,9 @@
 		123DA7452C0C36990016CFCB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA7432C0C36990016CFCB /* Strings.swift */; };
 		123DA7462C0C36990016CFCB /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA7442C0C36990016CFCB /* Assets.swift */; };
 		123DA7482C0C4B210016CFCB /* StaticUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA7472C0C4B210016CFCB /* StaticUrls.swift */; };
+		123DA74A2C0C4E110016CFCB /* FuluLogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA7492C0C4E110016CFCB /* FuluLogRecord.swift */; };
+		123DA74C2C0C4E340016CFCB /* UserDonationInfoRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA74B2C0C4E340016CFCB /* UserDonationInfoRecord.swift */; };
+		123DA74E2C0C50CF0016CFCB /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123DA74D2C0C50CF0016CFCB /* RealmConfig.swift */; };
 		1244A58829C26C93003F2FE2 /* DeviceSizeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58729C26C93003F2FE2 /* DeviceSizeUtility.swift */; };
 		1244A58A29C26D5C003F2FE2 /* DateFormatUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58929C26D5C003F2FE2 /* DateFormatUtility.swift */; };
 		1244A58C29C26EA7003F2FE2 /* ValidationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1244A58B29C26EA7003F2FE2 /* ValidationUtility.swift */; };
@@ -84,8 +86,7 @@
 
 /* Begin PBXFileReference section */
 		121F7F4829C3BF6B0017F5E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		121F7F4A29C3C5260017F5E2 /* FuluLogRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogRealmModel.swift; sourceTree = "<group>"; };
-		121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseModel.swift; sourceTree = "<group>"; };
+		121F7F4C29C3C7540017F5E2 /* RealmDataBaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseRepository.swift; sourceTree = "<group>"; };
 		121F7F4E29C3C7CB0017F5E2 /* RealmDataBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataBaseViewModel.swift; sourceTree = "<group>"; };
 		121F7F5029CCF9590017F5E2 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		121F7F8829D1DE250017F5E2 /* TransferConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferConfigurationViewModel.swift; sourceTree = "<group>"; };
@@ -95,6 +96,9 @@
 		123DA7432C0C36990016CFCB /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		123DA7442C0C36990016CFCB /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		123DA7472C0C4B210016CFCB /* StaticUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticUrls.swift; sourceTree = "<group>"; };
+		123DA7492C0C4E110016CFCB /* FuluLogRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuluLogRecord.swift; sourceTree = "<group>"; };
+		123DA74B2C0C4E340016CFCB /* UserDonationInfoRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDonationInfoRecord.swift; sourceTree = "<group>"; };
+		123DA74D2C0C50CF0016CFCB /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
 		1244A58729C26C93003F2FE2 /* DeviceSizeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSizeUtility.swift; sourceTree = "<group>"; };
 		1244A58929C26D5C003F2FE2 /* DateFormatUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatUtility.swift; sourceTree = "<group>"; };
 		1244A58B29C26EA7003F2FE2 /* ValidationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtility.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		127EFBCB2C0978DB00DA117B /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				121F7F4C29C3C7540017F5E2 /* RealmDataBaseRepository.swift */,
 				127EFBCC2C0978F800DA117B /* UserDefaultsRepository.swift */,
 				127EFBCE2C09799600DA117B /* DI */,
 			);
@@ -341,9 +346,10 @@
 			isa = PBXGroup;
 			children = (
 				121F7F9929D5B1610017F5E2 /* OldModels */,
-				121F7F4C29C3C7540017F5E2 /* RealmDataBaseModel.swift */,
 				123DA7472C0C4B210016CFCB /* StaticUrls.swift */,
-				121F7F4A29C3C5260017F5E2 /* FuluLogRealmModel.swift */,
+				123DA74D2C0C50CF0016CFCB /* RealmConfig.swift */,
+				123DA7492C0C4E110016CFCB /* FuluLogRecord.swift */,
+				123DA74B2C0C4E340016CFCB /* UserDonationInfoRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -562,14 +568,13 @@
 				12ED239428CCBD4D00CCED4F /* RootView.swift in Sources */,
 				12ED23AA28CCC04800CCED4F /* RowFuluLogView.swift in Sources */,
 				12ED23C028D529D400CCED4F /* DonationLimitView.swift in Sources */,
-				121F7F4B29C3C5260017F5E2 /* FuluLogRealmModel.swift in Sources */,
 				121F7F5129CCF9590017F5E2 /* UserDefaultsManager.swift in Sources */,
 				1292434628DA66D500A20A84 /* RewardBtnView.swift in Sources */,
 				12ED23CA28D5F61100CCED4F /* SearchBoxView.swift in Sources */,
 				12ED23C228D5560E00CCED4F /* ListDonationLimitHistory.swift in Sources */,
 				12ED23AF28CCC6E100CCED4F /* InputFuluLogView.swift in Sources */,
 				1244A58A29C26D5C003F2FE2 /* DateFormatUtility.swift in Sources */,
-				121F7F4D29C3C7540017F5E2 /* RealmDataBaseModel.swift in Sources */,
+				121F7F4D29C3C7540017F5E2 /* RealmDataBaseRepository.swift in Sources */,
 				12ED239228CCBD4D00CCED4F /* FuluLogApp.swift in Sources */,
 				12ED23C428D5D01600CCED4F /* SumDonationAmountView.swift in Sources */,
 				1244A58C29C26EA7003F2FE2 /* ValidationUtility.swift in Sources */,
@@ -584,7 +589,9 @@
 				1292434828DB554700A20A84 /* EntryFavoriteBtnView.swift in Sources */,
 				12ED23BB28CFD69200CCED4F /* HeaderView.swift in Sources */,
 				12ED23AD28CCC20C00CCED4F /* SettingView.swift in Sources */,
+				123DA74E2C0C50CF0016CFCB /* RealmConfig.swift in Sources */,
 				12ED23B128CDAF4B00CCED4F /* DetailFuluLogView.swift in Sources */,
+				123DA74A2C0C4E110016CFCB /* FuluLogRecord.swift in Sources */,
 				127EFBCD2C0978F800DA117B /* UserDefaultsRepository.swift in Sources */,
 				129DF62E2C0984AE002A1A09 /* ShareContentUtility.swift in Sources */,
 				123DA7482C0C4B210016CFCB /* StaticUrls.swift in Sources */,
@@ -592,6 +599,7 @@
 				1292434028D6BF4E00A20A84 /* FavoriteFuluLogView.swift in Sources */,
 				12ED23A428CCBE3500CCED4F /* FileController.swift in Sources */,
 				1292434A28DB55CF00A20A84 /* ShareBtnView.swift in Sources */,
+				123DA74C2C0C4E340016CFCB /* UserDonationInfoRecord.swift in Sources */,
 				127EFBD02C09799D00DA117B /* RepositoryDependency.swift in Sources */,
 				12ED23A828CCC03C00CCED4F /* ListFuluLogView.swift in Sources */,
 			);

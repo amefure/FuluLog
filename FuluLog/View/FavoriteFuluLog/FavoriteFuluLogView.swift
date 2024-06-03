@@ -10,13 +10,8 @@ import RealmSwift
 
 struct FavoriteFuluLogView: View {
     
-    @ObservedResults(FavoriteFuluLogRecord.self) var allFavoriteFuluRelam
-    
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
     @State private var showEntryView = false
-    
-    private var showList: [FavoriteFuluLogRecord] {
-        return allFavoriteFuluRelam.reversed().sorted(by: {$0.time > $1.time})
-    }
     
     var body: some View {
         VStack(spacing:0) {
@@ -27,12 +22,16 @@ struct FavoriteFuluLogView: View {
                 trailingAction: { showEntryView = true}
             )
             
-            if showList.count == 0 {
+            if realmViewModel.favoriteRecords.count != 0 {
                 // MARK: - List
-                List(showList){ item in
+                List(realmViewModel.favoriteRecords) { item in
                     
                     NavigationLink {
-                        DetailFuluLogView(item: item, isOn: item.request, isFavorite: true)
+                        DetailFuluLogView(
+                            item: item,
+                            isOn: item.request,
+                            isFavorite: true
+                        )
                     } label: {
                         RowFuluLogView(item: item, isFavorite: true)
                     }

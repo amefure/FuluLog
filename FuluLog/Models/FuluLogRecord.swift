@@ -1,14 +1,12 @@
 //
-//  FuluLogRealmModel.swift
+//  FuluLogRecord.swift
 //  FuluLog
 //
-//  Created by t&a on 2023/03/17.
+//  Created by t&a on 2024/06/02.
 //
 
 import UIKit
 import RealmSwift
-
-// ReplaceMent RealmSwift
 
 class FuluLogRecord: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = UUID()             // 一意の値
@@ -26,11 +24,3 @@ class FuluLogRecord: Object, ObjectKeyIdentifiable {
 }
 
 class FavoriteFuluLogRecord: FuluLogRecord { }
-
-class UserDonationInfoRecord: Object, ObjectKeyIdentifiable, Codable {
-    @Persisted(primaryKey: true) var id = UUID()  // 一意の値
-    @Persisted var year: String             // 年
-    @Persisted var limitAmount: Int         // 上限金額
-
-}
-

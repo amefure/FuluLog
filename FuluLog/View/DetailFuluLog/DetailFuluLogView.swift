@@ -11,20 +11,18 @@ import RealmSwift
 
 struct DetailFuluLogView: View {
     
-    // MARK: - ViewModels
-    private let realmDataBase = RealmDataBaseViewModel()
     private let userDefaults = UserDefaultsManager()
     private let displayDate = DateFormatUtility()
+    
+    // MARK: - ViewModels
+    @ObservedObject private var realmViewModel = RealmDataBaseViewModel.shared
     
     // MARK: - Environment
     @Environment(\.dismiss) var dismiss
     
     // MARK: - Receive
-    @State var item:FuluLogRecord
+    public var item: FuluLogRecord
     
-    // MARK: - Models
-    @ObservedResults(FuluLogRecord.self) var allFuleRelam
-    @ObservedResults(FavoriteFuluLogRecord.self) var allFavoriteFuluLogRecord
     
     // MARK: - View
     @State private var showUpdateView = false
@@ -33,22 +31,9 @@ struct DetailFuluLogView: View {
     
     public var isFavorite: Bool // Favoriteからの呼出
     
-    
-    // MARK: - Method
-    private  func updateItem(){
-        if let result = allFuleRelam.first(where: { $0.id == item.id }){
-            self.item = result
-        } else {
-            if let result2 = allFavoriteFuluLogRecord.first(where: { $0.id == item.id }){
-                self.item = result2
-            }
-        }
-        
-    }
-    
-    private func updateAppGroupandWidget(){
+    private func updateAppGroupandWidget() {
         let year = displayDate.nowYearString()
-        let array = allFuleRelam.filter({$0.request == false && $0.timeString.contains(year) })
+        let array = realmViewModel.records.filter({ $0.request == false && $0.timeString.contains(year) })
         userDefaults.setCountKey(count: array.count)
         WidgetCenter.shared.reloadAllTimelines()
     }
@@ -160,7 +145,16 @@ struct DetailFuluLogView: View {
                         .padding(.trailing,10)
                         .tint(.orange)
                         .onChange(of: isOn) { newValue in
-                            realmDataBase.updateRecord(id: item.id, productName: item.productName, amount: item.amount, municipality: item.municipality, url: item.url, memo: item.memo, request: isOn, time: item.time)
+                            realmViewModel.updateRecord(
+                                id: item.id,
+                                productName: item.productName,
+                                amount: item.amount,
+                                municipality: item.municipality,
+                                url: item.url,
+                                request: isOn,
+                                memo: item.memo,
+                                time: item.time
+                            )
                             // MARK: - ワンストップ申請の変更を反映する
                             updateAppGroupandWidget()
                         }
@@ -183,9 +177,6 @@ struct DetailFuluLogView: View {
                 
             } // ScrollView
             
-            // MARK: - AdMob
-            AdMobBannerView().frame(height: 40).padding(.vertical)
-            
         }.background(Asset.Colors.baseColor.swiftUIColor)
             .textSelection(.enabled)
             .padding(.horizontal)
@@ -194,10 +185,10 @@ struct DetailFuluLogView: View {
                 Button(role: .destructive, action: {
                     withAnimation(.linear(duration: 0.3)){
                         if isFavorite == false {
-                            realmDataBase.deleteRecord(id: item.id)
+                            realmViewModel.deleteRecord(id: item.id)
                         } else {
                             // MARK: - Favorite
-                            realmDataBase.favorite_deleteRecord(id: item.id)
+                            realmViewModel.favorite_deleteRecord(id: item.id)
                         }
                         dismiss()
                     }
@@ -210,7 +201,6 @@ struct DetailFuluLogView: View {
                 UpdateFuluLogView(
                     item: item,
                     isModal: $showUpdateView,
-                    parentUpdateItemFunction: updateItem,
                     isFavorite: isFavorite
                 )
             })
