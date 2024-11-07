@@ -39,16 +39,19 @@ struct SettingView: View {
                 }
             })
             
-            Spacer()
-            
             // MARK: - List
-            Section(content: {
-                List {
+            List {
+                
+                Section {
                     // 1:容量追加
                     RewardBtnView()
-                    // 1:容量追加
                     
-                    
+                } header: { } footer: {
+                    Text("・広告の視聴で追加される容量は5個です。\n・容量の追加は1日に1回までです。")
+                }
+
+
+                Section(content: {
                     // 2:レビューページ
                     if let url = URL(string: StaticUrls.APP_REVIEW_URL) {
                         Link(destination: url, label: {
@@ -98,19 +101,11 @@ struct SettingView: View {
                     }
                     // 4:プライバシーポリシー
                     
-                }.listStyle(GroupedListStyle()) // Listのスタイルを横に広げる
-                    .scrollContentBackground(.hidden)
-                        .background(Asset.Colors.baseColor.swiftUIColor)
-            }, header: {
-                HStack {
-                    Text("設定")
-                        .font(.system(size: 18))
-                        .fontWeight(.bold)
-                        .foregroundStyle(.gray)
-                        .padding(8)
-                    Spacer()
-                }
-            })
+                   
+                })
+            }.listStyle(GroupedListStyle()) // Listのスタイルを横に広げる
+                .scrollContentBackground(.hidden)
+                    .background(Asset.Colors.baseColor.swiftUIColor)
         }.navigationBarHidden(true)
     }
 }
